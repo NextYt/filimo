@@ -6,7 +6,7 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
   loadingStrategy?: "eager" | "lazy";
   quality?: "low" | "medium" | "high";
-  fetchPriority?: "high" | "low" | "auto";
+  fetchpriority?: "high" | "low" | "auto";
 }
 
 const Image = ({
@@ -15,7 +15,7 @@ const Image = ({
   className = "",
   loadingStrategy = "lazy",
   quality = "medium",
-  fetchPriority = "auto",
+  fetchpriority = "auto",
   ...props
 }: ImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -90,7 +90,7 @@ const Image = ({
         loading={loadingStrategy}
         onLoad={handleLoad}
         onError={handleError}
-        fetchPriority={fetchPriority}
+        data-fetchpriority={fetchpriority}
         style={{ transform: "translateZ(0)" }}
       />
 

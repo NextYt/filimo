@@ -7,10 +7,18 @@ import MainLayout from './layouts/MainLayout'
 // Lazy load pages
 const HomePage = lazy(() => import('./pages/HomePage'))
 
+// Configure future flags
+const router = {
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true
+  }
+}
+
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
+      <Router {...router}>
         <Suspense fallback={
           <div className="min-h-screen flex items-center justify-center bg-background-dark">
             <LoadingSpinner size="lg" />
