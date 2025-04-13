@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Swiper CSS */
+.swiper {
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  padding-bottom: 2rem !important;
+}
+
+.swiper-slide {
+  text-align: center;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @apply transition-transform duration-300 will-change-transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: var(--color-primary);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary) !important;
+}
+
+:root {
+  --color-primary: #E50914;
+  --color-primary-dark: #B81D24;
+  --color-background-dark: #141414;
+  --color-background-light: #1F1F1F;
+}
+
+body {
+  background-color: var(--color-background-dark);
+  color: #FFFFFF;
+  font-family: 'IRANSans', system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .container {
+    @apply mx-auto;
+    padding: 0 60px;
+    max-width: 1440px;
+  }
+  
+  @media (max-width: 1300px) {
+    .container {
+      padding: 0 20px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .container {
+      padding: 0 10px;
+    }
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors relative overflow-hidden w-full md:w-auto;
+  }
+  
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-24;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Swiper styles */
+.movie-carousel-container {
+  position: relative;
+  padding: 0 20px;
+  margin: 0 -20px;
+
+  @media (min-width: 768px) {
+    padding: 0 40px;
+    margin: 0 -40px;
+  }
+}
+
+.movie-carousel {
+  overflow: visible;
+}
+
+.movie-carousel .swiper-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.movie-carousel .swiper-slide {
+  height: auto;
+  display: flex;
+  width: 140px;
+  
+  @media (min-width: 480px) {
+    width: 160px;
+  }
+  
+  @media (min-width: 768px) {
+    width: 180px;
+  }
+  
+  @media (min-width: 1024px) {
+    width: 200px;
+  }
+}
+
+.movie-carousel .swiper-button-prev,
+.movie-carousel .swiper-button-next {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.movie-carousel .swiper-button-prev:hover,
+.movie-carousel .swiper-button-next:hover {
+  background: var(--color-primary);
+}
+
+.movie-carousel .swiper-button-prev::after,
+.movie-carousel .swiper-button-next::after {
+  font-size: 20px;
+}
+
+.movie-carousel .swiper-pagination {
+  position: absolute;
+  bottom: 0 !important;
+  left: 0;
+  right: 0;
+}
+
+.movie-carousel .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.movie-carousel .swiper-pagination-bullet-active {
+  background: var(--color-primary);
+}
+
+/* Hide navigation buttons on mobile */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
+
+/* Custom Mobile Touch Feedback */
+@media (hover: none) {
+  .swiper-slide:active {
+    transform: scale(0.98) translateZ(0);
+  }
+}
+
+/* Enhanced Mobile Experience */
+@media (max-width: 640px) {
+  .movie-carousel-container {
+    margin: 0 -10px;
+    padding: 0 10px;
+  }
+
+  .movie-carousel {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .swiper-pagination {
+    bottom: 0 !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    margin: 0 4px !important;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes float {
+   0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-20px) translateZ(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.2) translateZ(0);
+    opacity: 0.5;
+  }
+}
+
+/* Custom Animations */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Section Transitions */
+.section-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.section-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1000ms, transform 1000ms;
+}
+
+/* Custom Components */
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+  padding: 1px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Responsive Typography */
+h1 {
+  @apply text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold;
+}
+
+h2 {
+  @apply text-xl md:text-3xl lg:text-4xl font-bold;
+}
+
+h3 {
+  @apply text-lg md:text-xl lg:text-2xl font-semibold;
+}
+
+/* Responsive Grid & Flex Layouts */
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6;
+}
+
+.flex-responsive {
+  @apply flex flex-col md:flex-row items-center gap-4 md:gap-6;
+}
