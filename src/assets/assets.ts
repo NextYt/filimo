@@ -54,7 +54,7 @@ export const assets = {
     .href,
   bgKids: new URL("./images/bg-kids.png", import.meta.url).href,
   tvbg: new URL("./images/TVBG.png", import.meta.url).href,
-  tvbgYaghi: new URL("./images/TVBG-yaghi.png", import.meta.url).href,
+  tvbgYaghi: new URL("./images/TVBG-yaghi.webp", import.meta.url).href,
 
   // Poster images - Free posters
   freePoster1: new URL("./images/free-poster-1.jpg", import.meta.url).href,
@@ -101,6 +101,6 @@ export const assets = {
   cardImg2: new URL("./images/card-img-2.webp", import.meta.url).href,
 
   // Device icons
-  device2: new URL("./images/device2.png", import.meta.url).href,
+  device2: new URL("./images/device2.webp", import.meta.url).href,
   deviceYaghi: new URL("./images/deviceYaghi.png", import.meta.url).href,
 };

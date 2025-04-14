@@ -1,13 +1,19 @@
-import Button from "../Button/Button";
-import Image from "../ImageComponent/Image";
+import Image from '../../components/ImageComponent/Image';
+import Button from '../Button/Button';
 
-const MoviePoster = ({ moviePoster, href, isActive }: { moviePoster: string, href: string, isActive: boolean }) => {
+interface MoviePosterProps {
+  moviePoster: string;
+  href: string;
+  isActive: boolean;
+}
+
+const MoviePoster = ({ moviePoster, href, isActive }: MoviePosterProps) => {
   return (
-    <Button ButtonElement="a" href={href} className="section-main-top-wrapper-item">
-      <div className={`section-movie-poster ${isActive ? "item-active" : ""}`}>
-        <Image src={moviePoster} alt="movie poster" />
-      </div>
-    </Button>
+    <li className={`section-main-top-wrapper-item ${isActive ? 'item-active' : ''}`}>
+      <Button ButtonElement='a' href={href} className="section-movie-poster">
+        <Image src={moviePoster} alt="Movie Poster" />
+      </Button>
+    </li>
   );
 };
 
