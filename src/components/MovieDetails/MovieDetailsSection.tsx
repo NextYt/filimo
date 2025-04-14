@@ -20,8 +20,10 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
           <div className="section-movie-cast">
             <div className="section-movie-cast-details">
               <Button ButtonElement='a' className="movie-cast-title">{title}</Button>
-              <div className="movie-en">{englishTitle}</div>
-              <div className="movie-en movie-director">
+              <div className="movie-en text-sm md:text-base">
+                {englishTitle}
+              </div>
+              <div className="movie-en text-sm md:text-base">
                 Director: {director}
               </div>
               <div className="movie-data">
@@ -34,7 +36,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
                 ))}
               </div>
               <div className="movie-describtion">
-                <span>{description}</span>
+                <span className="text-sm md:text-base">{description}</span>
               </div>
             </div>
           </div>

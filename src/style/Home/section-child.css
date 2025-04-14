@@ -48,18 +48,18 @@
 }
 
 .section-child-text-tilte {
-  font-size: 20px;
+  font-size: 28px;
   padding-bottom: 16px;
-  text-align: right;
+  text-align: left;
   color: #fff;
   line-height: 40px;
 }
 
 .section-child-text-describe {
   font-weight: 100;
-  font-size: 13px;
-  line-height: 20px;
-  align-items: right;
+  font-size: 18px;
+  line-height: 26px;
+  align-items: left;
   color: rgba(255, 255, 255, 0.5);
   padding-bottom: 32px;
 }
@@ -68,11 +68,18 @@
   display: none;
 }
 
+.section-child-text-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
 .child-btn-1,
 .child-btn-2 {
   color: var(--body-background);
   font-weight: 700;
-  margin-left: 12px;
   background-color: var(--section-child-btn-background);
   padding: 10px 16px;
 }

@@ -8,7 +8,7 @@ const SectionDetailList = ({ text }: { text: string }) => {
         className="text-green-500"
         alt="checkmark"
       />
-      <span>{text}</span>
+      <span className="text-sm md:text-base">{text}</span>
     </div>
   );
 };

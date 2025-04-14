@@ -25,8 +25,15 @@
   align-items: center;
   justify-content: center;
 }
+.tab-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
 
-.section-tab-inner-dev{
+.section-tab-inner-dev {
   display: flex;
   margin-bottom: 32px;
 }
@@ -42,11 +49,11 @@
   font-size: 15px;
   background-color: #17924e;
   border-radius: 8px;
-  transition: all .4s;
+  transition: all 0.4s;
   cursor: pointer;
 }
 
-.btn.section-tab-btn:hover{
+.btn.section-tab-btn:hover {
   background-color: #245d3e;
 }
 
@@ -56,18 +63,18 @@
 
 /*Responsive Part*/
 
-@media screen and (max-width : 1100px) {
-  .detail-tab-item-text{
+@media screen and (max-width: 1100px) {
+  .detail-tab-item-text {
     font-size: 13px;
   }
 
-  .section-tab-list{
+  .section-tab-list {
     display: flex;
   }
 }
 
-@media screen and (max-width :1000px) {
-  .section-tab-list{
+@media screen and (max-width: 1000px) {
+  .section-tab-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,36 +82,34 @@
     width: 100%;
   }
 
-  .section-tab-inner-dev{
+  .section-tab-inner-dev {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;;
-    margin-bottom:32px ;
+    align-items: flex-start;
+    margin-bottom: 32px;
   }
 
-  .detail-tab-item-text{
+  .detail-tab-item-text {
     font-size: 16px;
   }
   .tab-text {
     margin-bottom: 32px;
-    padding-right: 100px;
   }
 }
 
-@media screen and (max-width : 550px) {
-  .detail-tab-item-text{
+@media screen and (max-width: 550px) {
+  .detail-tab-item-text {
     font-size: 13px;
   }
-  .section-tab-inner-dev{
+  .section-tab-inner-dev {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;;
-    margin-bottom:20px ;
+    align-items: flex-start;
+    margin-bottom: 20px;
   }
 
-  .section-tab-logo img{
+  .section-tab-logo img {
     width: 130px;
-
   }
 
   .tab-text {
@@ -112,22 +117,22 @@
     padding-right: 50px;
   }
 
-  .section-tab-btn{
+  .section-tab-btn {
     width: 200px;
     padding: 15px 0px;
     font-size: 13px;
   }
 }
 
-@media screen and (max-width : 400px) {
+@media screen and (max-width: 400px) {
   .tab-text {
     margin-bottom: 16px;
     padding-right: 40px;
   }
 
-  .detail-tab-item-text{
+  .detail-tab-item-text {
     font-size: 11px;
-    line-height :20px ;
+    line-height: 20px;
   }
 }
 

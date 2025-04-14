@@ -91,6 +91,15 @@ export interface FaqItem {
   answer?: string;
 }
 
+export interface TabFeature {
+  text: string;
+}
+
+export interface TabSection {
+  buttonText: string;
+  features: TabFeature[];
+}
+
 export const NAVIGATION_ITEMS: MenuItem[] = [
   {
     label: "",
@@ -630,6 +639,15 @@ export const FAQ_SECTION = {
       question: "How can I download the Android or iOS Filimo app?",
       answer: "You can download the Filimo app from the Google Play Store for Android devices and from the App Store for iOS devices. Links to download are available on the Filimo website."
     }
+  ]
+};
+
+export const TAB_SECTION: TabSection = {
+  buttonText: "Buy License and Watch",
+  features: [
+    { text: "Thousands of foreign movies and series (dubbed and subtitles)" },
+    { text: "Thousands of cartoons for children" },
+    { text: "Support 24 hours for your guidance" }
   ]
 };
 

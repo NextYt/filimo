@@ -36,7 +36,7 @@
 
 .section-device-describe-title {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 22px;
   line-height: 16px;
   margin-bottom: 16px;
   color: var(--section-device-title-color);
@@ -81,7 +81,7 @@
 
 .section-pc-title {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 15px;
   color: var(--section-device-describe-color);
   margin-bottom: 16px;
@@ -89,7 +89,7 @@
 
 .section-pc-describe {
   font-weight: 400;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 14px;
   color: var(--section-main-movie-en-color);
 }
@@ -111,19 +111,19 @@
   }
 
   .section-device-describe-title {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .section-device-describe-text {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .section-pc-title {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .section-pc-describe {
-    font-size: 10px;
+    font-size: 16px;
   }
 }
 
@@ -144,19 +144,19 @@
 
 @media screen and (max-width: 500px) {
   .section-device-describe-title {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .section-device-describe-text {
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .section-pc-title {
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .section-pc-describe {
-    font-size: 8px;
+    font-size: 16px;
   }
 }
 

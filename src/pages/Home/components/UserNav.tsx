@@ -10,7 +10,7 @@ const UserNav = () => {
       <div className="section-user-dev">
         <div className="section-user-text">
           <div>
-            <span>{title}</span>
+            <span className="text-base md:text-2xl">{title}</span>
           </div>
           <div className="move-button">
             <div

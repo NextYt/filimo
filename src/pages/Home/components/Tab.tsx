@@ -2,9 +2,11 @@ import '../../../style/Home/section-tab.css';
 import { assets } from '../../../assets/assets';
 import Button from '../../../components/Button/Button';
 import Image from '../../../components/ImageComponent/Image';
-
+import { TAB_SECTION } from '../../../data/mockData';
 
 const Tab = () => {
+  const { buttonText, features } = TAB_SECTION;
+
   return (
     <section className="section-tab">
       <div className="section-tab-gradient"></div>
@@ -14,28 +16,18 @@ const Tab = () => {
         </div>
         <div className="section-detail-list section-tab-list">
           <div className="section-tab-inner-dev">
-            <div className="section-detail-list-item tab-text">
-              <Image src={assets.checkmark} className="text-green-500" alt="checkmark" />
-              <span className="detail-tab-item-text">
-                Thousands of foreign movies and series (dubbed and subtitles)
-              </span>
-            </div>
-            <div className="section-detail-list-item tab-text">
-              <Image src={assets.checkmark} className="text-green-500" alt="checkmark" />
-              <span className="detail-tab-item-text">
-                Thousands of cartoons for children
-              </span>
-            </div>
-            <div className="section-detail-list-item tab-text">
-              <Image src={assets.checkmark} className="text-green-500" alt="checkmark" />
-              <span className="detail-tab-item-text">
-                Support 24 hours for your guidance
-              </span>
-            </div>
+            {features.map((feature, index) => (
+              <div key={index} className="section-detail-list-item tab-text">
+                <Image src={assets.checkmark} className="text-green-500 text-xl" alt="checkmark" />
+                <span className="detail-tab-item-text">
+                  {feature.text}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
         <Button className="btn licence-btn section-tab-btn">
-          Buy License and Watch
+          {buttonText}
         </Button>
       </div>
     </section>

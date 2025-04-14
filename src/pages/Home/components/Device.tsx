@@ -21,8 +21,8 @@ const Device = () => {
           <Image src={mainImage} alt="device" />
         </div>
         <div className="section-device-describe">
-          <h3 className="section-device-describe-title">{title}</h3>
-          <p className="section-device-describe-text">{description}</p>
+          <h3 className="section-device-describe-title text-base md:text-2xl">{title}</h3>
+          <p className="section-device-describe-text text-base md:text-2xl">{description}</p>
           <div className="responsive-photo-mode">
             <Image src={responsiveImage} alt="device2" />
           </div>
@@ -31,7 +31,7 @@ const Device = () => {
               <DeviceItem key={index} device={device} />
             ))}
           </div>
-          <Button className="btn licence-btn section-device-btn">
+          <Button className="btn licence-btn section-device-btn text-base md:text-2xl">
             {buttonText}
           </Button>
         </div>

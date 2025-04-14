@@ -23,13 +23,13 @@
 .section-ques-text h3 {
   font-weight: 400;
   margin-bottom: 32px;
-  font-size: 16px;
+  font-size: 24px;
   color: #fff;
 }
 
 .section-ques-text span {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: rgb(158, 158, 158);
 }
 
@@ -56,7 +56,7 @@
   color: #fff;
   padding-right: 32px;
   text-align: left;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500px;
 }
 
@@ -74,30 +74,25 @@
   }
 }
 
+@media screen and (max-width: 800px) {
+  .section-ques-box-text {
+    font-size: 16px;
+  }
 
-@media screen and (max-width : 800px) {
-     .section-ques-box-text {
-          font-size: 11px;
-        }
-
-        .section-ques-inner {
-          padding: 0px 10px;
-          margin: 0 auto;
-        }
+  .section-ques-inner {
+    padding: 0px 10px;
+    margin: 0 auto;
+  }
 }
 
-@media screen and (max-width : 500px) {
-     .section-ques-box-text {
-          font-size: 9px;
-          line-height: 15px;
-        }
+@media screen and (max-width: 500px) {
+  .section-ques-box-text {
+    font-size: 16px;
+    line-height: 15px;
+  }
 
-        .ques-title{
-          font-size: 14px;
-        }
-
-        .section-ques-text span {
-          font-size: 10px;
-        }
+  .section-ques-text span {
+    font-size: 16px;
+  }
 }
 /*End of Responsive Part*/

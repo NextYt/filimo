@@ -19,7 +19,7 @@ const Online = () => {
               {features.map((feature, index) => (
                 <div key={index} className="section-online-list-item">
                   <Image src={assets.checkmark} className="text-green-500" alt="checkmark" />
-                  <span>{feature.text}</span>
+                  <span className="text-base md:text-xl">{feature.text}</span>
                 </div>
               ))}
             </div>

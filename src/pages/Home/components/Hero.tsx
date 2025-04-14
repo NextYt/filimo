@@ -36,8 +36,8 @@ const Hero = () => {
               </Button>
             </div>
             <div className="section-wrapper-gift section-detail-list-item">
-              <Image src={assets.gift} className="text-xl" alt="gift" />
               <span>{HERO_TEXTS.text4}</span>
+              <Image src={assets.gift} alt="gift" />
             </div>
           </div>
         </div>

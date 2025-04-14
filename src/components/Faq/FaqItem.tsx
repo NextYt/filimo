@@ -25,6 +25,8 @@ const FaqItem = ({ faqItem }: FaqItemProps) => {
         <div className={`plus-icon ${isOpen ? "plus-icon-open" : ""}`} style={{ cursor: "pointer" }}>
           <Image
             src={assets.plus}
+            // add a style when user click rotate the icon
+            style={isOpen ? { transform: "rotate(45deg)" } : {}}
             className="text-yellow-600 plus-icon-image"
             alt="plus"
           />

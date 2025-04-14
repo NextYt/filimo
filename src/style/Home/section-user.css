@@ -74,9 +74,9 @@
 
 .user-feedback p {
   font-weight: 400;
-  line-height: 18px;
+  line-height: 22px;
   height: 75px;
-  font-size: 11px;
+  font-size: 16px;
   color: var(--section-user-p-color);
   overflow: hidden;
   overflow-y: auto;
