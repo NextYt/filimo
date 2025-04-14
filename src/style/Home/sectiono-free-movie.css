@@ -35,13 +35,19 @@
      justify-content: space-between;
 }
 
-.section-free-movie-item {
+/* Added wrapper for the movie item to position favorite button */
+.section-free-movie-item-wrapper {
+     position: relative;
      margin-left: 30px;
-     text-decoration: none;
-     min-width:14.5%;
-     cursor: pointer;
+     min-width: 14.5%;
 }
 
+.section-free-movie-item {
+     text-decoration: none;
+     cursor: pointer;
+     display: block;
+     width: 100%;
+}
 
 .free-movie-item-poster{
      transition: all .3s ease-in-out;
@@ -57,6 +63,11 @@
      user-select: none;
 }
 
+/* Add hover effect for poster */
+.free-movie-item-poster:hover img {
+     opacity: 1;
+}
+
 .free-movie-item-name{
      font-size: 11px;
      font-weight: 400;
@@ -67,6 +78,35 @@
      padding: 4px;
      cursor: pointer;
      color: #fff;
+}
+
+/* Style for favorite button */
+.favorite-button {
+     position: absolute;
+     top: 10px;
+     left: 10px;
+     background: rgba(0, 0, 0, 0.5);
+     border: none;
+     border-radius: 50%;
+     width: 30px;
+     height: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+     z-index: 5;
+     opacity: 0;
+     transition: opacity 0.2s ease;
+}
+
+/* Show favorite button on hover */
+.section-free-movie-item-wrapper:hover .favorite-button {
+     opacity: 1;
+}
+
+/* Always show button if it's a favorite */
+.favorite-button.is-favorite {
+     opacity: 1;
 }
 
 .truck-free{
@@ -95,31 +135,36 @@
           padding: 0 20px;
      }
 
-     .section-free-movie-item{
+     .section-free-movie-item-wrapper{
           min-width: 17%;
      }
 }
 
 @media screen and (max-width:768px) {
-     .section-free-movie-item{
+     .section-free-movie-item-wrapper{
           min-width: 19%;
+     }
+     
+     /* Always show favorite button on mobile */
+     .favorite-button {
+          opacity: 1;
      }
 }
 
 @media screen and (max-width:650px) {
-     .section-free-movie-item{
+     .section-free-movie-item-wrapper{
           min-width: 21%;
      }
 }
 
 @media screen and (max-width:550px) {
-     .section-free-movie-item{
+     .section-free-movie-item-wrapper{
           min-width: 28%;
      }
 }
 
 @media screen and (max-width:450px) {
-     .section-free-movie-item{
+     .section-free-movie-item-wrapper{
           min-width: 47%;
      }
 }

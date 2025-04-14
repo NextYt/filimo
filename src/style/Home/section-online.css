@@ -101,15 +101,34 @@
   gap: 10px;
 }
 
-.section-online-card-img {
+/* Add wrapper for the movie image to position favorite button */
+.section-online-card-img-wrapper {
+  position: relative;
   margin-left: 16px;
   margin-bottom: 4px;
+}
+
+.section-online-card-img {
+  margin-left: 0;
+  margin-bottom: 0;
   text-decoration: none;
+  display: block;
 }
 
 .section-online-card-img img {
   border-radius: 8px;
   width: 100%;
+}
+
+/* Style for favorite button specific to online movies */
+.online-favorite-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
 }
 
 .online-like {
@@ -232,6 +251,11 @@
     min-width: 200px;
   }
 
+  .section-online-card-img-wrapper {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .section-online-card-img {
     width: 100%;
   }
@@ -248,6 +272,11 @@
   .section-ticket {
     top: 15px;
     left: 15px;
+  }
+  
+  /* Always show favorite button on mobile */
+  .online-favorite-button {
+    opacity: 1;
   }
 }
 

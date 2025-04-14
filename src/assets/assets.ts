@@ -48,8 +48,10 @@ export const assets = {
   androidTv: new URL("./images/androidTV.webp", import.meta.url).href,
 
   // Background images
-  backgroundPoster: new URL("../assets/Images/backgroundPoster.jpeg", import.meta.url)
-    .href,
+  backgroundPoster: new URL(
+    "../assets/Images/backgroundPoster.jpeg",
+    import.meta.url
+  ).href,
   movieBackground: new URL("./images/movie-background.jpg", import.meta.url)
     .href,
   bgKids: new URL("./images/bg-kids.png", import.meta.url).href,

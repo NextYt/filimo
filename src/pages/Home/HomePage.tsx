@@ -1,13 +1,13 @@
-import Child from "./components/Child";
-import Device from "./components/Device";
-import FreeMovie from "./components/FreeMovie";
-import Hero from "./components/Hero";
-import Main from "./components/Main";
-import Online from "./components/Online";
-import Ques from "./components/Ques";
-import Tab from "./components/Tab";
-import TV from "./components/TV";
-import UserNav from "./components/UserNav";
+import Child from "./sections/Child";
+import Device from "./sections/Device";
+import FreeMovie from "./sections/FreeMovie";
+import Hero from "./sections/Hero";
+import Main from "./sections/Main";
+import Online from "./sections/Online";
+import Ques from "./sections/Ques";
+import Tab from "./sections/Tab";
+import TV from "./sections/TV";
+import UserNav from "./sections/UserNav";
 
 const HomePage = () => {
   return (
