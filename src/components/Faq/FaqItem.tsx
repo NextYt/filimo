@@ -2,7 +2,6 @@ import { useState } from "react";
 import { FaqItem as FaqItemType } from "../../data/mockData";
 import { assets } from "../../assets/assets";
 import Image from "../ImageComponent/Image";
-import "../../style/Home/faq-item-animation.css";
 
 interface FaqItemProps {
   faqItem: FaqItemType;
