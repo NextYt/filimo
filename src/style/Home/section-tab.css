@@ -1,0 +1,134 @@
+.section-tab {
+  position: relative;
+}
+
+.section-tab-gradient {
+  background: radial-gradient(
+    100% 410.68% at 100% 100%,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 29, 13, 0.54) 53.55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mix-blend-mode: color;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.section-tab-dev {
+  padding: 64px 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-tab-inner-dev{
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.section-tab-logo {
+  padding-bottom: 64px;
+}
+
+.btn.section-tab-btn {
+  width: 285px;
+  padding: 17px 0;
+  margin: 0 auto;
+  font-size: 15px;
+  background-color: #17924e;
+  border-radius: 8px;
+  transition: all .4s;
+  cursor: pointer;
+}
+
+.btn.section-tab-btn:hover{
+  background-color: #245d3e;
+}
+
+.section-tab-list {
+  margin-bottom: unset;
+}
+
+/*Responsive Part*/
+
+@media screen and (max-width : 1100px) {
+  .detail-tab-item-text{
+    font-size: 13px;
+  }
+
+  .section-tab-list{
+    display: flex;
+  }
+}
+
+@media screen and (max-width :1000px) {
+  .section-tab-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .section-tab-inner-dev{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;;
+    margin-bottom:32px ;
+  }
+
+  .detail-tab-item-text{
+    font-size: 16px;
+  }
+  .tab-text {
+    margin-bottom: 32px;
+    padding-right: 100px;
+  }
+}
+
+@media screen and (max-width : 550px) {
+  .detail-tab-item-text{
+    font-size: 13px;
+  }
+  .section-tab-inner-dev{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;;
+    margin-bottom:20px ;
+  }
+
+  .section-tab-logo img{
+    width: 130px;
+
+  }
+
+  .tab-text {
+    margin-bottom: 32px;
+    padding-right: 50px;
+  }
+
+  .section-tab-btn{
+    width: 200px;
+    padding: 15px 0px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width : 400px) {
+  .tab-text {
+    margin-bottom: 16px;
+    padding-right: 40px;
+  }
+
+  .detail-tab-item-text{
+    font-size: 11px;
+    line-height :20px ;
+  }
+}
+
+/*End of Responsive Part*/
