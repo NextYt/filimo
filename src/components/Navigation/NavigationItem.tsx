@@ -1,6 +1,7 @@
 import { MenuItem, SubMenuItem } from "../../data/mockData";
 import { assets } from "../../assets/assets";
 import Image from "../ImageComponent/Image";
+import Button from "../Button/Button";
 
 interface NavigationItemProps {
   item: MenuItem;
@@ -8,7 +9,10 @@ interface NavigationItemProps {
   isSmallScreen?: boolean;
 }
 
-const NavigationItem = ({ item, className = "header-link-item" }: NavigationItemProps) => {
+const NavigationItem = ({
+  item,
+  className = "header-link-item",
+}: NavigationItemProps) => {
   const {
     label,
     href,
@@ -17,53 +21,57 @@ const NavigationItem = ({ item, className = "header-link-item" }: NavigationItem
     iconHeight,
     hasDropdown,
     dropdownClass,
-    subMenuItems
+    subMenuItems,
   } = item;
-  
+
   // Determine the appropriate CSS classes
-  const itemClass = `${className} ${hasDropdown ? 'dropDown-header' : ''} ${hasDropdown && dropdownClass ? `dropDown-header-${dropdownClass.split('-').pop()}` : ''} ${icon && label ? 'small-icon-bu' : ''}`;
-  
+  const itemClass = `${className} ${hasDropdown ? "dropDown-header" : ""} ${
+    hasDropdown && dropdownClass
+      ? `dropDown-header-${dropdownClass.split("-").pop()}`
+      : ""
+  } ${icon && label ? "small-icon-bu" : ""}`;
+
   // For the logo (when label is empty)
   if (icon && !label) {
     return (
       <li className="header-link-item header-logo">
-        <a href={href}>
-          <Image 
-            src={icon} 
-            alt="logo" 
-            width={iconWidth || "auto"} 
-            height={iconHeight || "auto"} 
+        <Button ButtonElement="a" href={href}>
+          <Image
+            src={icon}
+            alt="logo"
+            width={iconWidth || "auto"}
+            height={iconHeight || "auto"}
           />
-        </a>
+        </Button>
       </li>
     );
   }
 
   return (
     <li className={itemClass}>
-      <a href={href}>
+      <Button ButtonElement="a" href={href}>
+        {label && <span>{label}</span>}
         {icon && icon !== assets.downArrow && (
-          <Image 
-            src={icon} 
-            alt={label || ""} 
-            width={iconWidth} 
-            height={iconHeight} 
+          <Image
+            src={icon}
+            alt={label || ""}
+            width={iconWidth}
+            height={iconHeight}
           />
         )}
-        {label && <span>{label}</span>}
         {/* Only render dropdown arrow if hasDropdown is true */}
         {hasDropdown && <Image src={assets.downArrow} alt="dropdown" />}
-      </a>
-      
+      </Button>
+
       {/* Render dropdown menu if applicable */}
       {hasDropdown && subMenuItems && (
         <div className={`hidden-menu ${dropdownClass || ""}`}>
           <ul className="hidden-menu-nav">
             {subMenuItems.map((subItem: SubMenuItem, idx) => (
               <li key={idx} className="hidden-menu-item">
-                <a href={subItem.href}>
+                <Button ButtonElement="a" href={subItem.href}>
                   {subItem.label}
-                </a>
+                </Button>
               </li>
             ))}
           </ul>
