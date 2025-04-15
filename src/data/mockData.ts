@@ -235,67 +235,301 @@ export const MOVIE_POSTERS = [
   },
 ];
 
-export const FEATURED_MOVIE_DETAIL: MovieDetail = {
-  id: 1,
-  title: "Sedato",
-  englishTitle: "Sedato S01E09",
-  director: "Hamid Javidzadeh",
-  rating: 98,
-  categories: ["Reality Show", "Game Show"],
-  description:
-    '"Sedato" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
-  episodes: [
-    {
-      id: 1,
-      title: "Part 1: Iran Dukht",
-      posterSrc: assets.moviePart1,
-      isFree: true,
-      duration: "1:21:29",
-    },
-    {
-      id: 2,
-      title: "Part 2: Kaka Vah",
-      posterSrc: assets.moviePart2,
-      isLocked: true,
-    },
-    {
-      id: 3,
-      title: "Part 3: Hello Cinema",
-      posterSrc: assets.moviePart3,
-      isLocked: true,
-    },
-    {
-      id: 4,
-      title: "Part 4: Friendship",
-      posterSrc: assets.moviePart4,
-      isLocked: true,
-    },
-    {
-      id: 5,
-      title: "Part 5: Children of Iran",
-      posterSrc: assets.moviePart5,
-      isLocked: true,
-    },
-    {
-      id: 6,
-      title: "Part 6: My Mom is Like Me",
-      posterSrc: assets.moviePart6,
-      isLocked: true,
-    },
-    {
-      id: 7,
-      title: "Part 7: A Child Named Shadi",
-      posterSrc: assets.moviePart7,
-      isLocked: true,
-    },
-    {
-      id: 8,
-      title: "Part 8: For the Future",
-      posterSrc: assets.moviePart8,
-      isLocked: true,
-    },
-  ],
-};
+export const SERIES_POSTERS = [
+  {
+    poster: assets.freePoster15,
+    href: "",
+    isActive: true,
+  },
+  {
+    poster: assets.freePoster14,
+    href: "",
+    isActive: false,
+  },
+  {
+    poster: assets.freePoster13,
+    href: "",
+    isActive: false,
+  },
+  {
+    poster: assets.freePoster12,
+    href: "",
+    isActive: false,
+  },
+  {
+    poster: assets.freePoster11,
+    href: "",
+    isActive: false,
+  },
+  {
+    poster: assets.freePoster10,
+    href: "",
+    isActive: false,
+  },
+];
+
+export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
+  {
+    id: 1,
+    title: "Sedato",
+    englishTitle: "Sedato S01E09",
+    director: "Hamid Javidzadeh",
+    rating: 98,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Sedato" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+  },
+  {
+    id: 2,
+    title: "Second Movie",
+    englishTitle: "Second Movie",
+    director: "Second Movie",
+    rating: 80,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Second Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+  },
+  {
+    id: 3,
+    title: "Third Movie",
+    englishTitle: "Third Movie",
+    director: "Third Movie",
+    rating: 70,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Third Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+  },
+  {
+    id: 4,
+    title: "Fourth Movie",
+    englishTitle: "Fourth Movie",
+    director: "Fourth Movie",
+    rating: 60,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Fourth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+  },
+  {
+    id: 5,
+    title: "Fifth Movie",
+    englishTitle: "Fifth Movie",
+    director: "Fifth Movie",
+    rating: 50,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Fifth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+  },
+  {
+    id: 6,
+    title: "Sixth Movie",
+    englishTitle: "Sixth Movie",
+    director: "Sixth Movie",
+    rating: 40,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Sixth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+  },
+];
+
+export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
+  {
+    id: 1,
+    title: "Sedato",
+    englishTitle: "Sedato S01E09",
+    director: "Hamid Javidzadeh",
+    rating: 98,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Sedato" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    episodes: [
+      {
+        id: 1,
+        title: "Part 1: Iran Dukht",
+        posterSrc: assets.moviePart1,
+        isFree: true,
+        duration: "1:21:29",
+      },
+      {
+        id: 2,
+        title: "Part 2: Kaka Vah",
+        posterSrc: assets.moviePart2,
+        isLocked: true,
+      },
+      {
+        id: 3,
+        title: "Part 3: Hello Cinema",
+        posterSrc: assets.moviePart3,
+        isLocked: true,
+      },
+      {
+        id: 4,
+        title: "Part 4: Friendship",
+        posterSrc: assets.moviePart4,
+        isLocked: true,
+      },
+      {
+        id: 5,
+        title: "Part 5: Children of Iran",
+        posterSrc: assets.moviePart5,
+        isLocked: true,
+      },
+      {
+        id: 6,
+        title: "Part 6: My Mom is Like Me",
+        posterSrc: assets.moviePart6,
+        isLocked: true,
+      },
+      {
+        id: 7,
+        title: "Part 7: A Child Named Shadi",
+        posterSrc: assets.moviePart7,
+        isLocked: true,
+      },
+      {
+        id: 8,
+        title: "Part 8: For the Future",
+        posterSrc: assets.moviePart8,
+        isLocked: true,
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Second Series",
+    englishTitle: "Second Series",
+    director: "Second Series",
+    rating: 80,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Second Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    episodes: [
+      {
+        id: 1,
+        title: "Part 1: Iran Dukht",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isFree: true,
+        duration: "1:21:29",
+      },
+      {
+        id: 2,
+        title: "Part 2: Kaka Vah",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+      {
+        id: 3,
+        title: "Part 3: Hello Cinema",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Third Series",
+    englishTitle: "Third Series",
+    director: "Third Series",
+    rating: 70,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Third Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    episodes: [
+      {
+        id: 1,
+        title: "Part 1: Iran Dukht",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isFree: true,
+        duration: "1:21:29",
+      },
+      {
+        id: 2,
+        title: "Part 2: Kaka Vah",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+      {
+        id: 3,
+        title: "Part 3: Hello Cinema",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Fourth Series",
+    englishTitle: "Fourth Series",
+    director: "Fourth Series",
+    rating: 60,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Fourth Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    episodes: [
+      {
+        id: 1,
+        title: "Part 1: Iran Dukht",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+      },
+      {
+        id: 2,
+        title: "Part 2: Kaka Vah",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+      {
+        id: 3,
+        title: "Part 3: Hello Cinema",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Fifth Series",
+    englishTitle: "Fifth Series",
+    director: "Fifth Series",
+    rating: 50,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Fifth Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    episodes: [
+      {
+        id: 1,
+        title: "Part 1: Iran Dukht",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+      },
+      {
+        id: 2,
+        title: "Part 2: Kaka Vah",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Sixth Series",
+    englishTitle: "Sixth Series",
+    director: "Sixth Series",
+    rating: 40,
+    categories: ["Reality Show", "Game Show"],
+    description:
+      '"Sixth Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    episodes: [
+      {
+        id: 1,
+        title: "Part 1: Iran Dukht",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+      },
+      {
+        id: 2,
+        title: "Part 2: Kaka Vah",
+        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        isLocked: true,
+      },
+    ],
+  },
+];
 
 export const DEVICE_SECTION = {
   title: "Watch Filimo on all devices",
@@ -529,6 +763,48 @@ export const USER_FEEDBACK_SECTION = {
       feedback:
         "It was very good, I could download the movie I liked and watch it without downloading. I am very happy with this program.",
     },
+    {
+      id: 3,
+      name: "Seyyed",
+      avatar: assets.avatar,
+      feedback:
+        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
+    },
+    {
+      id: 4,
+      name: "Seyyed",
+      avatar: assets.avatar,
+      feedback:
+        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
+    },
+    {
+      id: 5,
+      name: "Seyyed",
+      avatar: assets.avatar,
+      feedback:
+        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
+    },
+    {
+      id: 6,
+      name: "Seyyed",
+      avatar: assets.avatar,
+      feedback:
+        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
+    },
+    {
+      id: 7,
+      name: "Seyyed",
+      avatar: assets.avatar,
+      feedback:
+        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
+    },
+    {
+      id: 8,
+      name: "Seyyed",
+      avatar: assets.avatar,
+      feedback:
+        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
+    },
   ],
 };
 
@@ -576,120 +852,122 @@ export const FOOTER_LINKS = [
   {
     text: "Watch on TV",
     href: "/watch-on-tv",
-    className: "footer-link-item"
+    className: "footer-link-item",
   },
   {
     text: "Applications",
     href: "/applications",
-    className: "footer-link-item"
+    className: "footer-link-item",
   },
   {
     text: "Contact Us",
     href: "/contact",
-    className: "footer-link-item footer-disapear-link"
+    className: "footer-link-item footer-disapear-link",
   },
   {
     text: "Terms",
     href: "/terms",
-    className: "footer-link-item footer-disapear-link"
+    className: "footer-link-item footer-disapear-link",
   },
   {
     text: "Support",
     href: "/support",
-    className: "footer-link-item footer-disapear-link"
+    className: "footer-link-item footer-disapear-link",
   },
   {
     text: "Join Us",
     href: "/join",
-    className: "footer-link-item footer-disapear-link"
+    className: "footer-link-item footer-disapear-link",
   },
   {
     text: "Advertise on Filimo",
     href: "/advertise",
-    className: "footer-link-item footer-disapear-link"
+    className: "footer-link-item footer-disapear-link",
   },
   {
     text: "Shop",
     href: "/shop",
-    className: "footer-link-item footer-disapear-link"
+    className: "footer-link-item footer-disapear-link",
   },
   {
     text: "Other Links",
     href: "#",
     icon: assets.caretDown,
-    className: "footer-link-item dropDown-footer dropDown-footer-link footer-disapear-link",
+    className:
+      "footer-link-item dropDown-footer dropDown-footer-link footer-disapear-link",
     dropdownLinks: [
       {
         text: "Logo",
-        href: "/logo"
+        href: "/logo",
       },
       {
         text: "Download Movies and Series",
-        href: "/download"
-      }
-    ]
+        href: "/download",
+      },
+    ],
   },
   {
     text: "Other Links",
     href: "#",
     icon: assets.caretDown,
-    className: "footer-link-item dropDown-footer dropDown-footer-link footer-appear-link",
+    className:
+      "footer-link-item dropDown-footer dropDown-footer-link footer-appear-link",
     dropdownLinks: [
       {
         text: "Logo",
-        href: "/logo"
+        href: "/logo",
       },
       {
         text: "Download Movies and Series",
-        href: "/download"
+        href: "/download",
       },
       {
         text: "Contact Us",
-        href: "/contact"
+        href: "/contact",
       },
       {
         text: "Terms",
-        href: "/terms"
+        href: "/terms",
       },
       {
         text: "Support",
-        href: "/support"
+        href: "/support",
       },
       {
         text: "Join Us",
-        href: "/join"
+        href: "/join",
       },
       {
         text: "Advertise on Filimo",
-        href: "/advertise"
+        href: "/advertise",
       },
       {
         text: "Shop",
-        href: "/shop"
-      }
-    ]
-  }
+        href: "/shop",
+      },
+    ],
+  },
 ];
 
 export const SOCIAL_MEDIA = [
   {
     name: "Youtube",
     icon: assets.youtube,
-    href: "https://youtube.com/filimo"
+    href: "https://youtube.com/filimo",
   },
   {
     name: "Telegram",
     icon: assets.telegram,
-    href: "https://t.me/filimo"
+    href: "https://t.me/filimo",
   },
   {
     name: "Twitter",
     icon: assets.twitter,
-    href: "https://twitter.com/filimo"
+    href: "https://twitter.com/filimo",
   },
   {
     name: "Instagram",
     icon: assets.instagram,
-    href: "https://instagram.com/filimo"
-  }
+    href: "https://instagram.com/filimo",
+  },
 ];

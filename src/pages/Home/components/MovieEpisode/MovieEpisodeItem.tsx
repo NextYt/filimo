@@ -10,7 +10,7 @@ const MovieEpisodeItem = ({ episode }: MovieEpisodeItemProps) => {
   const { title, posterSrc, isFree, duration, isLocked } = episode;
 
   return (
-    <li className="movie-wrapper-list-item">
+    <div className="movie-wrapper-list-item">
       <a className="list-item-link">
         <div className="movie-item-poster">
           <Image src={posterSrc} alt={title} />
@@ -39,7 +39,7 @@ const MovieEpisodeItem = ({ episode }: MovieEpisodeItemProps) => {
         </div>
         <div className="movie-section-name">{title}</div>
       </a>
-    </li>
+    </div>
   );
 };
 

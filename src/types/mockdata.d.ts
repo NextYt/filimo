@@ -35,7 +35,7 @@ export interface MovieDetail {
   rating: number;
   categories: string[];
   description: string;
-  episodes: MovieEpisode[];
+  episodes?: MovieEpisode[];
 }
 
 export interface DeviceItem {

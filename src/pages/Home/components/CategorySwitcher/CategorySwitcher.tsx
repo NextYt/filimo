@@ -1,4 +1,4 @@
-import { useUISelector } from '../../../../context';
+import { useUISelector, useContentSelector } from '../../../../context';
 
 interface CategorySwitcherProps {
   categories: string[];
@@ -12,14 +12,23 @@ const CategorySwitcher = ({
   onSwitch
 }: CategorySwitcherProps) => {
   // Get active category from UI context
-  const { state, dispatch } = useUISelector(context => context);
-  const activeIndex = state.activeCategories?.[categoryId] || 0;
+  const { state: uiState, dispatch: uiDispatch } = useUISelector(context => context);
+  const activeIndex = uiState.activeCategories?.[categoryId] || 0;
+  
+  // Get content context to update movie/series state
+  const { dispatch: contentDispatch } = useContentSelector(context => context);
 
   const handleSwitch = (index: number) => {
-    // Update active category in context
-    dispatch({ 
+    // Update active category in UI context
+    uiDispatch({ 
       type: 'SET_ACTIVE_CATEGORY', 
       payload: { categoryId, index } 
+    });
+    
+    // Update content context with the selected category
+    contentDispatch({
+      type: 'SET_CATEGORY',
+      payload: categories[index] as "Movie" | "Series"
     });
     
     if (onSwitch) {

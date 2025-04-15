@@ -73,7 +73,7 @@ svg {
 }
 
 .social-media .hidden-menu-footer {
- left: -10px; 
+ left: -10px;
 }
 
 .hidden-menu .hidden-menu-nav-footer::before {
@@ -131,6 +131,10 @@ svg {
   .footer-disapear-link{
     display: none;
   }
+
+  .social-media .hidden-menu-footer {
+    left: -90px;
+   }
 
   .footer-appear-link{
     display: block;

@@ -10,6 +10,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
+import { FaAngleLeft } from "react-icons/fa";
 
 export const assets = {
   // Logo and brand images
@@ -41,6 +42,7 @@ export const assets = {
   arrowRight: FaArrowRight,
   plus: FaPlus,
   angleRight: FaAngleRight,
+  angleLeft: FaAngleLeft,
 
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,

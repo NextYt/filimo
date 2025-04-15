@@ -55,7 +55,7 @@
   z-index: -1;
 }
 
-.section-main-top-wrapper::-webkit-scrollbar{
+.section-main-top-wrapper::-webkit-scrollbar {
   display: none;
 }
 
@@ -212,7 +212,7 @@
   position: relative;
 }
 
-.section-bootom-movie-wrapper::-webkit-scrollbar{
+.section-bootom-movie-wrapper::-webkit-scrollbar {
   display: none;
 }
 
@@ -231,7 +231,6 @@
   vertical-align: middle;
   flex-shrink: 0;
   cursor: pointer;
-
 }
 
 .list-item-link img {
@@ -241,6 +240,8 @@
 
 .movie-item-poster {
   position: relative;
+  width: 250px;
+  height: 156px;
 }
 
 .movie-truck {
@@ -319,64 +320,6 @@
   height: 30px;
 }
 
-.swiper-icon {
-  opacity: 30%;
-  background: rgba(6, 6, 6, 0.6);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  backdrop-filter: blur(30px);
-  z-index: 5;
-  position: absolute;
-}
-
-.before-icon {
-  top: 34% !important;
-}
-
-.before-icon::after {
-  content: "next";
-  font-size: 13px;
-  text-transform: none !important;
-  letter-spacing: 0;
-  line-height: 1;
-  position: absolute;
-  left: 40%;
-  top: 33%;
-  cursor: pointer;
-  color: #fff;
-  font-family: swiper-icon;
-}
-
-.next-icon {
-  opacity: 100%;
-  top: 34% !important;
-}
-
-.next-icon::after {
-  content: "prev";
-  font-size: 13px;
-  text-transform: none !important;
-  letter-spacing: 0;
-  line-height: 1;
-  position: absolute;
-  left: 40%;
-  top: 33%;
-  cursor: pointer;
-  color: #fff;
-  font-family: swiper-icon;
-}
-
-.before-icon.section-main-swiper-icon{
-  position: absolute;
-  right:unset;
-}
-
-.next-icon.section-main-swiper-icon{
-  position: absolute;
-  left: 0;
-}
-
 .movie-title-row {
   display: flex;
   align-items: center;
@@ -385,10 +328,9 @@
 }
 /* Responsive part*/
 
-@media screen and (max-width : 1300px) {
+@media screen and (max-width: 1300px) {
   .section-main-top {
     padding: 0px 100px;
-    
   }
 }
 @media screen and (max-width: 1100px) {
@@ -402,12 +344,12 @@
     display: none;
   }
   .section-main-top-wrapper-item {
-    width:180px;
+    width: 180px;
     margin-left: 20px;
   }
 }
 
-@media screen and (max-width : 800px) {
+@media screen and (max-width: 800px) {
   .section-main-top-title {
     display: flex;
     align-items: center;
@@ -416,29 +358,29 @@
 
   .section-main-top-title-span {
     font-size: 15px;
-    font-weight: 700;   
+    font-weight: 700;
   }
 }
 
-@media screen and (max-width : 778px) {
+@media screen and (max-width: 778px) {
   .last-poster-item {
     display: block;
   }
 }
 
-@media screen and (max-width : 500px) {
+@media screen and (max-width: 500px) {
   .section-main-top-title-span {
     font-size: 13px;
-    font-weight: 500;   
+    font-weight: 500;
   }
 
-  .switch-cat{
+  .switch-cat {
     width: 80px;
   }
 
   .switch-cat .switch-cat-item {
     font-weight: 300;
-    font-size: 10px;  
+    font-size: 10px;
   }
 
   .section-main-top {
@@ -448,78 +390,66 @@
 
 /* Bottom Part*/
 
-@media screen and (max-width : 1100px) {
+@media screen and (max-width: 1100px) {
   .section-bootom-movie-wrapper {
     padding: 0 10px;
   }
 }
 
-@media screen and (max-width : 600px) {
-  .movie-wrapper-list-item{
+@media screen and (max-width: 600px) {
+  .movie-wrapper-list-item {
     width: 180px;
   }
 
-  .before-icon.section-main-swiper-icon{
-    top: 25%!important;
-  }
-  
-  .next-icon.section-main-swiper-icon{
-    top: 25%!important;
+  .section-bootom-movie-wrapper {
+    margin: 0 10px;
   }
 
-  .section-bootom-movie-wrapper{
-    margin:0 10px;
-  }
-
-  .free{
+  .free {
     font-size: 9px;
   }
 
-  .clock{
+  .clock {
     font-size: 9px;
   }
 }
 
 /* End of Bottom Part*/
 
-@media screen and (max-width :1100px) {
+@media screen and (max-width: 1100px) {
   .section-movie-cast {
     padding: 0 10px;
   }
 }
 
-@media screen and (max-width : 500px) {
+@media screen and (max-width: 500px) {
   .section-bottom-bg {
-    background-position:-10rem -1rem ;
+    background-position: -10rem -1rem;
   }
 }
 
-@media screen and (max-width : 400px) {
-  .movie-cast-title{
+@media screen and (max-width: 400px) {
+  .movie-cast-title {
     font-size: 14px;
   }
 }
 
-@media screen and (max-width :960px) {
-  .movie-describtion{
+@media screen and (max-width: 960px) {
+  .movie-describtion {
     font-size: 10px;
   }
 }
 
-@media screen and (max-width :650px) {
-  .movie-describtion{
+@media screen and (max-width: 650px) {
+  .movie-describtion {
     max-width: 350px;
+  }
 }
 
-}
-
-@media screen and (max-width :450px) {
-  .movie-describtion{
+@media screen and (max-width: 450px) {
+  .movie-describtion {
     max-width: 250px;
+  }
 }
-
-}
-
-
 
 /*end of Responsive part*/
