@@ -14,7 +14,6 @@ const MovieEpisodeItem = ({ episode }: MovieEpisodeItemProps) => {
       <a className="list-item-link">
         <div className="movie-item-poster">
           <Image src={posterSrc} alt={title} />
-
           {isLocked ? (
             <div className="back-log">
               <div className="back-g-LOCK">

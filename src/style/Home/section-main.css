@@ -240,8 +240,8 @@
 
 .movie-item-poster {
   position: relative;
-  width: 250px;
-  height: 156px;
+  width: clamp(150px, calc(100% - 20px), 250px);
+  height: clamp(150px, calc(100% - 20px), 250px);
 }
 
 .movie-truck {
