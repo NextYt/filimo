@@ -2,17 +2,41 @@ import { MenuItem, SubMenuItem } from "../../../../types/mockdata";
 import { assets } from "../../../../assets/assets";
 import Image from "../../../../components/ImageComponent/Image";
 import Button from "../../../../components/Button/Button";
+import { useUISelector } from "../../../../context";
 
 interface NavigationItemProps {
-  item: MenuItem;
+  item?: MenuItem;
+  itemId?: number | string;
   className?: string;
   isSmallScreen?: boolean;
 }
 
 const NavigationItem = ({
   item,
+  itemId,
   className = "header-link-item",
+  isSmallScreen = false,
 }: NavigationItemProps) => {
+  // If itemId is provided, get the navigation item from context
+  const navigationItem = useUISelector(context => {
+    if (itemId !== undefined) {
+      if (isSmallScreen) {
+        return context.state.smallScreenMenuItems[Number(itemId)];
+      }
+      return context.state.navigationItems[Number(itemId)];
+    }
+    return undefined;
+  });
+
+  // Use the item from props or from context
+  const resolvedItem = navigationItem || item;
+  
+  // Return null if no item could be resolved
+  if (!resolvedItem) {
+    console.error('NavigationItem: No item provided via props or context');
+    return null;
+  }
+
   const {
     label,
     href,
@@ -22,7 +46,7 @@ const NavigationItem = ({
     hasDropdown,
     dropdownClass,
     subMenuItems,
-  } = item;
+  } = resolvedItem;
 
   // Determine the appropriate CSS classes
   const itemClass = `${className} ${hasDropdown ? "dropDown-header" : ""} ${

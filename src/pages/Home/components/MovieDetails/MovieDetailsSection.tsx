@@ -11,6 +11,7 @@ interface MovieDetailsSectionProps {
 const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
   const { title, englishTitle, director, rating, categories, description, episodes } = movieDetail;
 
+
   return (
     <div className="section-main-bottom">
       <div className="section-bottom-bg">
@@ -19,7 +20,9 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
         <div className="section-movie-detail">
           <div className="section-movie-cast">
             <div className="section-movie-cast-details">
-              <Button ButtonElement='a' className="movie-cast-title">{title}</Button>
+              <div className="movie-title-row">
+                <Button ButtonElement='a' className="movie-cast-title">{title}</Button>
+              </div>
               <div className="movie-en text-sm md:text-base">
                 {englishTitle}
               </div>

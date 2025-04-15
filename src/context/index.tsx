@@ -25,8 +25,6 @@ export {
   useContentSelector, 
   useSectionsSelector,
   useAuthSelector,
-  useFavorites,
-  useAuthentication
 } from './hooks';
 
 interface FilimoProviderProps {

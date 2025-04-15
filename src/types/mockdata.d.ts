@@ -97,3 +97,22 @@ export interface TabSection {
   buttonText: string;
   features: TabFeature[];
 }
+
+export interface FooterDropdownLink {
+  text: string;
+  href: string;
+}
+
+export interface FooterLink {
+  text: string;
+  href: string;
+  className: string;
+  icon?: string;
+  dropdownLinks?: FooterDropdownLink[];
+}
+
+export interface SocialMediaItem {
+  name: string;
+  icon: string;
+  href: string;
+}

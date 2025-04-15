@@ -1,6 +1,6 @@
-import { MovieEpisode } from '../../../../types/mockdata';
-import { assets } from '../../../../assets/assets';
-import Image from '../../../../components/ImageComponent/Image';
+import { MovieEpisode } from "../../../../types/mockdata";
+import { assets } from "../../../../assets/assets";
+import Image from "../../../../components/ImageComponent/Image";
 
 interface MovieEpisodeItemProps {
   episode: MovieEpisode;
@@ -14,7 +14,7 @@ const MovieEpisodeItem = ({ episode }: MovieEpisodeItemProps) => {
       <a className="list-item-link">
         <div className="movie-item-poster">
           <Image src={posterSrc} alt={title} />
-          
+
           {isLocked ? (
             <div className="back-log">
               <div className="back-g-LOCK">
@@ -22,15 +22,19 @@ const MovieEpisodeItem = ({ episode }: MovieEpisodeItemProps) => {
               </div>
             </div>
           ) : (
-            <div className="movie-truck">
-              {isFree && (
-                <div className="movie-truck-item free">
-                  <Image src={assets.iconPlay} alt="Play" />
-                  <span>Free</span>
-                </div>
-              )}
-              {duration && <div className="movie-truck-item clock">{duration}</div>}
-            </div>
+            <>
+              <div className="movie-truck">
+                {isFree && (
+                  <div className="movie-truck-item free">
+                    <Image src={assets.iconPlay} alt="Play" />
+                    <span>Free</span>
+                  </div>
+                )}
+                {duration && (
+                  <div className="movie-truck-item clock">{duration}</div>
+                )}
+              </div>
+            </>
           )}
         </div>
         <div className="movie-section-name">{title}</div>

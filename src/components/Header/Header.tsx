@@ -1,9 +1,9 @@
-import { useUI, useAuth, useSuccessNotification, useErrorNotification } from "../../context";
+import { useUISelector, useAuthSelector, useSuccessNotification, useErrorNotification } from "../../context";
 import "../../style/header.css";
 import Button from "../Button/Button";
 import NavigationItem from "../../pages/Home/components/Navigation/NavigationItem";
 import { MenuItem } from "../../types/mockdata";
-import React from "react";
+import { useEffect } from "react";
 
 // Define the button interface based on usage in the file
 interface HeaderButton {
@@ -13,13 +13,20 @@ interface HeaderButton {
 }
 
 const Header = () => {
-  // Using our UI context for header data
-  const { state: uiState, dispatch: uiDispatch } = useUI();
-  const { navigationItems, smallScreenMenuItems, headerButtons } = uiState;
+  // Using our optimized selectors to only get what we need
+  const navigationItems = useUISelector(context => context.state.navigationItems);
+  const smallScreenMenuItems = useUISelector(context => context.state.smallScreenMenuItems);
+  const headerButtons = useUISelector(context => context.state.headerButtons);
+  const isMenuOpen = useUISelector(context => context.state.isMenuOpen);
+  const uiDispatch = useUISelector(context => context.dispatch);
   
-  // Using Auth context for login state
-  const { state: authState, login, logout } = useAuth();
-  const { isLoggedIn, user, loading, error } = authState;
+  // Using Auth selectors
+  const isLoggedIn = useAuthSelector(context => context.state.isLoggedIn);
+  const user = useAuthSelector(context => context.state.user);
+  const loading = useAuthSelector(context => context.state.loading);
+  const error = useAuthSelector(context => context.state.error);
+  const login = useAuthSelector(context => context.login);
+  const logout = useAuthSelector(context => context.logout);
   
   // Use notification hooks
   const showSuccess = useSuccessNotification();
@@ -48,7 +55,7 @@ const Header = () => {
   };
 
   // Show error notification if there's an auth error
-  React.useEffect(() => {
+  useEffect(() => {
     if (error) {
       showError(error);
     }
@@ -73,7 +80,7 @@ const Header = () => {
                 <input 
                   type="checkbox" 
                   id="burger" 
-                  checked={uiState.isMenuOpen}
+                  checked={isMenuOpen}
                   onChange={toggleMenu}
                 />
                 <span></span>
@@ -81,7 +88,7 @@ const Header = () => {
                 <span></span>
               </label>
             </div>
-            <div className={`sml ${uiState.isMenuOpen ? '' : 'remove-disply'}`}>
+            <div className={`sml ${isMenuOpen ? '' : 'remove-disply'}`}>
               <div className="small-inner">
                 <div className="header-button smallScreenMenu-menu">
                   {/* Login/Register button logic */}

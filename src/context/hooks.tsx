@@ -1,4 +1,4 @@
-import { useContext, useCallback, useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { UIContext, UIContextType } from './UIContext';
 import { ContentContext, ContentContextType } from './ContentContext';
 import { SectionsContext, SectionsContextType } from './SectionsContext';
@@ -57,24 +57,6 @@ export function useSectionsSelector<R>(selector: (state: SectionsContextType) =>
  */
 export function useAuthSelector<R>(selector: (state: AuthContextType) => R): R {
   return useContextSelector(AuthContext, selector);
-}
-
-/**
- * Get the favorites from content context
- * @returns The favorites array and toggle function
- */
-export function useFavorites() {
-  const { state, dispatch } = useContentSelector(context => context);
-  
-  const toggleFavorite = useCallback((movieId: number) => {
-    dispatch({ type: 'TOGGLE_FAVORITE', payload: movieId });
-  }, [dispatch]);
-  
-  return {
-    favorites: state.favorites,
-    toggleFavorite,
-    isFavorite: (id: number) => state.favorites.includes(id)
-  };
 }
 
 /**

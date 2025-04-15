@@ -20,18 +20,12 @@ interface SectionsState {
   userFeedbackSection: typeof USER_FEEDBACK_SECTION;
   faqSection: typeof FAQ_SECTION;
   tabSection: typeof TAB_SECTION;
-  
-  // Active section tracking
-  activeSectionId: string | null;
   expandedFaqId: number | null;
-  activeTabId: number;
 }
 
 // Define Sections actions
 type SectionsAction = 
-  | { type: 'SET_ACTIVE_SECTION', payload: string | null }
   | { type: 'TOGGLE_FAQ', payload: number }
-  | { type: 'SET_ACTIVE_TAB', payload: number }
   | { type: 'UPDATE_SECTION_CONTENT', payload: { sectionKey: keyof SectionsState, content: any } };
 
 // Create the initial state
@@ -44,23 +38,16 @@ const initialSectionsState: SectionsState = {
   userFeedbackSection: USER_FEEDBACK_SECTION,
   faqSection: FAQ_SECTION,
   tabSection: TAB_SECTION,
-  
-  activeSectionId: null,
-  expandedFaqId: null,
-  activeTabId: 1
+  expandedFaqId: null
 };
 
 // Create Sections reducer
 const sectionsReducer = (state: SectionsState, action: SectionsAction): SectionsState => {
   switch (action.type) {
-    case 'SET_ACTIVE_SECTION':
-      return { ...state, activeSectionId: action.payload };
     case 'TOGGLE_FAQ': {
       const expandedFaqId = state.expandedFaqId === action.payload ? null : action.payload;
       return { ...state, expandedFaqId };
     }
-    case 'SET_ACTIVE_TAB':
-      return { ...state, activeTabId: action.payload };
     case 'UPDATE_SECTION_CONTENT':
       const { sectionKey, content } = action.payload;
       return { 

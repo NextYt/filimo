@@ -9,6 +9,7 @@ import { MdCardGiftcard } from "react-icons/md";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 export const assets = {
   // Logo and brand images
@@ -39,6 +40,7 @@ export const assets = {
   arrowLeft: FaArrowLeft,
   arrowRight: FaArrowRight,
   plus: FaPlus,
+  angleRight: FaAngleRight,
 
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,

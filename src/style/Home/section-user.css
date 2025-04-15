@@ -96,6 +96,44 @@
   opacity: 1;
 }
 
+/* Add styles for user feedback actions and like button */
+.user-feedback-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.feedback-like-button {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feedback-like-button:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.feedback-like-button.is-liked {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.feedback-like-icon {
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.feedback-like-text {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 /*Responsive Part*/
 
 @media screen and (max-width: 1250px) {
@@ -148,6 +186,18 @@
 
   .avatar-name span {
     font-size: 14px;
+  }
+  
+  .feedback-like-button {
+    padding: 4px 8px;
+  }
+  
+  .feedback-like-icon {
+    font-size: 12px;
+  }
+  
+  .feedback-like-text {
+    font-size: 10px;
   }
 }
 

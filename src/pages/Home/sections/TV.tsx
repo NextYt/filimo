@@ -25,7 +25,7 @@ const TV = () => {
           <Image src={mainImage} alt="TV Background" />
         </div>
 
-        <div className="section-device-describe">
+        <div className="section-device-describe text-wrap">
           <h3 className="section-device-describe-title">{title}</h3>
           <p className="section-device-describe-text tv-text">{description}</p>
           <div className="responsive-photo-mode">
@@ -40,9 +40,9 @@ const TV = () => {
               />
             ))}
           </div>
-          <Button className="btn licence-btn section-device-btn tv-btn">
+          <Button className="btn flex items-center justify-center gap-2 section-device-btn tv-btn">
             {buttonText}
-            <Image src={assets.downArrow} alt="downArrow" />
+            <Image src={assets.angleRight} className="w-4 h-4" alt="downArrow" />
           </Button>
         </div>
       </div>

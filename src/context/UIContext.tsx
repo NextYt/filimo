@@ -11,15 +11,16 @@ interface UIState {
   smallScreenMenuItems: typeof SMALL_SCREEN_MENU_ITEMS;
   headerButtons: typeof HEADER_BUTTONS;
   isMenuOpen: boolean;
-  activeTab: string;
-  theme: 'light' | 'dark';
+  likedFeedbacks: string[]; // Keep this for the feedback feature
+  activeCategories: Record<string, number>; // Track active categories by category ID
 }
 
 // Define UI actions
 type UIAction = 
   | { type: 'TOGGLE_MENU' }
-  | { type: 'SET_ACTIVE_TAB', payload: string }
-  | { type: 'SET_THEME', payload: 'light' | 'dark' };
+  | { type: 'LIKE_FEEDBACK', payload: string }
+  | { type: 'UNLIKE_FEEDBACK', payload: string }
+  | { type: 'SET_ACTIVE_CATEGORY', payload: { categoryId: string, index: number } };
 
 // Create the initial state
 const initialUIState: UIState = {
@@ -27,8 +28,8 @@ const initialUIState: UIState = {
   smallScreenMenuItems: SMALL_SCREEN_MENU_ITEMS,
   headerButtons: HEADER_BUTTONS,
   isMenuOpen: false,
-  activeTab: 'home',
-  theme: 'dark'
+  likedFeedbacks: [],
+  activeCategories: {} // Empty object to start
 };
 
 // Create UI reducer
@@ -36,10 +37,24 @@ const uiReducer = (state: UIState, action: UIAction): UIState => {
   switch (action.type) {
     case 'TOGGLE_MENU':
       return { ...state, isMenuOpen: !state.isMenuOpen };
-    case 'SET_ACTIVE_TAB':
-      return { ...state, activeTab: action.payload };
-    case 'SET_THEME':
-      return { ...state, theme: action.payload };
+    case 'LIKE_FEEDBACK':
+      return { 
+        ...state, 
+        likedFeedbacks: [...state.likedFeedbacks, action.payload]
+      };
+    case 'UNLIKE_FEEDBACK':
+      return { 
+        ...state, 
+        likedFeedbacks: state.likedFeedbacks.filter(id => id !== action.payload)
+      };
+    case 'SET_ACTIVE_CATEGORY':
+      return {
+        ...state,
+        activeCategories: {
+          ...state.activeCategories,
+          [action.payload.categoryId]: action.payload.index
+        }
+      };
     default:
       return state;
   }
@@ -71,4 +86,9 @@ export const useUI = () => {
     throw new Error('useUI must be used within a UIProvider');
   }
   return context;
+};
+
+// Additional helpful hooks for specific UI functionality
+export const useUIContext = () => {
+  return useUI();
 };

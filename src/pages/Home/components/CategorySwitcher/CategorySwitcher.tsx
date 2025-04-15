@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useUISelector } from '../../../../context';
 
 interface CategorySwitcherProps {
   categories: string[];
-  activeIndex?: number;
+  categoryId?: string;
   onSwitch?: (index: number) => void;
 }
 
 const CategorySwitcher = ({
   categories,
-  activeIndex = 0,
+  categoryId = 'main',
   onSwitch
 }: CategorySwitcherProps) => {
-  const [active, setActive] = useState(activeIndex);
+  // Get active category from UI context
+  const { state, dispatch } = useUISelector(context => context);
+  const activeIndex = state.activeCategories?.[categoryId] || 0;
 
   const handleSwitch = (index: number) => {
-    setActive(index);
+    // Update active category in context
+    dispatch({ 
+      type: 'SET_ACTIVE_CATEGORY', 
+      payload: { categoryId, index } 
+    });
+    
     if (onSwitch) {
       onSwitch(index);
     }
@@ -25,7 +32,7 @@ const CategorySwitcher = ({
       {categories.map((category, index) => (
         <div
           key={index}
-          className={`switch-cat-item ${active === index ? 'item-series' : 'item-movie'}`}
+          className={`switch-cat-item ${activeIndex === index ? 'item-series' : 'item-movie'}`}
           onClick={() => handleSwitch(index)}
         >
           {category}

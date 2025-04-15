@@ -101,7 +101,6 @@
   gap: 10px;
 }
 
-/* Add wrapper for the movie image to position favorite button */
 .section-online-card-img-wrapper {
   position: relative;
   margin-left: 16px;
@@ -118,17 +117,6 @@
 .section-online-card-img img {
   border-radius: 8px;
   width: 100%;
-}
-
-/* Style for favorite button specific to online movies */
-.online-favorite-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 10;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
 }
 
 .online-like {
@@ -274,10 +262,6 @@
     left: 15px;
   }
   
-  /* Always show favorite button on mobile */
-  .online-favorite-button {
-    opacity: 1;
-  }
 }
 
 @media screen and (max-width: 500px) {

@@ -25,7 +25,9 @@ const Main = () => {
                 key={index} 
                 moviePoster={movie.poster} 
                 href={movie.href} 
-                isActive={movie.isActive} 
+                isActive={movie.isActive}
+                movieId={String(index)}
+                title={`Movie ${index + 1}`}
               />
             ))}
           </ul>

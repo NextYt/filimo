@@ -9,6 +9,7 @@ interface UserFeedbackCardProps {
 const UserFeedbackCard = ({ feedback }: UserFeedbackCardProps) => {
   const { name, avatar, feedback: userFeedbackText } = feedback;
 
+
   return (
     <div className="section-user-card-item">
       <div className="user-name">
@@ -22,6 +23,14 @@ const UserFeedbackCard = ({ feedback }: UserFeedbackCardProps) => {
       </div>
       <div className="user-feedback">
         <p>{userFeedbackText}</p>
+        {/* <div className="user-feedback-actions">
+          <button 
+            className={`feedback-like-button ${isLiked ? 'is-liked' : ''}`}
+            onClick={handleLike}
+            aria-label={isLiked ? "Unlike this feedback" : "Like this feedback"}
+          >
+          </button>
+        </div> */}
       </div>
     </div>
   );
