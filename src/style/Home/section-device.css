@@ -46,7 +46,7 @@
   font-weight: 100;
   font-size: 13px;
   line-height: 25px;
-  text-align: right;
+  text-align: left;
   color: var(--section-device-describe-color);
   margin-bottom: 32px;
 }
