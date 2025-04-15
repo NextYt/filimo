@@ -764,13 +764,6 @@ export const USER_FEEDBACK_SECTION = {
         "It was very good, I could download the movie I liked and watch it without downloading. I am very happy with this program.",
     },
     {
-      id: 3,
-      name: "Seyyed",
-      avatar: assets.avatar,
-      feedback:
-        "Excellent, I recommend you install it, it also has free movies so install it 🤗🤗",
-    },
-    {
       id: 4,
       name: "Seyyed",
       avatar: assets.avatar,
