@@ -113,8 +113,8 @@ const UserNav = () => {
             }}
             className="section-user-card-list"
           >
-            {userFeedbacks.map((feedback) => (
-              <SwiperSlide key={feedback.id}>
+            {userFeedbacks.map((feedback, index) => (
+              <SwiperSlide key={`feedback-${feedback.id}-${index}`}>
                 <UserFeedbackCard feedback={feedback} />
               </SwiperSlide>
             ))}

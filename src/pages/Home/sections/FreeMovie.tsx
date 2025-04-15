@@ -57,7 +57,7 @@ const FreeMovie = () => {
         <div className="section-free-movie-title">
           <h3>{title}</h3>
         </div>
-        <div className="section-free-movie-wrapper relative">
+        <div className="section-free-movie-wrapper relative px-10">
           <Swiper
             modules={[Navigation]}
             spaceBetween={15}
@@ -78,8 +78,8 @@ const FreeMovie = () => {
             }}
             className="section-free-movie-list"
           >
-            {movies.map((movie) => (
-              <SwiperSlide key={movie.id} className="!w-auto !h-auto">
+            {movies.map((movie, index) => (
+              <SwiperSlide key={`movie-${movie.id}-${index}`} className="!w-auto !h-auto">
                 <FreeMovieItem movie={movie} />
               </SwiperSlide>
             ))}

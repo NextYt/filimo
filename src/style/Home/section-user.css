@@ -38,15 +38,8 @@
   overflow: hidden;
 }
 
-/* Swiper slide */
-.section-user-card-list .swiper-slide {
-  height: auto;
-  width: auto !important;
-}
-
 .section-user-card-item {
-  width: 100%;
-  margin-right: 15px;
+  width: clamp(250px, calc(100% - 20px), 500px);
   background-color: var(--section-user-card-background);
   border: 1px solid #33353d;
   box-shadow: 0 10px 36px #00000040;

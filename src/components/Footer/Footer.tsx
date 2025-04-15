@@ -75,13 +75,6 @@ const Footer = () => {
                 className="w-6 h-6 text-[#959595]"
                 alt="arrow-top-svg"
               />
-              {/* {window.innerWidth <= 768 && (
-                <div className="footer-social-media-responsive">
-                {socialMedia.slice(0, 4).map((social, index) => (
-                  <Image key={index} src={social.icon} alt={social.name} />
-                ))}
-                </div>
-              )} */}
               <span className="social-media-footer-920">Social Media</span>
             </Button>
             {/* Social media dropdown menu */}
