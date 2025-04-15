@@ -31,6 +31,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+  margin-left: 40px;
 }
 
 .section-tab-inner-dev {
@@ -59,6 +60,11 @@
 
 .section-tab-list {
   margin-bottom: unset;
+}
+
+.detail-tab-item-text {
+  color: var(--footer-text-item-list-color);
+  font-weight: 700;
 }
 
 /*Responsive Part*/
