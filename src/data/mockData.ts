@@ -278,6 +278,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Sedato" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc: assets.movieBackground,
   },
   {
     id: 2,
@@ -288,6 +289,8 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Second Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
   },
   {
     id: 3,
@@ -298,6 +301,8 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Third Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
   },
   {
     id: 4,
@@ -308,6 +313,8 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Fourth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
   },
   {
     id: 5,
@@ -318,6 +325,8 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Fifth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
   },
   {
     id: 6,
@@ -328,6 +337,8 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Sixth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
   },
 ];
 
@@ -341,6 +352,8 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Sedato" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
     episodes: [
       {
         id: 1,
@@ -402,24 +415,29 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Second Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
     episodes: [
       {
         id: 1,
         title: "Part 1: Iran Dukht",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isFree: true,
         duration: "1:21:29",
       },
       {
         id: 2,
         title: "Part 2: Kaka Vah",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
       {
         id: 3,
         title: "Part 3: Hello Cinema",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
     ],
@@ -433,24 +451,29 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Third Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
     episodes: [
       {
         id: 1,
         title: "Part 1: Iran Dukht",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isFree: true,
         duration: "1:21:29",
       },
       {
         id: 2,
         title: "Part 2: Kaka Vah",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
       {
         id: 3,
         title: "Part 3: Hello Cinema",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
       },
     ],
   },
@@ -463,22 +486,27 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Fourth Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
     episodes: [
       {
         id: 1,
         title: "Part 1: Iran Dukht",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
       },
       {
         id: 2,
         title: "Part 2: Kaka Vah",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
       {
         id: 3,
         title: "Part 3: Hello Cinema",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
     ],
@@ -492,16 +520,20 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Fifth Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
     episodes: [
       {
         id: 1,
         title: "Part 1: Iran Dukht",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
       },
       {
         id: 2,
         title: "Part 2: Kaka Vah",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
     ],
@@ -515,16 +547,20 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     categories: ["Reality Show", "Game Show"],
     description:
       '"Sixth Series" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
+    backgroundSrc:
+      "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
     episodes: [
       {
         id: 1,
         title: "Part 1: Iran Dukht",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
       },
       {
         id: 2,
         title: "Part 2: Kaka Vah",
-        posterSrc: "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+        posterSrc:
+          "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
         isLocked: true,
       },
     ],

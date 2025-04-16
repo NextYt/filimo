@@ -25,22 +25,23 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
     categories,
     description,
     episodes,
+    backgroundSrc,
   } = movieDetail;
 
   // Get current category from context
   const { currentCategory } = useContentSelector((context) => context.state);
   const isMovie = currentCategory === "Movie";
-  
+
   // Create a local state to track episodes
   const [visibleEpisodes, setVisibleEpisodes] = useState(episodes || []);
-  
+
   // Reference to the swiper instance
   const swiperRef = useRef<SwiperType | null>(null);
-  
+
   // Track custom navigation states
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
-  
+
   // Update visible episodes when the movieDetail changes
   useEffect(() => {
     setVisibleEpisodes(episodes || []);
@@ -71,7 +72,10 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
 
   return (
     <div className="section-main-bottom">
-      <div className="section-bottom-bg">
+      <div
+        className="section-bottom-bg"
+        style={{ backgroundImage: `url(${movieDetail.backgroundSrc})` }}
+      >
         <div className="gradient-section-1"></div>
         <div className="gradient-section-2"></div>
         <div className="section-movie-detail">
@@ -102,7 +106,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
               <div className="movie-describtion">
                 <span className="text-sm md:text-base">{description}</span>
               </div>
-              
+
               {/* Show Buy button only for Movies */}
               {isMovie && (
                 <div className="mt-4">
@@ -121,7 +125,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
                       />
                     </Button>
                   </div>
-                  
+
                   <div className="text-xs text-gray-400 mt-2">
                     Over 12 years old - 18 minutes - Iranian product - IPv4 - HD
                     quality
@@ -130,7 +134,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
               )}
             </div>
           </div>
-          
+
           {/* Show episodes list ONLY for Series */}
           {!isMovie && visibleEpisodes.length > 0 && (
             <div className="section-bootom-movie-wrapper relative px-10">
@@ -162,7 +166,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
                   </SwiperSlide>
                 ))}
               </Swiper>
-              
+
               <div
                 onClick={handleNext}
                 className={`absolute top-1/2 right-0 transform -translate-y-1/2 w-8 h-8 bg-black text-white bg-opacity-50 rounded-full flex items-center justify-center z-10 ${
@@ -173,7 +177,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
               >
                 <Image src={assets.angleRight} alt="Next" />
               </div>
-              
+
               <div
                 onClick={handlePrev}
                 className={`absolute top-1/2 left-0 transform -translate-y-1/2 w-8 h-8 bg-black text-white bg-opacity-50 rounded-full flex items-center justify-center z-10 ${

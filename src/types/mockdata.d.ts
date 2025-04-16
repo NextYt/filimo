@@ -36,6 +36,7 @@ export interface MovieDetail {
   categories: string[];
   description: string;
   episodes?: MovieEpisode[];
+  backgroundSrc?: string;
 }
 
 export interface DeviceItem {

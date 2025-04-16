@@ -101,9 +101,11 @@
 /* section-main-bottom */
 
 .section-bottom-bg {
-  background-image: url(../assets/Images/movie-background.jpg);
+  /* background-image: url(../assets/Images/movie-background.jpg); */
   background-repeat: no-repeat;
   position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .gradient-section-1 {
