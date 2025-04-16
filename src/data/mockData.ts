@@ -1000,3 +1000,384 @@ export const SOCIAL_MEDIA = [
     href: "https://instagram.com/filimo",
   },
 ];
+
+// Movie items with categories
+export const CATEGORIZED_MOVIES = {
+  "The latest": [
+    {
+      id: 1,
+      title: "Documentary",
+      englishTitle: "Documentary Movie",
+      poster: assets.moviePoster1,
+      categories: ["Documentary"],
+      director: "Director Name",
+      rating: 8.5,
+      isExclusive: true
+    },
+    {
+      id: 2,
+      title: "Nazr BiBi",
+      englishTitle: "Nazr BiBi",
+      poster: assets.moviePoster2,
+      categories: ["Drama"],
+      director: "Director Name",
+      rating: 7.9,
+      isExclusive: false
+    },
+    {
+      id: 3,
+      title: "Fairy",
+      englishTitle: "Fairy",
+      poster: assets.moviePoster3,
+      categories: ["Fantasy"],
+      director: "Director Name",
+      rating: 8.1,
+      isExclusive: true
+    },
+    {
+      id: 4,
+      title: "Prisoner of Scarface: Revenge",
+      englishTitle: "Prisoner of Scarface: Revenge",
+      poster: assets.moviePoster4,
+      categories: ["Action", "Crime"],
+      director: "Director Name",
+      rating: 8.3,
+      isExclusive: true
+    },
+    {
+      id: 5,
+      title: "Free of charge",
+      englishTitle: "Free of charge",
+      poster: assets.moviePoster5,
+      categories: ["Comedy"],
+      director: "Director Name",
+      rating: 7.6,
+      isExclusive: true
+    },
+    {
+      id: 6,
+      title: "Joker Time",
+      englishTitle: "Joker Time",
+      poster: assets.moviePoster6,
+      categories: ["Comedy"],
+      director: "Director Name",
+      rating: 8.0,
+      isExclusive: true
+    },
+    {
+      id: 7,
+      title: "Pressure cooker",
+      englishTitle: "Pressure cooker",
+      poster: assets.freePoster1,
+      categories: ["Drama", "Comedy"],
+      director: "Director Name",
+      rating: 7.7,
+      isExclusive: true
+    },
+    {
+      id: 8,
+      title: "The Little Prince",
+      englishTitle: "The Little Prince",
+      poster: assets.freePoster2,
+      categories: ["Animation", "Fantasy"],
+      director: "Director Name",
+      rating: 8.8,
+      isExclusive: false
+    }
+  ],
+  "Iranian film": [
+    {
+      id: 9,
+      title: "Documentary",
+      englishTitle: "Documentary Movie",
+      poster: assets.moviePoster1,
+      categories: ["Documentary", "Iranian"],
+      director: "Director Name",
+      rating: 8.5,
+      isExclusive: true
+    },
+    {
+      id: 10,
+      title: "Nazr BiBi",
+      englishTitle: "Nazr BiBi",
+      poster: assets.moviePoster2,
+      categories: ["Drama", "Iranian"],
+      director: "Director Name",
+      rating: 7.9,
+      isExclusive: false
+    },
+    {
+      id: 11,
+      title: "Fairy",
+      englishTitle: "Fairy",
+      poster: assets.moviePoster3,
+      categories: ["Fantasy", "Iranian"],
+      director: "Director Name",
+      rating: 8.1,
+      isExclusive: true
+    },
+    {
+      id: 12,
+      title: "Prisoner of Scarface: Revenge",
+      englishTitle: "Prisoner of Scarface: Revenge",
+      poster: assets.moviePoster4,
+      categories: ["Action", "Crime", "Iranian"],
+      director: "Director Name",
+      rating: 8.3,
+      isExclusive: true
+    },
+    {
+      id: 13,
+      title: "Free of charge",
+      englishTitle: "Free of charge",
+      poster: assets.moviePoster5,
+      categories: ["Comedy", "Iranian"],
+      director: "Director Name",
+      rating: 7.6,
+      isExclusive: true
+    },
+    {
+      id: 14,
+      title: "Joker Time",
+      englishTitle: "Joker Time",
+      poster: assets.moviePoster6,
+      categories: ["Comedy", "Iranian"],
+      director: "Director Name",
+      rating: 8.0,
+      isExclusive: true
+    },
+    {
+      id: 15,
+      title: "Pressure cooker",
+      englishTitle: "Pressure cooker",
+      poster: assets.freePoster1,
+      categories: ["Drama", "Comedy", "Iranian"],
+      director: "Director Name",
+      rating: 7.7,
+      isExclusive: true
+    },
+    {
+      id: 16,
+      title: "The Little Prince",
+      englishTitle: "The Little Prince",
+      poster: assets.freePoster2,
+      categories: ["Animation", "Fantasy", "Iranian"],
+      director: "Director Name",
+      rating: 8.8,
+      isExclusive: false
+    }
+  ],
+  "Iranian cinema blockbusters": [
+    {
+      id: 17,
+      title: "TT",
+      englishTitle: "TT",
+      poster: assets.freePoster3,
+      categories: ["Drama", "Iranian"],
+      director: "Director Name",
+      rating: 8.2,
+      isExclusive: false
+    },
+    {
+      id: 18,
+      title: "Indian",
+      englishTitle: "Indian",
+      poster: assets.freePoster4,
+      categories: ["Comedy", "Iranian"],
+      director: "Director Name",
+      rating: 7.5,
+      isExclusive: true
+    },
+    {
+      id: 19,
+      title: "Strange",
+      englishTitle: "Strange",
+      poster: assets.freePoster5,
+      categories: ["Mystery", "Thriller", "Iranian"],
+      director: "Director Name",
+      rating: 8.4,
+      isExclusive: true
+    },
+    {
+      id: 20,
+      title: "Private meeting",
+      englishTitle: "Private meeting",
+      poster: assets.freePoster6,
+      categories: ["Drama", "Romance", "Iranian"],
+      director: "Director Name",
+      rating: 7.8,
+      isExclusive: false
+    },
+    {
+      id: 21,
+      title: "I am not Salvadoran",
+      englishTitle: "I am not Salvadoran",
+      poster: assets.freePoster7,
+      categories: ["Comedy", "Iranian"],
+      director: "Director Name",
+      rating: 7.9,
+      isExclusive: false
+    },
+    {
+      id: 22,
+      title: "Left, right",
+      englishTitle: "Left, right",
+      poster: assets.freePoster8,
+      categories: ["Comedy", "Iranian"],
+      director: "Director Name",
+      rating: 7.6,
+      isExclusive: false
+    },
+    {
+      id: 23,
+      title: "Rusty little brains",
+      englishTitle: "Rusty little brains",
+      poster: assets.freePoster9,
+      categories: ["Drama", "Family", "Iranian"],
+      director: "Director Name",
+      rating: 8.0,
+      isExclusive: true
+    },
+    {
+      id: 24,
+      title: "City of Hurt",
+      englishTitle: "City of Hurt",
+      poster: assets.freePoster10,
+      categories: ["Drama", "Iranian"],
+      director: "Director Name",
+      rating: 8.3,
+      isExclusive: true
+    }
+  ],
+  "Comedy": [
+    {
+      id: 25,
+      title: "Hawaii",
+      englishTitle: "Hawaii",
+      poster: assets.freePoster11,
+      categories: ["Comedy"],
+      director: "Director Name",
+      rating: 7.5,
+      isExclusive: false
+    },
+    {
+      id: 26,
+      title: "Dynamite",
+      englishTitle: "Dynamite",
+      poster: assets.freePoster12,
+      categories: ["Comedy", "Action"],
+      director: "Director Name",
+      rating: 7.4,
+      isExclusive: false
+    },
+    {
+      id: 27,
+      title: "City of Hurt",
+      englishTitle: "City of Hurt",
+      poster: assets.freePoster10,
+      categories: ["Comedy", "Drama"],
+      director: "Director Name",
+      rating: 8.3,
+      isExclusive: false
+    },
+    {
+      id: 28,
+      title: "Rusty little brains",
+      englishTitle: "Rusty little brains",
+      poster: assets.freePoster9,
+      categories: ["Comedy", "Family"],
+      director: "Director Name",
+      rating: 8.0,
+      isExclusive: false
+    },
+    {
+      id: 29,
+      title: "I am not Salvadoran",
+      englishTitle: "I am not Salvadoran",
+      poster: assets.freePoster7,
+      categories: ["Comedy"],
+      director: "Director Name",
+      rating: 7.9,
+      isExclusive: false
+    },
+    {
+      id: 30,
+      title: "Free of charge",
+      englishTitle: "Free of charge",
+      poster: assets.moviePoster5,
+      categories: ["Comedy"],
+      director: "Director Name",
+      rating: 7.6,
+      isExclusive: true
+    },
+    {
+      id: 31,
+      title: "Joker Time",
+      englishTitle: "Joker Time",
+      poster: assets.moviePoster6,
+      categories: ["Comedy"],
+      director: "Director Name",
+      rating: 8.0,
+      isExclusive: true
+    },
+    {
+      id: 32,
+      title: "Solitary",
+      englishTitle: "Solitary",
+      poster: assets.freePoster13,
+      categories: ["Comedy", "Drama"],
+      director: "Director Name",
+      rating: 7.7,
+      isExclusive: true
+    }
+  ]
+};
+
+// Filter options data
+export const FILTER_AGE_OPTIONS = [
+  "All",
+  "Under 12 years old",
+  "Up to 7 years",
+  "Up to 12 years",
+  "Up to 15 years",
+  "Up to 18 years old"
+];
+
+export const FILTER_LANGUAGE_OPTIONS = [
+  "All",
+  "Persian (dubbed)",
+  "Original language (subtitles)"
+];
+
+export const FILTER_COUNTRY_OPTIONS = [
+  "All",
+  "Iran",
+  "USA",
+  "UK",
+  "France",
+  "Germany",
+  "Italy",
+  "Spain",
+  "Japan",
+  "South Korea",
+  "China",
+  "India",
+  "Turkey"
+];
+
+export const MOVIE_CATEGORIES = [
+  "Animation", "Biography", "Drama", "Historical", "War", "Action", 
+  "Adventure", "Fantasy", "Sci-Fi", "Comedy", "Romance", "Western", 
+  "Horror", "Crime", "Mystery", "Thriller", "Family", "Sports", 
+  "Musical", "Documentary", "Talk Show", "Music", "Short Film", 
+  "Religious", "Reality Show", "Concert", "Theater"
+];
+
+export const SORTING_OPTIONS = [
+  "Default",
+  "What's new at Filimo",
+  "New (year of manufacture)",
+  "Old (year of manufacture)",
+  "Highest score",
+  "IMDB rating"
+];

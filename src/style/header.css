@@ -177,6 +177,7 @@ header {
 
 .smallScreenMenu {
   display: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /*Responsive Part*/
@@ -327,3 +328,91 @@ header {
 }
 
 /* End of Burgur icon css*/
+
+/* Add transitions for search inputs */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"] {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Transitions for select elements */
+select {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+select:hover {
+  background-color: #3a3a3a;
+  transform: translateY(-1px);
+}
+
+.sml {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.remove-disply {
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+/* Burger menu transitions */
+.burger span {
+  transition: all 0.3s ease;
+}
+
+.burger input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.burger input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.burger input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Header buttons transitions */
+.header-button button,
+.header-button a {
+  transition: all 0.3s ease;
+}
+
+.header-button button:hover,
+.header-button a:hover {
+  transform: translateY(-2px);
+}
+
+/* Navigation items transitions */
+.header-link-item {
+  transition: all 0.3s ease;
+}
+
+.header-link-item:hover {
+  transform: translateY(-1px);
+}
+
+/* User info transitions */
+.user-info {
+  transition: all 0.3s ease;
+}
+
+.small-icon-bu {
+  transition: all 0.3s ease;
+}

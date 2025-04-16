@@ -74,7 +74,7 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
     <div className="section-main-bottom">
       <div
         className="section-bottom-bg"
-        style={{ backgroundImage: `url(${movieDetail.backgroundSrc})` }}
+        style={{ backgroundImage: `url(${backgroundSrc})` }}
       >
         <div className="gradient-section-1"></div>
         <div className="gradient-section-2"></div>

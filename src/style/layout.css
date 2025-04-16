@@ -1,0 +1,7 @@
+/* Main layout styles */
+.main-content {
+  padding-top: 60px; /* Equal to header height */
+  min-height: calc(100vh - 60px); /* Ensure content takes up at least the full viewport height */
+  position: relative;
+  z-index: 1; /* Lower than header */
+} 

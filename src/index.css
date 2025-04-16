@@ -182,3 +182,72 @@ body {
   font-family: iranSans;
   background-color: var(--body-background);
 }
+
+/* Form Input Transitions */
+.form-control,
+.input-field,
+input[type="date"],
+input[type="number"],
+textarea {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.form-control:focus,
+.input-field:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Custom Select Dropdown Transitions */
+.custom-select,
+.select-wrapper {
+  position: relative;
+}
+
+.custom-select select,
+.select-wrapper select {
+  appearance: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-select select:hover,
+.select-wrapper select:hover {
+  background-color: #3a3a3a;
+  transform: translateY(-1px);
+}
+
+/* Search Bar Transitions */
+.search-bar,
+.search-input-wrapper {
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus-within,
+.search-input-wrapper:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown Menu Transitions */
+.dropdown-menu,
+.menu-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-menu.show,
+.menu-dropdown.show,
+.dropdown:hover .dropdown-menu,
+.dropdown:hover .menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

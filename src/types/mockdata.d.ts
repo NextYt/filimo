@@ -117,3 +117,28 @@ export interface SocialMediaItem {
   icon: string;
   href: string;
 }
+
+export interface CategorizedMovieItem {
+  id: number;
+  title: string;
+  englishTitle: string;
+  poster: string;
+  categories: string[];
+  director: string;
+  rating: number;
+  isExclusive?: boolean;
+}
+
+export interface CategorizedMovies {
+  [category: string]: CategorizedMovieItem[];
+}
+
+export interface FilterOption {
+  label: string;
+  value: string;
+}
+
+export interface SortOption {
+  label: string;
+  value: string;
+}

@@ -7,6 +7,7 @@ import { FilimoProvider } from "./context";
 
 // Lazy load pages
 const HomePage = lazy(() => import("./pages/Home/HomePage"));
+const MoviesPage = lazy(() => import("./pages/Movies/MoviesPage"));
 
 // Configure future flags
 const router = {
@@ -31,6 +32,7 @@ function App() {
             <Routes>
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<HomePage />} />
+                <Route path="movies" element={<MoviesPage />} />
               </Route>
             </Routes>
           </Suspense>

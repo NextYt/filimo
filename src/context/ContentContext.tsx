@@ -9,7 +9,19 @@ import {
   FREE_MOVIES_SECTION,
   FOOTER_LINKS,
   SOCIAL_MEDIA,
+  MOVIE_CATEGORIES,
+  SORTING_OPTIONS
 } from "../data/mockData";
+
+// Define filter options
+export type FilterOptions = {
+  hd: boolean;
+  age: string;
+  language: string;
+  country: string;
+  genre: string;
+  contentType: "All" | "Movie" | "Series";
+};
 
 // Define the Content state type
 interface ContentState {
@@ -24,6 +36,12 @@ interface ContentState {
   socialMedia: typeof SOCIAL_MEDIA;
   currentCategory: "Movie" | "Series";
   activePosterIndex: number;
+  activeMovieCategories: string[];
+  availableCategories: string[];
+  selectedSort: string;
+  availableSortOptions: string[];
+  filters: FilterOptions;
+  showFilters: boolean;
 }
 
 // Define Content actions
@@ -31,7 +49,11 @@ type ContentAction =
   | { type: "UPDATE_MOVIE_POSTERS"; payload: typeof MOVIE_POSTERS; }
   | { type: "UPDATE_SERIES_POSTERS"; payload: typeof SERIES_POSTERS; }
   | { type: "SET_CATEGORY"; payload: "Movie" | "Series"; }
-  | { type: "SET_ACTIVE_POSTER"; payload: number; };
+  | { type: "SET_ACTIVE_POSTER"; payload: number; }
+  | { type: "SET_ACTIVE_MOVIE_CATEGORIES"; payload: string[]; }
+  | { type: "SET_SORT"; payload: string; }
+  | { type: "SET_FILTERS"; payload: Partial<FilterOptions>; }
+  | { type: "TOGGLE_FILTERS"; payload?: boolean; };
 
 // Create the initial state
 const initialContentState: ContentState = {
@@ -46,6 +68,19 @@ const initialContentState: ContentState = {
   socialMedia: SOCIAL_MEDIA,
   currentCategory: "Movie",
   activePosterIndex: 0,
+  activeMovieCategories: [],
+  availableCategories: MOVIE_CATEGORIES,
+  selectedSort: SORTING_OPTIONS[0],
+  availableSortOptions: SORTING_OPTIONS,
+  filters: {
+    hd: false,
+    age: "All",
+    language: "All",
+    country: "All",
+    genre: "All",
+    contentType: "Movie"
+  },
+  showFilters: false,
 };
 
 // Create Content reducer
@@ -59,7 +94,6 @@ const contentReducer = (
     case "UPDATE_SERIES_POSTERS":
       return { ...state, seriesPosters: action.payload };
     case "SET_CATEGORY":
-      // Reset active poster index when changing category
       return { 
         ...state, 
         currentCategory: action.payload,
@@ -71,7 +105,11 @@ const contentReducer = (
         seriesPosters: state.seriesPosters.map((poster, index) => ({
           ...poster,
           isActive: action.payload === "Series" && index === 0
-        }))
+        })),
+        filters: {
+          ...state.filters,
+          contentType: action.payload
+        }
       };
     case "SET_ACTIVE_POSTER":
       if (state.currentCategory === "Movie") {
@@ -93,6 +131,32 @@ const contentReducer = (
           }))
         };
       }
+    case "SET_ACTIVE_MOVIE_CATEGORIES":
+      return {
+        ...state,
+        activeMovieCategories: action.payload
+      };
+    case "SET_SORT":
+      // Validate that the sort option exists
+      return {
+        ...state,
+        selectedSort: state.availableSortOptions.includes(action.payload) 
+          ? action.payload 
+          : state.selectedSort
+      };
+    case "SET_FILTERS":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          ...action.payload
+        }
+      };
+    case "TOGGLE_FILTERS":
+      return {
+        ...state,
+        showFilters: action.payload !== undefined ? action.payload : !state.showFilters
+      };
     default:
       return state;
   }
