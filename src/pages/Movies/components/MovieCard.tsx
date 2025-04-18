@@ -1,24 +1,26 @@
 import React from "react";
 import { CategorizedMovieItem } from "../../../types/mockdata";
-import { Link } from "react-router-dom";
+import MediaCard from "../../../components/MediaCard/MediaCard";
 
 interface MovieCardProps {
   movie: CategorizedMovieItem;
 }
 
+/**
+ * Movie card component that uses the reusable MediaCard component
+ */
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   return (
-    <div className="movie-item">
-      <Link to={`/movie/${movie.id}`}>
-        <img src={movie.poster} alt={movie.title} className="movie-poster" />
-      </Link>
-
-      {movie.isExclusive && (
-        <div className="movie-exclusive-badge">Exclusive</div>
-      )}
-
-      <div className="movie-title">{movie.title}</div>
-    </div>
+    <MediaCard 
+      id={movie.id}
+      title={movie.title}
+      posterSrc={movie.poster}
+      isExclusive={movie.isExclusive}
+      type={movie.type || 'movie'}
+      className="movie-item"
+      rating={movie.rating}
+      showRating={false} // Could be made configurable if needed
+    />
   );
 };
 

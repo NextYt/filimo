@@ -1,0 +1,40 @@
+.sorting-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.sorting-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.sorting-dropdown {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.sorting-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sorting-option:hover {
+  background-color: #444;
+}
+
+.sorting-option.active {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Add a subtle separator between options */
+.sorting-option:not(:last-child) {
+  border-bottom: 1px solid #444;
+}

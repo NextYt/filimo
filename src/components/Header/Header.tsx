@@ -3,7 +3,7 @@ import {
   useAuthSelector,
   useSuccessNotification,
   useErrorNotification,
-  useContent
+  useContent,
 } from "../../context";
 import "../../style/header.css";
 import Button from "../Button/Button";
@@ -45,7 +45,7 @@ const Header = () => {
   const contentContext = useContent();
   const contentState = contentContext.state;
   const contentDispatch = contentContext.dispatch;
-  
+
   // Using router hooks for navigation
   const location = useLocation();
   const navigate = useNavigate();
@@ -71,80 +71,179 @@ const Header = () => {
   const handleContentNavigation = (e: React.MouseEvent) => {
     e.preventDefault();
     let targetPath = "/movies-and-series"; // Default to movies-and-series
-    
+
     if (contentState.filters.contentType === "Series") {
       targetPath = "/series";
     } else if (contentState.filters.contentType === "Movie") {
       targetPath = "/movies";
     }
-    
+
     navigate(targetPath);
   };
 
   // Handle genre filter click
-  const handleGenreClick = useCallback((genre: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    // Set the genre filter
-    contentDispatch({
-      type: "SET_FILTERS",
-      payload: { genre }
-    });
+  const handleGenreClick = useCallback(
+    (genre: string, e: React.MouseEvent) => {
+      e.preventDefault();
 
-    // Create URL with the genre as query parameter
-    let basePath = "/movies-and-series";
-    if (contentState.filters.contentType === "Series") {
-      basePath = "/series";
-    } else if (contentState.filters.contentType === "Movie") {
-      basePath = "/movies";
-    }
+      // Set the genre filter
+      contentDispatch({
+        type: "SET_FILTERS",
+        payload: { genre },
+      });
 
-    // Navigate to the appropriate path with genre query parameter
-    navigate(`${basePath}?genre=${encodeURIComponent(genre)}`);
-  }, [contentDispatch, contentState.filters.contentType, navigate]);
+      // Create URL with the genre as query parameter
+      let basePath = "/movies-and-series";
+      if (contentState.filters.contentType === "Series") {
+        basePath = "/series";
+      } else if (contentState.filters.contentType === "Movie") {
+        basePath = "/movies";
+      }
+
+      // Navigate to the appropriate path with genre query parameter
+      navigate(`${basePath}?genre=${encodeURIComponent(genre)}`);
+    },
+    [contentDispatch, contentState.filters.contentType, navigate]
+  );
+
+  // // Handle Iranian filter click
+  // const handleIranianClick = useCallback(
+  //   (e: React.MouseEvent) => {
+  //     e.preventDefault();
+
+  //     // Set the country filter to Iran
+  //     contentDispatch({
+  //       type: "SET_FILTERS",
+  //       payload: { country: "Iran" },
+  //     });
+
+  //     // Create URL with the country as query parameter
+  //     let basePath = "/movies-and-series";
+  //     if (contentState.filters.contentType === "Series") {
+  //       basePath = "/series";
+  //     } else if (contentState.filters.contentType === "Movie") {
+  //       basePath = "/movies";
+  //     }
+
+  //     // Navigate to the appropriate path with country query parameter
+  //     navigate(`${basePath}?country=Iran`);
+  //   },
+  //   [contentDispatch, contentState.filters.contentType, navigate]
+  // );
 
   // Parse URL query parameters on mount and when URL changes
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const genreParam = searchParams.get('genre');
-    
+
+    // Check for genre parameter
+    const genreParam = searchParams.get("genre");
     if (genreParam && genreParam !== contentState.filters.genre) {
       contentDispatch({
         type: "SET_FILTERS",
-        payload: { genre: genreParam }
+        payload: { genre: genreParam },
       });
     }
-  }, [location.search, contentDispatch, contentState.filters.genre]);
+
+    // Check for country parameter
+    const countryParam = searchParams.get("country");
+    if (countryParam && countryParam !== contentState.filters.country) {
+      contentDispatch({
+        type: "SET_FILTERS",
+        payload: { country: countryParam },
+      });
+    }
+  }, [
+    location.search,
+    contentDispatch,
+    contentState.filters.genre,
+    contentState.filters.country,
+  ]);
 
   // Update URL when filter changes on the Movies/Series page
   useEffect(() => {
-    const isMoveOrSeries = location.pathname === "/movies" || 
-                           location.pathname === "/series" || 
-                           location.pathname === "/movies-and-series";
-    
+    const isMoveOrSeries =
+      location.pathname === "/movies" ||
+      location.pathname === "/series" ||
+      location.pathname === "/movies-and-series";
+
     if (isMoveOrSeries) {
-      if (contentState.filters.contentType === "Series" && location.pathname !== "/series") {
+      if (
+        contentState.filters.contentType === "Series" &&
+        location.pathname !== "/series"
+      ) {
+        // Build query params
+        const params = new URLSearchParams();
+
         // Preserve genre in URL when switching content types
-        let queryParams = '';
         if (contentState.filters.genre !== "All") {
-          queryParams = `?genre=${encodeURIComponent(contentState.filters.genre)}`;
+          params.set("genre", contentState.filters.genre);
         }
-        navigate(`/series${queryParams}`, { replace: true });
-      } else if (contentState.filters.contentType === "Movie" && location.pathname !== "/movies") {
-        let queryParams = '';
+
+        // Preserve country in URL when switching content types
+        if (contentState.filters.country !== "All") {
+          params.set("country", contentState.filters.country);
+        }
+
+        // Construct the full URL
+        const queryString = params.toString();
+        const newUrl = queryString ? `/series?${queryString}` : "/series";
+
+        navigate(newUrl, { replace: true });
+      } else if (
+        contentState.filters.contentType === "Movie" &&
+        location.pathname !== "/movies"
+      ) {
+        // Build query params
+        const params = new URLSearchParams();
+
+        // Preserve genre in URL when switching content types
         if (contentState.filters.genre !== "All") {
-          queryParams = `?genre=${encodeURIComponent(contentState.filters.genre)}`;
+          params.set("genre", contentState.filters.genre);
         }
-        navigate(`/movies${queryParams}`, { replace: true });
-      } else if (contentState.filters.contentType === "All" && location.pathname !== "/movies-and-series") {
-        let queryParams = '';
+
+        // Preserve country in URL when switching content types
+        if (contentState.filters.country !== "All") {
+          params.set("country", contentState.filters.country);
+        }
+
+        // Construct the full URL
+        const queryString = params.toString();
+        const newUrl = queryString ? `/movies?${queryString}` : "/movies";
+
+        navigate(newUrl, { replace: true });
+      } else if (
+        contentState.filters.contentType === "All" &&
+        location.pathname !== "/movies-and-series"
+      ) {
+        // Build query params
+        const params = new URLSearchParams();
+
+        // Preserve genre in URL when switching content types
         if (contentState.filters.genre !== "All") {
-          queryParams = `?genre=${encodeURIComponent(contentState.filters.genre)}`;
+          params.set("genre", contentState.filters.genre);
         }
-        navigate(`/movies-and-series${queryParams}`, { replace: true });
+
+        // Preserve country in URL when switching content types
+        if (contentState.filters.country !== "All") {
+          params.set("country", contentState.filters.country);
+        }
+
+        // Construct the full URL
+        const queryString = params.toString();
+        const newUrl = queryString
+          ? `/movies-and-series?${queryString}`
+          : "/movies-and-series";
+
+        navigate(newUrl, { replace: true });
       }
     }
-  }, [contentState.filters.contentType, contentState.filters.genre, location.pathname, navigate]);
+  }, [
+    contentState.filters.contentType,
+    contentState.filters.genre,
+    contentState.filters.country,
+    location.pathname,
+    navigate,
+  ]);
 
   // Handle login button click
   const handleLoginClick = async () => {
@@ -171,57 +270,73 @@ const Header = () => {
   }, [error, showError]);
 
   // Create SubMenuItems with click handlers
-  const createSubMenuItems = (categories: SubMenuItem[]): ExtendedSubMenuItem[] => {
-    return categories.map(subItem => ({
+  const createSubMenuItems = (
+    categories: SubMenuItem[]
+  ): ExtendedSubMenuItem[] => {
+    return categories.map((subItem) => ({
       ...subItem,
-      onClick: (e) => handleGenreClick(subItem.label, e)
+      onClick: (e) => handleGenreClick(subItem.label, e),
     }));
   };
+  
+  // Create an Extended MenuItem for Movies & Series
+  const createMoviesSeriesItem = (item: MenuItem): ExtendedMenuItem => {
+    return {
+      ...item,
+      label: "Movies & Series",
+      href:
+        contentState.filters.contentType === "Series"
+          ? "/series"
+          : contentState.filters.contentType === "Movie"
+          ? "/movies"
+          : "/movies-and-series",
+      onClick: handleContentNavigation,
+      // Enhanced subMenuItems with click handlers
+      subMenuItems: item.subMenuItems
+        ? createSubMenuItems(item.subMenuItems)
+        : undefined,
+    };
+  };
+
 
   // Modified navigation items with combined Movies/Series link
   const getModifiedNavItems = () => {
-    return navigationItems.map((item: MenuItem) => {
-      if (item.label === "Movies" || item.label === "Series") {
-        if (item.label === "Movies") {
-          const extendedItem: ExtendedMenuItem = {
-            ...item,
-            label: "Movies & Series",
-            href: contentState.filters.contentType === "Series" ? "/series" : 
-                  contentState.filters.contentType === "Movie" ? "/movies" : "/movies-and-series",
-            onClick: handleContentNavigation,
-            // Enhanced subMenuItems with click handlers
-            subMenuItems: item.subMenuItems ? createSubMenuItems(item.subMenuItems) : undefined
-          };
-          return extendedItem;
+    // Start with our navigation items from context
+    const navItems = navigationItems
+      .map((item: MenuItem) => {
+        if (item.label === "Movies" || item.label === "Series") {
+          if (item.label === "Movies") {
+            return createMoviesSeriesItem(item);
+          }
+          // Skip the Series item since we combined it
+          return null;
         }
-        // Skip the Series item since we combined it
-        return null;
-      }
-      return item;
-    }).filter((item): item is ExtendedMenuItem => item !== null);
+        return item;
+      })
+      .filter((item): item is ExtendedMenuItem => item !== null);
+
+    // Add Iranian item and return
+    return navItems;
   };
 
   // Modified small screen menu items
   const getModifiedSmallScreenItems = () => {
-    return smallScreenMenuItems.map((item: MenuItem) => {
-      if (item.label === "Movies" || item.label === "Series") {
-        if (item.label === "Movies") {
-          const extendedItem: ExtendedMenuItem = {
-            ...item,
-            label: "Movies & Series",
-            href: contentState.filters.contentType === "Series" ? "/series" : 
-                  contentState.filters.contentType === "Movie" ? "/movies" : "/movies-and-series",
-            onClick: handleContentNavigation,
-            // Enhanced subMenuItems with click handlers
-            subMenuItems: item.subMenuItems ? createSubMenuItems(item.subMenuItems) : undefined
-          };
-          return extendedItem;
+    // Start with our small screen menu items from context
+    const smallScreenItems = smallScreenMenuItems
+      .map((item: MenuItem) => {
+        if (item.label === "Movies" || item.label === "Series") {
+          if (item.label === "Movies") {
+            return createMoviesSeriesItem(item);
+          }
+          // Skip the Series item
+          return null;
         }
-        // Skip the Series item
-        return null;
-      }
-      return item;
-    }).filter((item): item is ExtendedMenuItem => item !== null);
+        return item;
+      })
+      .filter((item): item is ExtendedMenuItem => item !== null);
+
+    // Add Iranian item and return
+    return smallScreenItems;
   };
 
   const modifiedNavItems = getModifiedNavItems();
@@ -282,13 +397,15 @@ const Header = () => {
 
                 {/* Render small screen menu items dynamically */}
                 <ul className="smallScreenMenu-items">
-                  {modifiedSmallScreenItems.map((item: ExtendedMenuItem, index: number) => (
-                    <NavigationItem
-                      key={index}
-                      item={item}
-                      isSmallScreen={true}
-                    />
-                  ))}
+                  {modifiedSmallScreenItems.map(
+                    (item: ExtendedMenuItem, index: number) => (
+                      <NavigationItem
+                        key={index}
+                        item={item}
+                        isSmallScreen={true}
+                      />
+                    )
+                  )}
                 </ul>
               </div>
             </div>

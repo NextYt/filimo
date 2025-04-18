@@ -1,0 +1,58 @@
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.toggle-label::before {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 18px;
+  background-color: #4a4a4a;
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-label::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  transform: translateX(2px);
+}
+
+.toggle-input:checked + .toggle-label::before {
+  background-color: #ff4500;
+}
+
+.toggle-input:checked + .toggle-label::after {
+  transform: translateX(20px);
+}
+
+.toggle-input:disabled + .toggle-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle-text {
+  font-size: 0.9rem;
+  color: #ccc;
+}

@@ -94,7 +94,7 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
   },
   {
     label: "Iranian",
-    href: "/iranian",
+    href: "/movies-and-series?country=Iran",
   },
   {
     label: "Foreign",

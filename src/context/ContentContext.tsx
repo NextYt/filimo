@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, ReactNode } from "react";
+import React, { createContext, useContext, useReducer, ReactNode, useMemo } from "react";
 import {
   HERO_DETAIL_LIST,
   HERO_TEXTS,
@@ -10,7 +10,8 @@ import {
   FOOTER_LINKS,
   SOCIAL_MEDIA,
   MOVIE_CATEGORIES,
-  SORTING_OPTIONS
+  SORTING_OPTIONS,
+  CATEGORIZED_MOVIES
 } from "../data/mockData";
 
 // Define filter options
@@ -22,6 +23,9 @@ export type FilterOptions = {
   genre: string;
   contentType: "All" | "Movie" | "Series";
 };
+
+// Define a more flexible type for categorized content that can hold both formats
+export type CategorizedContent = Record<string, any>;
 
 // Define the Content state type
 interface ContentState {
@@ -42,6 +46,7 @@ interface ContentState {
   availableSortOptions: string[];
   filters: FilterOptions;
   showFilters: boolean;
+  categorizedMovies: CategorizedContent;
 }
 
 // Define Content actions
@@ -81,6 +86,8 @@ const initialContentState: ContentState = {
     contentType: "All"
   },
   showFilters: false,
+  // Using CATEGORIZED_MOVIES directly as it should contain the correct structure already
+  categorizedMovies: CATEGORIZED_MOVIES,
 };
 
 // Create Content reducer
@@ -94,6 +101,8 @@ const contentReducer = (
     case "UPDATE_SERIES_POSTERS":
       return { ...state, seriesPosters: action.payload };
     case "SET_CATEGORY":
+      // Important: When setting a category, also update the contentType filter
+      // to ensure they stay in sync
       return { 
         ...state, 
         currentCategory: action.payload,
@@ -106,6 +115,7 @@ const contentReducer = (
           ...poster,
           isActive: action.payload === "Series" && index === 0
         })),
+        // Update the content type filter to match the selected category
         filters: {
           ...state.filters,
           contentType: action.payload
@@ -145,6 +155,33 @@ const contentReducer = (
           : state.selectedSort
       };
     case "SET_FILTERS":
+      // Handle contentType filter specially to ensure one-click reset works
+      if (action.payload.contentType !== undefined) {
+        if (action.payload.contentType === 'All') {
+          // When explicitly setting contentType to "All", don't change currentCategory
+          // but ensure the filter is properly reset
+          console.log('Setting contentType filter to All');
+          return {
+            ...state,
+            filters: {
+              ...state.filters,
+              ...action.payload
+            }
+          };
+        } else if (action.payload.contentType === 'Movie' || action.payload.contentType === 'Series') {
+          // When setting to Movie or Series, update currentCategory in sync
+          return {
+            ...state,
+            filters: {
+              ...state.filters,
+              ...action.payload
+            },
+            currentCategory: action.payload.contentType
+          };
+        }
+      }
+      
+      // For all other filter changes
       return {
         ...state,
         filters: {
@@ -177,9 +214,12 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(contentReducer, initialContentState);
+  
+  // Memoize the context value to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({ state, dispatch }), [state]);
 
   return (
-    <ContentContext.Provider value={{ state, dispatch }}>
+    <ContentContext.Provider value={contextValue}>
       {children}
     </ContentContext.Provider>
   );

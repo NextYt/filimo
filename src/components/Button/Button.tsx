@@ -7,6 +7,7 @@ interface ButtonProps {
   ButtonElement?: 'button' | 'a';
   href?: string;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({ 
@@ -15,14 +16,17 @@ const Button: React.FC<ButtonProps> = ({
   onClick, 
   ButtonElement = 'button',
   href = '#',
-  type = 'button'
+  type = 'button',
+  disabled
 }) => {
   if (ButtonElement === 'a') {
-    return (
-      <a href={href} className={className} onClick={onClick}>
-        {children}
-      </a>
-    );
+    // Force TypeScript to accept the disabled prop on anchor element
+    return React.createElement('a', {
+      href,
+      className,
+      onClick,
+      disabled
+    }, children);
   }
 
   return (
@@ -30,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
       className={className} 
       onClick={onClick} 
       type={type}
+      disabled={disabled}
     >
       {children}
     </button>

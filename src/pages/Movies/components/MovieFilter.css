@@ -100,49 +100,7 @@ body {
   position: relative;
 }
 
-.sorting-btn-container {
-  position: relative;
-  display: inline-block;
-  z-index: 999999 !important; /* Extremely high z-index to ensure dropdown appears on top */
-}
-
-.sorting-dropdown {
-  position: absolute; /* Change from fixed to absolute */
-  top: 100%; /* Position it below the button */
-  left: 0;
-  width: 200px;
-  background-color: #2a2a2a;
-  border-radius: 4px;
-  z-index: 999999 !important; /* Extremely high z-index with !important to override everything */
-  margin-top: 5px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Even stronger shadow */
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-.sorting-dropdown.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-
-.sorting-option {
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sorting-option:hover {
-  background-color: #3a3a3a;
-  padding-left: 20px;
-}
-
-.sorting-option.active {
-  background-color: #ffd700;
-  color: #000;
-}
+/* Remove conflicting sorting-dropdown CSS from here as it's defined in SortingDropdown.css */
 
 .content-type {
   background-color: #2a2a2a;
@@ -212,9 +170,10 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  padding: 10px;
+  /* margin-bottom: 15px; */
 }
 
 .filter-toggle {
@@ -334,7 +293,7 @@ body {
 
 .dropdown-select select {
   background-color: #3a3a3a;
-  width: 200px;
+  width: 190px;
   color: #fff;
   border: none;
   border-radius: 4px;

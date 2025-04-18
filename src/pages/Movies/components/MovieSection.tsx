@@ -2,6 +2,8 @@ import React from 'react';
 import { CategorizedMovieItem } from '../../../types/mockdata';
 import MovieCard from './MovieCard';
 import { useContent } from '../../../context';
+import { FaAngleRight } from 'react-icons/fa';
+import Button from '../../../components/Button/Button';
 
 interface MovieSectionProps {
   category: string;
@@ -34,7 +36,15 @@ const MovieSection: React.FC<MovieSectionProps> = ({ category, movies }) => {
       <div className="movie-section-header">
         <h2 className="movie-section-title">{getDisplayTitle()}</h2>
         <div className="view-all-btn">
-          <span className="cursor-pointer">View all</span>
+          <Button 
+            ButtonElement="a" 
+            href={`/category/${encodeURIComponent(category.toLowerCase())}`}
+            className="cursor-pointer flex justify-center align-center items-center gap-1"
+            onClick={(e) => e.preventDefault()} // Preventing navigation for now
+          >
+            View all
+            <FaAngleRight />
+          </Button>
         </div>
       </div>
       
@@ -47,4 +57,4 @@ const MovieSection: React.FC<MovieSectionProps> = ({ category, movies }) => {
   );
 };
 
-export default MovieSection; 
+export default MovieSection;

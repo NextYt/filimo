@@ -1,0 +1,56 @@
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 8px;
+}
+
+.filter-tag {
+  display: flex;
+  align-items: center;
+  background-color: #3a3a3a;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  height: 28px;
+}
+
+.filter-tag:hover {
+  background-color: #4a4a4a;
+}
+
+.filter-tag-close {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-tag-close:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.filter-tag.clear-all-tag {
+  background-color: #ff4500;
+  color: white;
+  font-weight: bold;
+}
+
+.filter-tag.clear-all-tag:hover {
+  background-color: #e03d00;
+}
+
+.filter-tag.clear-all-tag .filter-tag-close {
+  background-color: rgba(255, 255, 255, 0.3);
+}
