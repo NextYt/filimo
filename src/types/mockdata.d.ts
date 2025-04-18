@@ -12,6 +12,7 @@ export interface MenuItem {
   hasDropdown?: boolean;
   dropdownClass?: string;
   subMenuItems?: SubMenuItem[];
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 export interface HeroDetailItem {
@@ -37,6 +38,11 @@ export interface MovieDetail {
   description: string;
   episodes?: MovieEpisode[];
   backgroundSrc?: string;
+  isHD?: boolean;
+  ageRating?: string;
+  language?: string;
+  country?: string;
+  type?: "movie" | "series";
 }
 
 export interface DeviceItem {
@@ -127,6 +133,11 @@ export interface CategorizedMovieItem {
   director: string;
   rating: number;
   isExclusive?: boolean;
+  type?: "movie" | "series";
+  isHD?: boolean;
+  ageRating?: string;
+  language?: string;
+  country?: string;
 }
 
 export interface CategorizedMovies {

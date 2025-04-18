@@ -33,6 +33,8 @@ function App() {
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<HomePage />} />
                 <Route path="movies" element={<MoviesPage />} />
+                <Route path="series" element={<MoviesPage />} />
+                <Route path="movies-and-series" element={<MoviesPage />} />
               </Route>
             </Routes>
           </Suspense>

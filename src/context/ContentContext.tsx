@@ -78,7 +78,7 @@ const initialContentState: ContentState = {
     language: "All",
     country: "All",
     genre: "All",
-    contentType: "Movie"
+    contentType: "All"
   },
   showFilters: false,
 };

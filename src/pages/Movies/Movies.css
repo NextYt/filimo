@@ -22,6 +22,8 @@
 .movie-sections {
   padding: 0 20px;
   transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1; /* Very low z-index to ensure dropdowns appear above it */
 }
 
 .movie-section {
@@ -131,4 +133,11 @@
   .movie-title {
     font-size: 0.8rem;
   }
+}
+
+.page-title {
+  color: #fff;
+  font-size: 2rem;
+  margin: 1rem 0;
+  padding-left: 1rem;
 } 

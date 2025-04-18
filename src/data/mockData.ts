@@ -279,6 +279,10 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     description:
       '"Sedato" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
     backgroundSrc: assets.movieBackground,
+    isHD: true,
+    ageRating: "13+",
+    language: "English",
+    country: "USA"
   },
   {
     id: 2,
@@ -291,6 +295,10 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
       '"Second Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
     backgroundSrc:
       "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+    isHD: false,
+    ageRating: "18+",
+    language: "Persian",
+    country: "Iran"
   },
   {
     id: 3,
@@ -303,6 +311,10 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
       '"Third Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
     backgroundSrc:
       "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+    isHD: true,
+    ageRating: "13+",
+    language: "English",
+    country: "USA"
   },
   {
     id: 4,
@@ -315,6 +327,10 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
       '"Fourth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
     backgroundSrc:
       "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+    isHD: false,
+    ageRating: "18+",
+    language: "Persian",
+    country: "Iran"
   },
   {
     id: 5,
@@ -327,6 +343,10 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
       '"Fifth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
     backgroundSrc:
       "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+    isHD: true,
+    ageRating: "13+",
+    language: "English",
+    country: "USA"
   },
   {
     id: 6,
@@ -339,6 +359,10 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
       '"Sixth Movie" is a mystery and exciting game show that is hosted by Mahsen Kiaei.',
     backgroundSrc:
       "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
+    isHD: false,
+    ageRating: "18+",
+    language: "Persian",
+    country: "Iran"
   },
 ];
 
@@ -405,6 +429,10 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
         isLocked: true,
       },
     ],
+    isHD: true,
+    ageRating: "13+",
+    language: "English",
+    country: "USA"
   },
   {
     id: 2,
@@ -441,6 +469,10 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
         isLocked: true,
       },
     ],
+    isHD: false,
+    ageRating: "18+",
+    language: "Persian",
+    country: "Iran"
   },
   {
     id: 3,
@@ -476,6 +508,10 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
           "https://tse2.mm.bing.net/th?id=OIP.U3B4jSHjlk8qr3JsxjoptQAAAA&pid=Api",
       },
     ],
+    isHD: true,
+    ageRating: "13+",
+    language: "English",
+    country: "USA"
   },
   {
     id: 4,
@@ -510,6 +546,10 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
         isLocked: true,
       },
     ],
+    isHD: false,
+    ageRating: "18+",
+    language: "Persian",
+    country: "Iran"
   },
   {
     id: 5,
@@ -537,6 +577,10 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
         isLocked: true,
       },
     ],
+    isHD: true,
+    ageRating: "13+",
+    language: "English",
+    country: "USA"
   },
   {
     id: 6,
@@ -564,6 +608,10 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
         isLocked: true,
       },
     ],
+    isHD: false,
+    ageRating: "18+",
+    language: "Persian",
+    country: "Iran"
   },
 ];
 
@@ -1012,7 +1060,12 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Documentary"],
       director: "Director Name",
       rating: 8.5,
-      isExclusive: true
+      isExclusive: true,
+      type: "movie",
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 2,
@@ -1022,7 +1075,12 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama"],
       director: "Director Name",
       rating: 7.9,
-      isExclusive: false
+      isExclusive: false,
+      type: "series",
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 3,
@@ -1032,7 +1090,12 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Fantasy"],
       director: "Director Name",
       rating: 8.1,
-      isExclusive: true
+      isExclusive: true,
+      type: "movie",
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 4,
@@ -1042,7 +1105,12 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Action", "Crime"],
       director: "Director Name",
       rating: 8.3,
-      isExclusive: true
+      isExclusive: true,
+      type: "movie",
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 5,
@@ -1052,7 +1120,12 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy"],
       director: "Director Name",
       rating: 7.6,
-      isExclusive: true
+      isExclusive: true,
+      type: "series",
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 6,
@@ -1062,7 +1135,12 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy"],
       director: "Director Name",
       rating: 8.0,
-      isExclusive: true
+      isExclusive: true,
+      type: "movie",
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 7,
@@ -1072,7 +1150,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Comedy"],
       director: "Director Name",
       rating: 7.7,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 8,
@@ -1082,7 +1164,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Animation", "Fantasy"],
       director: "Director Name",
       rating: 8.8,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     }
   ],
   "Iranian film": [
@@ -1094,7 +1180,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Documentary", "Iranian"],
       director: "Director Name",
       rating: 8.5,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 10,
@@ -1104,7 +1194,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Iranian"],
       director: "Director Name",
       rating: 7.9,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 11,
@@ -1114,7 +1208,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Fantasy", "Iranian"],
       director: "Director Name",
       rating: 8.1,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 12,
@@ -1124,7 +1222,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Action", "Crime", "Iranian"],
       director: "Director Name",
       rating: 8.3,
-      isExclusive: true
+      isExclusive: true,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 13,
@@ -1134,7 +1236,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Iranian"],
       director: "Director Name",
       rating: 7.6,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 14,
@@ -1144,7 +1250,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Iranian"],
       director: "Director Name",
       rating: 8.0,
-      isExclusive: true
+      isExclusive: true,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 15,
@@ -1154,7 +1264,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Comedy", "Iranian"],
       director: "Director Name",
       rating: 7.7,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 16,
@@ -1164,7 +1278,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Animation", "Fantasy", "Iranian"],
       director: "Director Name",
       rating: 8.8,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     }
   ],
   "Iranian cinema blockbusters": [
@@ -1176,7 +1294,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Iranian"],
       director: "Director Name",
       rating: 8.2,
-      isExclusive: false
+      isExclusive: false,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 18,
@@ -1186,7 +1308,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Iranian"],
       director: "Director Name",
       rating: 7.5,
-      isExclusive: true
+      isExclusive: true,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 19,
@@ -1196,7 +1322,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Mystery", "Thriller", "Iranian"],
       director: "Director Name",
       rating: 8.4,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 20,
@@ -1206,7 +1336,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Romance", "Iranian"],
       director: "Director Name",
       rating: 7.8,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 21,
@@ -1216,7 +1350,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Iranian"],
       director: "Director Name",
       rating: 7.9,
-      isExclusive: false
+      isExclusive: false,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 22,
@@ -1226,7 +1364,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Iranian"],
       director: "Director Name",
       rating: 7.6,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 23,
@@ -1236,7 +1378,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Family", "Iranian"],
       director: "Director Name",
       rating: 8.0,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 24,
@@ -1246,7 +1392,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Drama", "Iranian"],
       director: "Director Name",
       rating: 8.3,
-      isExclusive: true
+      isExclusive: true,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     }
   ],
   "Comedy": [
@@ -1258,7 +1408,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy"],
       director: "Director Name",
       rating: 7.5,
-      isExclusive: false
+      isExclusive: false,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 26,
@@ -1268,7 +1422,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Action"],
       director: "Director Name",
       rating: 7.4,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 27,
@@ -1278,7 +1436,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Drama"],
       director: "Director Name",
       rating: 8.3,
-      isExclusive: false
+      isExclusive: false,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 28,
@@ -1288,7 +1450,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Family"],
       director: "Director Name",
       rating: 8.0,
-      isExclusive: false
+      isExclusive: false,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 29,
@@ -1298,7 +1464,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy"],
       director: "Director Name",
       rating: 7.9,
-      isExclusive: false
+      isExclusive: false,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 30,
@@ -1308,7 +1478,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy"],
       director: "Director Name",
       rating: 7.6,
-      isExclusive: true
+      isExclusive: true,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     },
     {
       id: 31,
@@ -1318,7 +1492,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy"],
       director: "Director Name",
       rating: 8.0,
-      isExclusive: true
+      isExclusive: true,
+      isHD: true,
+      ageRating: "13+",
+      language: "English",
+      country: "USA"
     },
     {
       id: 32,
@@ -1328,7 +1506,11 @@ export const CATEGORIZED_MOVIES = {
       categories: ["Comedy", "Drama"],
       director: "Director Name",
       rating: 7.7,
-      isExclusive: true
+      isExclusive: true,
+      isHD: false,
+      ageRating: "18+",
+      language: "Persian",
+      country: "Iran"
     }
   ]
 };
@@ -1336,6 +1518,8 @@ export const CATEGORIZED_MOVIES = {
 // Filter options data
 export const FILTER_AGE_OPTIONS = [
   "All",
+  "13+",
+  "18+",
   "Under 12 years old",
   "Up to 7 years",
   "Up to 12 years",
@@ -1345,6 +1529,8 @@ export const FILTER_AGE_OPTIONS = [
 
 export const FILTER_LANGUAGE_OPTIONS = [
   "All",
+  "English",
+  "Persian",
   "Persian (dubbed)",
   "Original language (subtitles)"
 ];
