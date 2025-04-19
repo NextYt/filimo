@@ -42,6 +42,10 @@ const MovieFilter: React.FC = () => {
     }
   }, [showFilters]);
 
+  // Check if there are active filters to determine if filter button should be shown
+  const activeFilterCount = getActiveFiltersCount();
+  const hasActiveFilters = activeFilterCount > 0;
+
   const handleToggleFilters = () => {
     if (!isAnimating) {
       toggleFilters();
@@ -51,21 +55,33 @@ const MovieFilter: React.FC = () => {
   return (
     <div className={`movie-filter ${showFilters ? "expanded" : "collapsed"}`}>
       <div className="filter-buttons">
-        <button
-          className={`filter-btn ${
-            getActiveFiltersCount() > 0 ? "active" : ""
-          } ${showFilters ? "active" : ""}`}
-          onClick={handleToggleFilters}
-          disabled={isAnimating}
-        >
-          <span>Filter</span>
-          {getActiveFiltersCount() > 0 && (
-            <span className="filter-count">{getActiveFiltersCount()}</span>
-          )}
-        </button>
+        {/* Only show filter button if there are active filters */}
+        {hasActiveFilters && (
+          <button
+            className={`filter-btn ${hasActiveFilters ? "active" : ""} ${showFilters ? "active" : ""}`}
+            onClick={handleToggleFilters}
+            disabled={isAnimating}
+          >
+            <span>Filter</span>
+            {activeFilterCount > 0 && (
+              <span className="filter-count">{activeFilterCount}</span>
+            )}
+          </button>
+        )}
+        
+        {/* Always show this button when no active filters */}
+        {!hasActiveFilters && (
+          <button
+            className="filter-btn"
+            onClick={handleToggleFilters}
+            disabled={isAnimating}
+          >
+            <span>Filter</span>
+          </button>
+        )}
 
         {/* Active Filter Tags */}
-        {getActiveFiltersCount() > 0 && <FilterTags />}
+        {hasActiveFilters && <FilterTags />}
 
         {/* Sort tag if not default */}
         {selectedSort !== "Default" && (

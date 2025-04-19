@@ -11,7 +11,10 @@ import {
   SOCIAL_MEDIA,
   MOVIE_CATEGORIES,
   SORTING_OPTIONS,
-  CATEGORIZED_MOVIES
+  CATEGORIZED_MOVIES,
+  FILTER_AGE_OPTIONS,
+  FILTER_LANGUAGE_OPTIONS,
+  FILTER_COUNTRY_OPTIONS
 } from "../data/mockData";
 
 // Define filter options
@@ -47,6 +50,9 @@ interface ContentState {
   filters: FilterOptions;
   showFilters: boolean;
   categorizedMovies: CategorizedContent;
+  filterAgeOptions: string[];
+  filterLanguageOptions: string[];
+  filterCountryOptions: string[];
 }
 
 // Define Content actions
@@ -88,6 +94,10 @@ const initialContentState: ContentState = {
   showFilters: false,
   // Using CATEGORIZED_MOVIES directly as it should contain the correct structure already
   categorizedMovies: CATEGORIZED_MOVIES,
+  // Add the filter options arrays from mockData
+  filterAgeOptions: FILTER_AGE_OPTIONS,
+  filterLanguageOptions: FILTER_LANGUAGE_OPTIONS,
+  filterCountryOptions: FILTER_COUNTRY_OPTIONS
 };
 
 // Create Content reducer
@@ -155,38 +165,72 @@ const contentReducer = (
           : state.selectedSort
       };
     case "SET_FILTERS":
+      // Create a validated version of the payload
+      const validatedPayload: Partial<FilterOptions> = {};
+      
       // Handle contentType filter specially to ensure one-click reset works
       if (action.payload.contentType !== undefined) {
         if (action.payload.contentType === 'All') {
           // When explicitly setting contentType to "All", don't change currentCategory
           // but ensure the filter is properly reset
-          console.log('Setting contentType filter to All');
-          return {
-            ...state,
-            filters: {
-              ...state.filters,
-              ...action.payload
-            }
-          };
+          validatedPayload.contentType = 'All';
         } else if (action.payload.contentType === 'Movie' || action.payload.contentType === 'Series') {
           // When setting to Movie or Series, update currentCategory in sync
+          validatedPayload.contentType = action.payload.contentType;
           return {
             ...state,
             filters: {
               ...state.filters,
-              ...action.payload
+              ...validatedPayload
             },
             currentCategory: action.payload.contentType
           };
         }
       }
       
-      // For all other filter changes
+      // Validate age filter
+      if (action.payload.age !== undefined) {
+        // Ensure the age value exists in the available options
+        if (action.payload.age === 'All' || state.filterAgeOptions.includes(action.payload.age)) {
+          validatedPayload.age = action.payload.age;
+        }
+      }
+      
+      // Validate language filter
+      if (action.payload.language !== undefined) {
+        // Ensure the language value exists in the available options
+        if (action.payload.language === 'All' || state.filterLanguageOptions.includes(action.payload.language)) {
+          validatedPayload.language = action.payload.language;
+        }
+      }
+      
+      // Validate country filter
+      if (action.payload.country !== undefined) {
+        // Ensure the country value exists in the available options
+        if (action.payload.country === 'All' || state.filterCountryOptions.includes(action.payload.country)) {
+          validatedPayload.country = action.payload.country;
+        }
+      }
+      
+      // Validate genre filter - using availableCategories as the source of truth
+      if (action.payload.genre !== undefined) {
+        // Ensure the genre value exists in the available categories or is 'All'
+        if (action.payload.genre === 'All' || state.availableCategories.includes(action.payload.genre)) {
+          validatedPayload.genre = action.payload.genre;
+        }
+      }
+      
+      // Validate HD filter (boolean value)
+      if (action.payload.hd !== undefined) {
+        validatedPayload.hd = Boolean(action.payload.hd);
+      }
+      
+      // For all filter changes, apply the validated payload
       return {
         ...state,
         filters: {
           ...state.filters,
-          ...action.payload
+          ...validatedPayload
         }
       };
     case "TOGGLE_FILTERS":
