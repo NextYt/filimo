@@ -184,11 +184,11 @@ export function useMovieFilters() {
 
       // Prepare the new URL params
       const newParams = new URLSearchParams(searchParams.toString());
-      // if (value === "All") {
+      if (value === "All" && !state.filters.age) {
         newParams.delete("age");
-      // } else {
+      } else {
         newParams.set("age", value);
-      // }
+      }
       setSearchParams(newParams);
 
       // Now check if we should close the filter panel based on the updated state
@@ -215,11 +215,11 @@ export function useMovieFilters() {
       });
 
       const newParams = new URLSearchParams(searchParams.toString());
-      // if (value === "All") {
+      if (value === "All" && !state.filters.language) {
         newParams.delete("language");
-      // } else {
+      } else {
         newParams.set("language", value);
-      // }
+      }
       setSearchParams(newParams);
 
       const updatedFilters = {
@@ -245,11 +245,11 @@ export function useMovieFilters() {
       });
 
       const newParams = new URLSearchParams(searchParams.toString());
-      // if (value === "All") {
+      if (value === "All" && !state.filters.country) {
         newParams.delete("country");
-      // } else {
+      } else {
         newParams.set("country", value);
-      // }
+      }
       setSearchParams(newParams);
 
       const updatedFilters = {
@@ -275,11 +275,11 @@ export function useMovieFilters() {
       });
 
       const newParams = new URLSearchParams(searchParams.toString());
-      // if (value === "All") {
+      if (value === "All" && !state.filters.genre) {
         newParams.delete("genre");
-      // } else {
+      } else {
         newParams.set("genre", value);
-      // }
+      }
       setSearchParams(newParams);
 
       const updatedFilters = {
@@ -300,7 +300,7 @@ export function useMovieFilters() {
   // Fixed ContentType setter that guarantees "All" works on first click
   const setContentType = useCallback(
     (type: "All" | "Movie" | "Series") => {
-      console.log("Setting contentType to:", type);
+      // console.log("Setting contentType to:", type);
 
       // IMPORTANT: For "All" type, we need to update both state and URL together
       if (type === "All") {
@@ -344,32 +344,34 @@ export function useMovieFilters() {
 
   const setHD = useCallback(
     (value: boolean) => {
+      // Direct state update without conditionals for consistent behavior
       dispatch({
         type: "SET_FILTERS",
         payload: { hd: value },
       });
 
+      // URL update follows state update
       const newParams = new URLSearchParams(searchParams.toString());
-      // if (!value) {
-      newParams.delete("hd");
-
-        const updatedFilters = {
-          ...state.filters,
-          hd: false
-        };
-        checkActiveFiltersAndClosePanel(updatedFilters);
-      // } else {
-      // newParams.set(newParams);
-      newParams.set("hd", String(value));
-      // }
+      if (!value && value) {
+        newParams.delete("hd");
+      } else {
+        newParams.set("hd", String(value));
+      }
       setSearchParams(newParams);
+
+      // Check active filters with updated state
+      const updatedFilters = {
+        ...state.filters,
+        hd: value,
+      };
+      checkActiveFiltersAndClosePanel(updatedFilters);
     },
     [
       dispatch,
       searchParams,
       setSearchParams,
-      state.filters, 
-      checkActiveFiltersAndClosePanel
+      state.filters,
+      checkActiveFiltersAndClosePanel,
     ]
   );
 
