@@ -1,9 +1,9 @@
 import React from 'react';
-import { CategorizedMovieItem } from '../../../types/mockdata';
-import MovieCard from './MovieCard';
-import { useContent } from '../../../context';
+import { CategorizedMovieItem } from '../../../../types/mockdata';
+import MovieCard from '../MovieCard/MovieCard';
+import { useContent } from '../../../../context';
 import { FaAngleRight } from 'react-icons/fa';
-import Button from '../../../components/Button/Button';
+import Button from '../../../../components/Button/Button';
 
 interface MovieSectionProps {
   category: string;

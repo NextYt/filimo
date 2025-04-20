@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Foreign Slider Styles with Tailwind */
+.foreign-slider {
+  @apply relative mb-4 w-full;
+}
+
+.slider-header {
+  @apply flex justify-between items-center mb-4 px-4;
+}
+
+.slider-title {
+  @apply text-xl font-bold text-white;
+}
+
+/* Swiper Container Styles */
+.foreign-swiper {
+  @apply relative w-full h-[200px] px-10;
+}
+
+/* Slide Item Styles */
+.slide-item {
+  @apply h-full rounded-lg overflow-hidden shadow-md transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-xl;
+}
+
+.slide-item-image {
+  @apply w-full h-full bg-cover bg-center relative transition-transform duration-500 hover:scale-110;
+}
+
+.slide-item-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.slide-item-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.slide-item-original-name {
+  font-size: 14px;
+  color: #cccccc;
+  line-height: 1.2;
+}
+
+/* Navigation Buttons */
+.slider-navigation {
+  @apply absolute top-0 left-0 w-full h-full pointer-events-none z-10;
+}
+
+.slider-prev,
+.slider-next {
+  @apply absolute top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 flex items-center justify-center cursor-pointer transition-all duration-300 pointer-events-auto z-20 border-none hover:bg-black/80 hover:scale-110;
+}
+
+.slider-prev {
+  @apply left-1;
+}
+
+.slider-next {
+  @apply right-1;
+}
+
+/* Swiper animation overrides */
+.foreign-swiper .swiper-slide-active {
+  @apply z-10;
+}
+
+.foreign-swiper .swiper-slide {
+  @apply transition-opacity duration-300;
+}
+
+/* Swiper style overrides */
+.foreign-swiper .swiper-wrapper {
+  @apply py-1;
+}
+
+.foreign-swiper .swiper-slide {
+  @apply h-auto;
+}
+
+/* Custom Swiper button animations */
+.slider-prev:hover img,
+.slider-next:hover img {
+  @apply transform transition-transform duration-300;
+}
+
+.slider-prev:hover img {
+  @apply -translate-x-0.5;
+}
+
+.slider-next:hover img {
+  @apply translate-x-0.5;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .foreign-swiper {
+    @apply px-3 overflow-x-auto;
+  }
+  
+  .slider-navigation {
+    @apply hidden;
+  }
+} 

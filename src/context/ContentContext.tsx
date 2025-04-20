@@ -14,7 +14,11 @@ import {
   CATEGORIZED_MOVIES,
   FILTER_AGE_OPTIONS,
   FILTER_LANGUAGE_OPTIONS,
-  FILTER_COUNTRY_OPTIONS
+  FILTER_COUNTRY_OPTIONS,
+  IRANIAN_SLIDER_DATA,
+  FOREIGN_DIRECTORS_DATA,
+  FOREIGN_MALE_ACTORS_DATA,
+  FOREIGN_ACTRESSES_DATA
 } from "../data/mockData";
 
 // Define filter options
@@ -41,6 +45,10 @@ interface ContentState {
   freeMoviesSection: typeof FREE_MOVIES_SECTION;
   footerLinks: typeof FOOTER_LINKS;
   socialMedia: typeof SOCIAL_MEDIA;
+  iranianSliderData: typeof IRANIAN_SLIDER_DATA;
+  foreignDirectorsData: typeof FOREIGN_DIRECTORS_DATA;
+  foreignMaleActorsData: typeof FOREIGN_MALE_ACTORS_DATA;
+  foreignActressesData: typeof FOREIGN_ACTRESSES_DATA;
   currentCategory: "Movie" | "Series";
   activePosterIndex: number;
   activeMovieCategories: string[];
@@ -77,6 +85,10 @@ const initialContentState: ContentState = {
   freeMoviesSection: FREE_MOVIES_SECTION,
   footerLinks: FOOTER_LINKS,
   socialMedia: SOCIAL_MEDIA,
+  iranianSliderData: IRANIAN_SLIDER_DATA,
+  foreignDirectorsData: FOREIGN_DIRECTORS_DATA,
+  foreignMaleActorsData: FOREIGN_MALE_ACTORS_DATA,
+  foreignActressesData: FOREIGN_ACTRESSES_DATA,
   currentCategory: "Movie",
   activePosterIndex: 0,
   activeMovieCategories: [],

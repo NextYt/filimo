@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./IranianSlider.css";
+import { useContent } from "../../../context";
+import { assets } from "../../../assets/assets";
+import Image from "../../../components/ImageComponent/Image";
+import Button from "../../../components/Button/Button";
 
 interface IranianSliderProps {
   isVisible: boolean;
@@ -9,33 +13,8 @@ const IranianSlider: React.FC<IranianSliderProps> = ({ isVisible }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  // Higher quality images and more accurate movie data for the Iranian movies slider
-  const movies = [
-    {
-      id: 1,
-      title: "Honey Collector",
-      image: "/assets/images/download (1).jpg",
-      info: "More information",
-    },
-    {
-      id: 2,
-      title: "Red Hand",
-      image: "/assets/images/download (2).jpg",
-      info: "More information",
-    },
-    {
-      id: 3,
-      title: "City of Dreams",
-      image: "/assets/images/download (3).jpg",
-      info: "More information",
-    },
-    {
-      id: 4,
-      title: "Dream Bridge",
-      image: "/assets/images/download (4).jpg",
-      info: "More information",
-    },
-  ];
+  const { state } = useContent();
+  const movies = state.iranianSliderData;
 
   // Move to next slide
   const nextSlide = () => {
@@ -79,57 +58,24 @@ const IranianSlider: React.FC<IranianSliderProps> = ({ isVisible }) => {
                 <h2 className="slide-title">{movie.title}</h2>
                 <button className="more-info-btn">
                   <span>{movie.info}</span>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
-                      fill="currentColor"
-                    />
-                  </svg>
+                  <Image src={assets.angleRight} alt="arrow" />
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        <button className="slider-control prev" onClick={prevSlide}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+        <Button className="slider-control prev" onClick={prevSlide}>
+          <Image src={assets.angleLeft} alt="arrow" />
+        </Button>
 
-        <button className="slider-control next" onClick={nextSlide}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 6L8.59 7.41L13.17 12L8.59 16.59L10 18L16 12L10 6Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
+        <Button className="slider-control next" onClick={nextSlide}>
+          <Image src={assets.angleRight} alt="arrow" />
+        </Button>
 
         <div className="slider-dots">
           {movies.map((_, index) => (
-            <button
+            <Button
               key={index}
               className={`dot ${index === currentSlide ? "active" : ""}`}
               onClick={() => setCurrentSlide(index)}

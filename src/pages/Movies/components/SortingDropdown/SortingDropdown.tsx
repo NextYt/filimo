@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { useMovieFilters } from '../../../context/hooks';
-import { useContent } from '../../../context/ContentContext';
+import { useMovieFilters } from '../../../../context/hooks';
+import { useContent } from '../../../../context/ContentContext';
 import './SortingDropdown.css';
 
 /**

@@ -56,3 +56,12 @@
   font-size: 0.9rem;
   color: #ccc;
 }
+
+@media (max-width: 768px) {
+  .toggle-container {
+    width: 100%;
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
+    background-color: #3a3a3a;
+  }
+}

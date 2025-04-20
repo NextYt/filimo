@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { useMovieFilters } from "../../../context/hooks";
+import { useMovieFilters } from "../../../../context/hooks";
 import "./FilterTags.css";
 
 /**

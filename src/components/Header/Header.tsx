@@ -106,31 +106,6 @@ const Header = () => {
     [contentDispatch, contentState.filters.contentType, navigate]
   );
 
-  // // Handle Iranian filter click
-  // const handleIranianClick = useCallback(
-  //   (e: React.MouseEvent) => {
-  //     e.preventDefault();
-
-  //     // Set the country filter to Iran
-  //     contentDispatch({
-  //       type: "SET_FILTERS",
-  //       payload: { country: "Iran" },
-  //     });
-
-  //     // Create URL with the country as query parameter
-  //     let basePath = "/movies-and-series";
-  //     if (contentState.filters.contentType === "Series") {
-  //       basePath = "/series";
-  //     } else if (contentState.filters.contentType === "Movie") {
-  //       basePath = "/movies";
-  //     }
-
-  //     // Navigate to the appropriate path with country query parameter
-  //     navigate(`${basePath}?country=Iran`);
-  //   },
-  //   [contentDispatch, contentState.filters.contentType, navigate]
-  // );
-
   // Parse URL query parameters on mount and when URL changes
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -278,7 +253,7 @@ const Header = () => {
       onClick: (e) => handleGenreClick(subItem.label, e),
     }));
   };
-  
+
   // Create an Extended MenuItem for Movies & Series
   const createMoviesSeriesItem = (item: MenuItem): ExtendedMenuItem => {
     return {
@@ -297,7 +272,6 @@ const Header = () => {
         : undefined,
     };
   };
-
 
   // Modified navigation items with combined Movies/Series link
   const getModifiedNavItems = () => {

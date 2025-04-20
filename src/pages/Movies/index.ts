@@ -1,3 +1,3 @@
 import MoviesPage from './MoviesPage';
 
-export default MoviesPage; 
+export default MoviesPage;

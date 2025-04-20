@@ -1,12 +1,12 @@
 import React, { ReactNode, MouseEvent } from 'react';
 
 interface ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
-  ButtonElement?: 'button' | 'a';
+  ButtonElement?: "button" | "a";
   href?: string;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   disabled?: boolean;
 }
 

@@ -5,6 +5,36 @@
   min-height: 100vh;
 }
 
+/* Foreign sliders container styling */
+.foreign-sliders-container {
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0 15px;
+}
+
+.show-more-btn {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background-color: #ffcc00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .movie-filter-container {
   padding: 20px;
   background-color: #171717;

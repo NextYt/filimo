@@ -1,147 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Classes Using Tailwind Utilities */
+
 .iranian-slider {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 30px;
-  border-radius: 4px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  @apply w-full overflow-hidden relative mb-[30px] rounded-[4px] shadow-[0_8px_20px_rgba(0,0,0,0.4)];
 }
 
 .slider-container {
-  position: relative;
-  width: 100%;
-  height: 400px;
+  @apply relative w-full h-[600px];
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  height: 100%;
+  @apply flex transition-transform duration-500 ease-in-out h-full;
 }
 
 .slide {
-  flex: 0 0 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 60px;
+  @apply flex-[0_0_100%] h-full bg-cover bg-center bg-no-repeat relative flex items-center justify-end px-[60px];
 }
 
 .slide-content {
-  text-align: right;
-  color: white;
-  width: 40%;
-  z-index: 10;
-  animation: fadeIn 0.5s ease-in-out;
-  position: relative;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 100px;
+  @apply text-right text-white w-[40%] z-10 relative h-[80%] flex flex-col justify-center pb-[100px] animate-fadeIn;
 }
 
 .slide-title {
-  font-size: 36px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  @apply text-[36px] mb-[20px] font-bold drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)];
 }
 
 .more-info-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: none;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: absolute;
-  bottom: 60px;
-  right: 0;
-  min-width: 160px;
-}
-
-.more-info-btn:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
+  @apply flex items-center justify-center bg-white/15 text-white py-[12px] px-[24px] rounded-[4px] cursor-pointer text-[16px] font-medium transition-all duration-300 ease-in-out absolute bottom-[5px] right-0 min-w-[160px] hover:bg-white/25 hover:-translate-y-[2px];
 }
 
 .more-info-btn svg {
-  margin-left: 8px;
+  @apply ml-[8px];
 }
 
 .slider-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  cursor: pointer;
-  z-index: 100;
-  transition: background 0.3s ease;
-}
-
-.slider-control:hover {
-  background: rgba(0, 0, 0, 0.7);
+  @apply absolute top-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-black/50 border-none rounded-full flex items-center justify-center text-white cursor-pointer z-[100] transition-colors duration-300 ease-in-out hover:bg-black/70;
 }
 
 .slider-control.prev {
-  left: 20px;
+  @apply left-[20px];
 }
 
 .slider-control.next {
-  right: 20px;
+  @apply right-[20px];
 }
 
 .slider-dots {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 100;
+  @apply absolute bottom-[30px] left-1/2 -translate-x-1/2 flex gap-[10px] z-[100];
 }
 
 .dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  @apply w-[14px] h-[14px] rounded-full bg-white/50 border-none cursor-pointer transition duration-300 ease-in-out;
 }
 
 .dot.active {
-  background: white;
-  transform: scale(1.2);
+  @apply bg-white scale-[1.2];
 }
 
-@keyframes fadeIn {
-  from {
+/* Custom Animation */
+/* @keyframes fadeIn {
+  0% {
     opacity: 0;
     transform: translateX(20px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateX(0);
   }
-} 
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+} */

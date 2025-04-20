@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import { useMovieFilters } from '../../../context/hooks';
-import { useContent } from '../../../context/ContentContext';
-import Dropdown from '../../../components/Dropdown/Dropdown';
-import Button from '../../../components/Button/Button';
-import Toggle from '../../../components/Toggle/Toggle';
+import { useMovieFilters } from '../../../../context/hooks';
+import { useContent } from '../../../../context/ContentContext';
+import Dropdown from '../../../../components/Dropdown/Dropdown';
+import Button from '../../../../components/Button/Button';
+import Toggle from '../../../../components/Toggle/Toggle';
 import './FilterDropdowns.css';
 
 interface FilterDropdownsProps {
@@ -147,7 +147,6 @@ const FilterDropdowns: React.FC<FilterDropdownsProps> = ({
         label="HD"
         checked={filters.hd}
         onChange={setHD}
-        className="filter-toggle"
       />
 
       {/* Render dropdowns using map */}

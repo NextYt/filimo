@@ -106,22 +106,30 @@ export function useMovieFilters() {
     );
   }, [location.pathname, searchParams]);
 
-  // Check if there are any active filters
-  const checkActiveFiltersAndClosePanel = useCallback(
-    (updatedFilters: FilterOptions) => {
-      const hasActiveFilters =
-        updatedFilters.hd ||
-        updatedFilters.age !== "All" ||
-        updatedFilters.language !== "All" ||
-        updatedFilters.country !== "All" ||
-        updatedFilters.genre !== "All" ||
-        updatedFilters.contentType !== "All";
+  // Check if location is related to Foreign content
+  const isForeignContent = useMemo(() => {
+    return (
+      searchParams.get("country") === "Foreign" ||
+      location.pathname === "/foreign"
+    );
+  }, [location.pathname, searchParams]);
 
-      // Simply return the status without closing anything
-      return hasActiveFilters;
-    },
-    []
-  );
+  // Check if there are any active filters
+  // const checkActiveFiltersAndClosePanel = useCallback(
+  //   (updatedFilters: FilterOptions) => {
+  //     const hasActiveFilters =
+  //       updatedFilters.hd ||
+  //       updatedFilters.age !== "All" ||
+  //       updatedFilters.language !== "All" ||
+  //       updatedFilters.country !== "All" ||
+  //       updatedFilters.genre !== "All" ||
+  //       updatedFilters.contentType !== "All";
+
+  //     // Simply return the status without closing anything
+  //     return hasActiveFilters;
+  //   },
+  //   []
+  // );
 
   // Sync URL parameters with filter state
   const syncFiltersWithUrl = useCallback(() => {
@@ -176,35 +184,27 @@ export function useMovieFilters() {
   // Individual filter setters - memoized to prevent re-renders
   const setAge = useCallback(
     (value: string) => {
-      // First update the state so we can work with the current values
+      // Update the state with the selected age value
       dispatch({
         type: "SET_FILTERS",
-        payload: { age: value },
+        payload: { age: value }
       });
-
-      // Prepare the new URL params
+      
+      // Update URL parameters based on the value
       const newParams = new URLSearchParams(searchParams.toString());
-      if (value === "All" && !state.filters.age) {
+      
+      if (value === "All") {
+        // When explicitly set to "All", remove the parameter from URL
         newParams.delete("age");
       } else {
+        // For any specific age value, set the parameter in URL
         newParams.set("age", value);
       }
+      
+      // Apply URL changes
       setSearchParams(newParams);
-
-      // Now check if we should close the filter panel based on the updated state
-      const updatedFilters = {
-        ...state.filters,
-        age: value,
-      };
-      checkActiveFiltersAndClosePanel(updatedFilters);
     },
-    [
-      dispatch,
-      searchParams,
-      setSearchParams,
-      state.filters,
-      checkActiveFiltersAndClosePanel,
-    ]
+    [dispatch, searchParams, setSearchParams]
   );
 
   const setLanguage = useCallback(
@@ -221,20 +221,8 @@ export function useMovieFilters() {
         newParams.set("language", value);
       }
       setSearchParams(newParams);
-
-      const updatedFilters = {
-        ...state.filters,
-        language: value,
-      };
-      checkActiveFiltersAndClosePanel(updatedFilters);
     },
-    [
-      dispatch,
-      searchParams,
-      setSearchParams,
-      state.filters,
-      checkActiveFiltersAndClosePanel,
-    ]
+    [dispatch, searchParams, setSearchParams, state.filters]
   );
 
   const setCountry = useCallback(
@@ -251,20 +239,8 @@ export function useMovieFilters() {
         newParams.set("country", value);
       }
       setSearchParams(newParams);
-
-      const updatedFilters = {
-        ...state.filters,
-        country: value,
-      };
-      checkActiveFiltersAndClosePanel(updatedFilters);
     },
-    [
-      dispatch,
-      searchParams,
-      setSearchParams,
-      state.filters,
-      checkActiveFiltersAndClosePanel,
-    ]
+    [dispatch, searchParams, setSearchParams, state.filters]
   );
 
   const setGenre = useCallback(
@@ -281,20 +257,8 @@ export function useMovieFilters() {
         newParams.set("genre", value);
       }
       setSearchParams(newParams);
-
-      const updatedFilters = {
-        ...state.filters,
-        genre: value,
-      };
-      checkActiveFiltersAndClosePanel(updatedFilters);
     },
-    [
-      dispatch,
-      searchParams,
-      setSearchParams,
-      state.filters,
-      checkActiveFiltersAndClosePanel,
-    ]
+    [dispatch, searchParams, setSearchParams, state.filters]
   );
 
   // Fixed ContentType setter that guarantees "All" works on first click
@@ -314,13 +278,6 @@ export function useMovieFilters() {
         const newParams = new URLSearchParams(searchParams.toString());
         newParams.delete("contentType");
         setSearchParams(newParams);
-
-        // Check active filters with updated state
-        const updatedFilters = {
-          ...state.filters,
-          contentType: "All" as "All" | "Movie" | "Series",
-        };
-        checkActiveFiltersAndClosePanel(updatedFilters);
       } else {
         // For Movie or Series - update state first, then URL
         dispatch({
@@ -333,13 +290,7 @@ export function useMovieFilters() {
         setSearchParams(newParams);
       }
     },
-    [
-      dispatch,
-      searchParams,
-      setSearchParams,
-      state.filters,
-      checkActiveFiltersAndClosePanel,
-    ]
+    [dispatch, searchParams, setSearchParams, state.filters]
   );
 
   const setHD = useCallback(
@@ -358,21 +309,8 @@ export function useMovieFilters() {
         newParams.set("hd", String(value));
       }
       setSearchParams(newParams);
-
-      // Check active filters with updated state
-      const updatedFilters = {
-        ...state.filters,
-        hd: value,
-      };
-      checkActiveFiltersAndClosePanel(updatedFilters);
     },
-    [
-      dispatch,
-      searchParams,
-      setSearchParams,
-      state.filters,
-      checkActiveFiltersAndClosePanel,
-    ]
+    [dispatch, searchParams, setSearchParams, state.filters]
   );
 
   // Reset all filters - improved to ensure instant reset in one click and also hide filter panel
@@ -533,6 +471,7 @@ export function useMovieFilters() {
     selectedSort: memoizedSelectedSort,
     showFilters: memoizedShowFilters,
     isIranianContent,
+    isForeignContent,
     filterMovies,
     syncFiltersWithUrl,
     setAge,

@@ -1,6 +1,6 @@
 import React from "react";
-import { CategorizedMovieItem } from "../../../types/mockdata";
-import MediaCard from "../../../components/MediaCard/MediaCard";
+import { CategorizedMovieItem } from "../../../../types/mockdata";
+import MediaCard from "../../../../components/MediaCard/MediaCard";
 
 interface MovieCardProps {
   movie: CategorizedMovieItem;

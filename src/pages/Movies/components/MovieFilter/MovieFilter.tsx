@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useMovieFilters } from "../../../context/hooks";
+import { useMovieFilters } from "../../../../context/hooks";
 import "./MovieFilter.css";
-import FilterTags from "./FilterTags";
-import SortingDropdown from "./SortingDropdown";
-import FilterDropdowns from "./FilterDropdowns";
+import FilterTags from "../FilterTags/FilterTags";
+import SortingDropdown from "../SortingDropdown/SortingDropdown";
+import FilterDropdowns from "../FilterDropdowns/FilterDropdowns";
 
 // Add CSS styles that were previously added directly through JS
 const MovieFilter: React.FC = () => {

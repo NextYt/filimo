@@ -1,6 +1,6 @@
 import React from 'react';
-import { useMovieFilters } from '../../../context/hooks';
-import Button from '../../../components/Button/Button';
+import { useMovieFilters } from '../../../../context/hooks';
+import Button from '../../../../components/Button/Button';
 import './EmptyState.css';
 
 interface EmptyStateProps {

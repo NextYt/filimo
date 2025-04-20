@@ -109,4 +109,10 @@ export const assets = {
   // Device icons
   device2: new URL("./images/device2.webp", import.meta.url).href,
   deviceYaghi: new URL("./images/deviceYaghi.png", import.meta.url).href,
+
+  // Iranian slider images
+  iranianSlider1: new URL("./images/free-poster-1.jpg", import.meta.url).href,
+  iranianSlider2: new URL("./images/free-poster-2.jpg", import.meta.url).href,
+  iranianSlider3: new URL("./images/free-poster-3.jpg", import.meta.url).href,
+  iranianSlider4: new URL("./images/free-poster-4.jpg", import.meta.url).href,
 };

@@ -37,3 +37,23 @@
   border-color: #ff4500;
   box-shadow: 0 0 0 1px rgba(255, 69, 0, 0.5);
 }
+
+/* Legend style for screens ABOVE 768px */
+@media (min-width: 769px) {
+  .reusable-dropdown {
+    padding-top: 8px;
+  }
+  
+  .reusable-dropdown .dropdown-label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    padding: 0 6px;
+    margin: 0;
+    font-size: 12px;
+    background-color: #2a2a2a;
+    color: #ccc;
+    z-index: 1;
+    transform: translateY(-50%);
+  }
+}

@@ -282,7 +282,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     isHD: true,
     ageRating: "13+",
     language: "English",
-    country: "USA"
+    country: "USA",
   },
   {
     id: 2,
@@ -298,7 +298,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     isHD: false,
     ageRating: "18+",
     language: "Persian",
-    country: "Iran"
+    country: "Iran",
   },
   {
     id: 3,
@@ -314,7 +314,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     isHD: true,
     ageRating: "13+",
     language: "English",
-    country: "USA"
+    country: "USA",
   },
   {
     id: 4,
@@ -330,7 +330,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     isHD: false,
     ageRating: "18+",
     language: "Persian",
-    country: "Iran"
+    country: "Iran",
   },
   {
     id: 5,
@@ -346,7 +346,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     isHD: true,
     ageRating: "13+",
     language: "English",
-    country: "USA"
+    country: "USA",
   },
   {
     id: 6,
@@ -362,7 +362,7 @@ export const FEATURED_MOVIE_DETAIL: MovieDetail[] = [
     isHD: false,
     ageRating: "18+",
     language: "Persian",
-    country: "Iran"
+    country: "Iran",
   },
 ];
 
@@ -432,7 +432,7 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     isHD: true,
     ageRating: "13+",
     language: "English",
-    country: "USA"
+    country: "USA",
   },
   {
     id: 2,
@@ -472,7 +472,7 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     isHD: false,
     ageRating: "18+",
     language: "Persian",
-    country: "Iran"
+    country: "Iran",
   },
   {
     id: 3,
@@ -511,7 +511,7 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     isHD: true,
     ageRating: "13+",
     language: "English",
-    country: "USA"
+    country: "USA",
   },
   {
     id: 4,
@@ -549,7 +549,7 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     isHD: false,
     ageRating: "18+",
     language: "Persian",
-    country: "Iran"
+    country: "Iran",
   },
   {
     id: 5,
@@ -580,7 +580,7 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     isHD: true,
     ageRating: "13+",
     language: "English",
-    country: "USA"
+    country: "USA",
   },
   {
     id: 6,
@@ -611,7 +611,7 @@ export const FEATURED_SERIES_DETAIL: MovieDetail[] = [
     isHD: false,
     ageRating: "18+",
     language: "Persian",
-    country: "Iran"
+    country: "Iran",
   },
 ];
 
@@ -1065,7 +1065,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 2,
@@ -1080,7 +1080,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 3,
@@ -1095,7 +1095,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 4,
@@ -1110,7 +1110,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 5,
@@ -1125,7 +1125,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 6,
@@ -1140,7 +1140,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 7,
@@ -1154,7 +1154,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 8,
@@ -1168,8 +1168,8 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
-    }
+      country: "Iran",
+    },
   ],
   "Iranian film": [
     {
@@ -1184,7 +1184,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 10,
@@ -1198,7 +1198,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 11,
@@ -1212,7 +1212,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 12,
@@ -1226,7 +1226,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 13,
@@ -1240,7 +1240,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 14,
@@ -1254,7 +1254,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 15,
@@ -1268,7 +1268,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 16,
@@ -1282,8 +1282,8 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
-    }
+      country: "Iran",
+    },
   ],
   "Iranian cinema blockbusters": [
     {
@@ -1298,7 +1298,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 18,
@@ -1312,7 +1312,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 19,
@@ -1326,7 +1326,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 20,
@@ -1340,7 +1340,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 21,
@@ -1354,7 +1354,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 22,
@@ -1368,7 +1368,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 23,
@@ -1382,7 +1382,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 24,
@@ -1396,10 +1396,10 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
-    }
+      country: "Iran",
+    },
   ],
-  "Comedy": [
+  Comedy: [
     {
       id: 25,
       title: "Hawaii",
@@ -1412,7 +1412,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 26,
@@ -1426,7 +1426,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 27,
@@ -1440,7 +1440,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 28,
@@ -1454,7 +1454,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 29,
@@ -1468,7 +1468,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 30,
@@ -1482,7 +1482,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
+      country: "Iran",
     },
     {
       id: 31,
@@ -1496,7 +1496,7 @@ export const CATEGORIZED_MOVIES = {
       isHD: true,
       ageRating: "13+",
       language: "English",
-      country: "USA"
+      country: "USA",
     },
     {
       id: 32,
@@ -1510,9 +1510,9 @@ export const CATEGORIZED_MOVIES = {
       isHD: false,
       ageRating: "18+",
       language: "Persian",
-      country: "Iran"
-    }
-  ]
+      country: "Iran",
+    },
+  ],
 };
 
 // Filter options data
@@ -1524,7 +1524,7 @@ export const FILTER_AGE_OPTIONS = [
   "Up to 7 years",
   "Up to 12 years",
   "Up to 15 years",
-  "Up to 18 years old"
+  "Up to 18 years old",
 ];
 
 export const FILTER_LANGUAGE_OPTIONS = [
@@ -1532,7 +1532,7 @@ export const FILTER_LANGUAGE_OPTIONS = [
   "English",
   "Persian",
   "Persian (dubbed)",
-  "Original language (subtitles)"
+  "Original language (subtitles)",
 ];
 
 export const FILTER_COUNTRY_OPTIONS = [
@@ -1548,15 +1548,37 @@ export const FILTER_COUNTRY_OPTIONS = [
   "South Korea",
   "China",
   "India",
-  "Turkey"
+  "Turkey",
 ];
 
 export const MOVIE_CATEGORIES = [
-  "Animation", "Biography", "Drama", "Historical", "War", "Action", 
-  "Adventure", "Fantasy", "Sci-Fi", "Comedy", "Romance", "Western", 
-  "Horror", "Crime", "Mystery", "Thriller", "Family", "Sports", 
-  "Musical", "Documentary", "Talk Show", "Music", "Short Film", 
-  "Religious", "Reality Show", "Concert", "Theater"
+  "Animation",
+  "Biography",
+  "Drama",
+  "Historical",
+  "War",
+  "Action",
+  "Adventure",
+  "Fantasy",
+  "Sci-Fi",
+  "Comedy",
+  "Romance",
+  "Western",
+  "Horror",
+  "Crime",
+  "Mystery",
+  "Thriller",
+  "Family",
+  "Sports",
+  "Musical",
+  "Documentary",
+  "Talk Show",
+  "Music",
+  "Short Film",
+  "Religious",
+  "Reality Show",
+  "Concert",
+  "Theater",
 ];
 
 export const SORTING_OPTIONS = [
@@ -1565,5 +1587,140 @@ export const SORTING_OPTIONS = [
   "New (year of manufacture)",
   "Old (year of manufacture)",
   "Highest score",
-  "IMDB rating"
+  "IMDB rating",
+];
+
+// Iranian slider data
+export const IRANIAN_SLIDER_DATA = [
+  {
+    id: 1,
+    title: "Honey Collector",
+    image: assets.iranianSlider1,
+    info: "More information",
+  },
+  {
+    id: 2,
+    title: "Red Hand",
+    image: assets.iranianSlider2,
+    info: "More information",
+  },
+  {
+    id: 3,
+    title: "City of Dreams",
+    image: assets.iranianSlider3,
+    info: "More information",
+  },
+  {
+    id: 4,
+    title: "Dream Bridge",
+    image: assets.iranianSlider4,
+    info: "More information",
+  },
+];
+
+// Foreign slider data
+export const FOREIGN_DIRECTORS_DATA = [
+  {
+    id: 1,
+    image: assets.moviePoster1,
+  },
+  {
+    id: 2,
+    image: assets.moviePoster2,
+  },
+  {
+    id: 3,
+    image: assets.moviePoster3,
+  },
+  {
+    id: 4,
+    image: assets.moviePoster4,
+  },
+  {
+    id: 5,
+    image: assets.moviePoster5,
+  },
+  {
+    id: 6,
+    image: assets.moviePoster6,
+  },
+  {
+    id: 7,
+    image: assets.moviePoster6,
+  },
+  {
+    id: 8,
+    image: assets.moviePoster6,
+  },
+  
+];
+
+export const FOREIGN_MALE_ACTORS_DATA = [
+  {
+    id: 1,
+    image: assets.moviePoster5,
+  },
+  {
+    id: 2,
+    image: assets.moviePoster6,
+  },
+  {
+    id: 3,
+    image: assets.freePoster1,
+  },
+  {
+    id: 4,
+    image: assets.freePoster2,
+  },
+  {
+    id: 5,
+    image: assets.moviePoster5,
+  },
+  {
+    id: 6,
+    image: assets.moviePoster6,
+  },
+  {
+    id: 7,
+    image: assets.freePoster1,
+  },
+  {
+    id: 8,
+    image: assets.freePoster2,
+  },
+];
+
+export const FOREIGN_ACTRESSES_DATA = [
+  {
+    id: 1,
+    image: assets.freePoster3,
+  },
+  {
+    id: 2,
+    image: assets.freePoster4,
+  },
+  {
+    id: 3,
+    image: assets.freePoster5,
+  },
+  {
+    id: 4,
+    image: assets.freePoster6,
+  },
+  {
+    id: 6,
+    image: assets.freePoster3,
+  },
+  {
+    id: 7,
+    image: assets.freePoster4,
+  },
+  {
+    id: 8,
+    image: assets.freePoster5,
+  },
+  {
+    id: 9,
+    image: assets.freePoster6,
+  },
 ];

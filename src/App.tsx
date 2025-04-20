@@ -35,7 +35,7 @@ function App() {
                 <Route path="movies" element={<MoviesPage />} />
                 <Route path="series" element={<MoviesPage />} />
                 <Route path="movies-and-series" element={<MoviesPage />} />
-                {/* <Route path="iranian" element={<MoviesPage />} /> */}
+                <Route path="foreign" element={<MoviesPage />} />
               </Route>
             </Routes>
           </Suspense>
