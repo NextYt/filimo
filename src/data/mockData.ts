@@ -1652,7 +1652,6 @@ export const FOREIGN_DIRECTORS_DATA = [
     id: 8,
     image: assets.moviePoster6,
   },
-  
 ];
 
 export const FOREIGN_MALE_ACTORS_DATA = [
@@ -1722,5 +1721,20 @@ export const FOREIGN_ACTRESSES_DATA = [
   {
     id: 9,
     image: assets.freePoster6,
+  },
+];
+
+export const FOREIGN_SLIDERS_DATA = [
+  {
+    sliderType: "directors",
+    title: "Foreign directors",
+  },
+  {
+    sliderType: "maleActors",
+    title: "Foreign male actors",
+  },
+  {
+    sliderType: "actresses",
+    title: "Foreign actresses",
   },
 ];

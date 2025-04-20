@@ -4,22 +4,25 @@ import "./MovieFilter.css";
 import FilterTags from "../FilterTags/FilterTags";
 import SortingDropdown from "../SortingDropdown/SortingDropdown";
 import FilterDropdowns from "../FilterDropdowns/FilterDropdowns";
+import Button from "../../../../components/Button/Button";
+import { assets } from "../../../../assets/assets";
+import Image from "../../../../components/ImageComponent/Image";
 
 // Add CSS styles that were previously added directly through JS
 const MovieFilter: React.FC = () => {
-  const { 
-    filters, 
-    showFilters, 
+  const {
+    filters,
+    showFilters,
     selectedSort,
-    toggleFilters, 
+    toggleFilters,
     getActiveFiltersCount,
     syncFiltersWithUrl,
-    setSort
+    setSort,
   } = useMovieFilters();
-  
+
   const [isAnimating, setIsAnimating] = useState(false);
   const [filterVisible, setFilterVisible] = useState(false);
-  
+
   // Sync filters with URL parameters when component mounts or URL changes
   useEffect(() => {
     syncFiltersWithUrl();
@@ -57,8 +60,10 @@ const MovieFilter: React.FC = () => {
       <div className="filter-buttons">
         {/* Only show filter button if there are active filters */}
         {hasActiveFilters && (
-          <button
-            className={`filter-btn ${hasActiveFilters ? "active" : ""} ${showFilters ? "active" : ""}`}
+          <Button
+            className={`filter-btn ${hasActiveFilters ? "active" : ""} ${
+              showFilters ? "active" : ""
+            }`}
             onClick={handleToggleFilters}
             disabled={isAnimating}
           >
@@ -66,18 +71,18 @@ const MovieFilter: React.FC = () => {
             {activeFilterCount > 0 && (
               <span className="filter-count">{activeFilterCount}</span>
             )}
-          </button>
+          </Button>
         )}
-        
+
         {/* Always show this button when no active filters */}
         {!hasActiveFilters && (
-          <button
+          <Button
             className="filter-btn"
             onClick={handleToggleFilters}
             disabled={isAnimating}
           >
             <span>Filter</span>
-          </button>
+          </Button>
         )}
 
         {/* Active Filter Tags */}
@@ -88,13 +93,13 @@ const MovieFilter: React.FC = () => {
           <div className="filter-tags">
             <div className="filter-tag">
               <span>Sort: {selectedSort}</span>
-              <button 
-                className="filter-tag-close" 
+              <Button
+                className="filter-tag-close"
                 onClick={() => setSort("Default")}
                 aria-label="Reset sort to default"
               >
-                ×
-              </button>
+                <Image src={assets.times} alt="close" />
+              </Button>
             </div>
           </div>
         )}
@@ -107,7 +112,10 @@ const MovieFilter: React.FC = () => {
             filters.contentType !== "All" ? "active" : ""
           }`}
         >
-          <span>{filters.contentType}</span>
+          {window.location.pathname !== "/foreign" && (
+            <span>{filters.contentType}</span>
+          )}
+          {window.location.pathname === "/foreign" && <span>Foreign</span>}
         </div>
       </div>
 
@@ -120,8 +128,8 @@ const MovieFilter: React.FC = () => {
               : "fadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
         >
-          <FilterDropdowns 
-            onApply={() => toggleFilters()} 
+          <FilterDropdowns
+            onApply={() => toggleFilters()}
             isAnimating={isAnimating}
           />
         </div>

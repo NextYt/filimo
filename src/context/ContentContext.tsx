@@ -18,7 +18,8 @@ import {
   IRANIAN_SLIDER_DATA,
   FOREIGN_DIRECTORS_DATA,
   FOREIGN_MALE_ACTORS_DATA,
-  FOREIGN_ACTRESSES_DATA
+  FOREIGN_ACTRESSES_DATA,
+  FOREIGN_SLIDERS_DATA,
 } from "../data/mockData";
 
 // Define filter options
@@ -49,6 +50,7 @@ interface ContentState {
   foreignDirectorsData: typeof FOREIGN_DIRECTORS_DATA;
   foreignMaleActorsData: typeof FOREIGN_MALE_ACTORS_DATA;
   foreignActressesData: typeof FOREIGN_ACTRESSES_DATA;
+  foreignSlidersData: typeof FOREIGN_SLIDERS_DATA;
   currentCategory: "Movie" | "Series";
   activePosterIndex: number;
   activeMovieCategories: string[];
@@ -95,6 +97,7 @@ const initialContentState: ContentState = {
   availableCategories: MOVIE_CATEGORIES,
   selectedSort: SORTING_OPTIONS[0],
   availableSortOptions: SORTING_OPTIONS,
+  foreignSlidersData: FOREIGN_SLIDERS_DATA,
   filters: {
     hd: false,
     age: "All",
