@@ -18,7 +18,7 @@ const MoviesPage: React.FC = () => {
   const { filterMovies, isIranianContent, isForeignContent } = useMovieFilters();
   const { state, dispatch } = useContent(); // Get data from ContentContext
   const [stickyFilter, setStickyFilter] = useState(false);
-  const [showForeignContent, setShowForeignContent] = useState(true);
+  const [showMoreContent, setShowMoreContent] = useState(false);
   
   // Handle scroll for sticky filter
   const handleScroll = () => {
@@ -53,16 +53,21 @@ const MoviesPage: React.FC = () => {
   
   // Handle show more button click for foreign page
   const handleShowMoreClick = () => {
-    setShowForeignContent(false);
+    setShowMoreContent(true);
   };
 
   return (
     <div className="movies-page">
+      {/* Filter should always be visible for proper navigation */}
+      <div className={`movie-filter-container ${stickyFilter ? "sticky" : ""}`}>
+        <MovieFilter key="movie-filter" />
+      </div>
+
       {/* Iranian slider that shows when country is Iran or path includes 'iranian' */}
       {!isForeignContent && <IranianSlider isVisible={isIranianContent} />}
       
       {/* Foreign sliders that show when on the foreign page path */}
-      {isForeignContent && showForeignContent && (
+      {isForeignContent && (
         <div className="foreign-sliders-container">
           <ForeignSlider 
             isVisible={true} 
@@ -82,41 +87,37 @@ const MoviesPage: React.FC = () => {
             title="Foreign actresses" 
           />
           
-          <div className="show-more-container">
-            <Button 
-              className="show-more-btn" 
-              onClick={handleShowMoreClick}
-            >
-              Show more
-            </Button>
-          </div>
+          {!showMoreContent && (
+            <div className="show-more-container">
+              <Button 
+                className="show-more-btn" 
+                onClick={handleShowMoreClick}
+              >
+                Show more
+              </Button>
+            </div>
+          )}
         </div>
       )}
       
-      {/* Don't show filter and content on foreign page if foreign sliders are showing */}
-      {(!isForeignContent || !showForeignContent) && (
-        <>
-          <div className={`movie-filter-container ${stickyFilter ? "sticky" : ""}`}>
-            <MovieFilter key="movie-filter" />
-          </div>
-
-          <div className="movie-sections">
-            {hasResults ? (
-              Object.keys(filteredMovies).map(
-                (category, index) =>
-                  filteredMovies[category].length > 0 && (
-                    <MovieSection
-                      key={`category-${index}`}
-                      category={category}
-                      movies={filteredMovies[category]}
-                    />
-                  )
-              )
-            ) : (
-              <EmptyState className="no-results" />
-            )}
-          </div>
-        </>
+      {/* Show content sections either if not on foreign page or if showMoreContent is true */}
+      {(!isForeignContent || showMoreContent) && (
+        <div className="movie-sections">
+          {hasResults ? (
+            Object.keys(filteredMovies).map(
+              (category, index) =>
+                filteredMovies[category].length > 0 && (
+                  <MovieSection
+                    key={`category-${index}`}
+                    category={category}
+                    movies={filteredMovies[category]}
+                  />
+                )
+            )
+          ) : (
+            <EmptyState className="no-results" />
+          )}
+        </div>
       )}
     </div>
   );

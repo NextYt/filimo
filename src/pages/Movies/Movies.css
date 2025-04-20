@@ -8,7 +8,7 @@
 /* Foreign sliders container styling */
 .foreign-sliders-container {
   padding: 10px 0;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .show-more-container {
@@ -41,6 +41,7 @@
   z-index: 50; /* Lower z-index that won't conflict with header */
   transition: all 0.3s ease;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .movie-filter-container.sticky {
