@@ -4,11 +4,9 @@ import Image from "../../../../components/ImageComponent/Image";
 import MovieEpisodeItem from "../MovieEpisode/MovieEpisodeItem";
 import Button from "../../../../components/Button/Button";
 import { useContentSelector } from "../../../../context";
-import { useEffect, useState, useRef, useCallback } from "react";
-// Import Swiper components and styles
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
 import { Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
+import CustomSwiper from "../../../../components/CustomSwiper/CustomSwiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -35,40 +33,10 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
   // Create a local state to track episodes
   const [visibleEpisodes, setVisibleEpisodes] = useState(episodes || []);
 
-  // Reference to the swiper instance
-  const swiperRef = useRef<SwiperType | null>(null);
-
-  // Track custom navigation states
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
-
   // Update visible episodes when the movieDetail changes
   useEffect(() => {
     setVisibleEpisodes(episodes || []);
   }, [episodes]);
-
-  // Update navigation state
-  const updateNavigationState = useCallback(() => {
-    if (swiperRef.current) {
-      setIsBeginning(swiperRef.current.isBeginning);
-      setIsEnd(swiperRef.current.isEnd);
-    }
-  }, []);
-
-  // Handle manual navigation
-  const handlePrev = useCallback(() => {
-    if (swiperRef.current && !isBeginning) {
-      swiperRef.current.slidePrev();
-      updateNavigationState();
-    }
-  }, [isBeginning, updateNavigationState]);
-
-  const handleNext = useCallback(() => {
-    if (swiperRef.current && !isEnd) {
-      swiperRef.current.slideNext();
-      updateNavigationState();
-    }
-  }, [isEnd, updateNavigationState]);
 
   return (
     <div className="section-main-bottom">
@@ -138,63 +106,60 @@ const MovieDetailsSection = ({ movieDetail }: MovieDetailsSectionProps) => {
           {/* Show episodes list ONLY for Series */}
           {!isMovie && visibleEpisodes.length > 0 && (
             <div className="section-bootom-movie-wrapper relative px-10">
-              <Swiper
+              <CustomSwiper
+                slides={visibleEpisodes.map((episode) => ({
+                  id: episode.id,
+                  content: <MovieEpisodeItem episode={episode} />,
+                }))}
                 modules={[Navigation]}
+                slidesPerView="auto"
                 spaceBetween={15}
-                slidesPerView={"auto"}
-                watchSlidesProgress={true}
-                onInit={(swiper) => {
-                  swiperRef.current = swiper;
-                  updateNavigationState();
-                }}
-                onSlideChange={() => {
-                  updateNavigationState();
-                }}
-                onResize={() => {
-                  // Delay update to ensure Swiper has recalculated
-                  setTimeout(updateNavigationState, 100);
-                }}
-                onAfterInit={() => {
-                  // Ensure correct initial state after DOM is fully rendered
-                  setTimeout(updateNavigationState, 100);
-                }}
                 className="section-bootom-movie-wrapper-list"
-              >
-                {visibleEpisodes.map((episode) => (
-                  <SwiperSlide key={episode.id} className="!w-auto !h-auto">
-                    <MovieEpisodeItem episode={episode} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                navigation={{
+                  prevEl: ".section-bootom-movie-wrapper .nav-prev",
+                  nextEl: ".section-bootom-movie-wrapper .nav-next",
+                  disabledClass: "opacity-30 cursor-not-allowed",
+                  enabled: true,
+                }}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                  },
+                  640: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 15,
+                  },
+                }}
+                renderSlide={(slide) => (
+                  <div className="!w-auto !h-auto">{slide.content}</div>
+                )}
+              />
 
-              <div
-                onClick={handleNext}
-                className={`absolute top-1/2 right-0 transform -translate-y-1/2 w-8 h-8 bg-black text-white bg-opacity-50 rounded-full flex items-center justify-center z-10 ${
-                  isEnd
-                    ? "opacity-30 cursor-not-allowed"
-                    : "opacity-100 cursor-pointer"
-                }`}
-              >
-                <Image src={assets.angleRight} alt="Next" />
-              </div>
-
-              <div
-                onClick={handlePrev}
-                className={`absolute top-1/2 left-0 transform -translate-y-1/2 w-8 h-8 bg-black text-white bg-opacity-50 rounded-full flex items-center justify-center z-10 ${
-                  isBeginning
-                    ? "opacity-30 cursor-not-allowed"
-                    : "opacity-100 cursor-pointer"
-                }`}
+              <Button ButtonElement="button"
+                className="nav-prev absolute top-1/2 -translate-y-1/2 left-0 w-[50px] h-[50px] bg-black/40 backdrop-blur-[14px] text-white rounded-full flex items-center justify-center cursor-pointer z-10"
+                aria-label="Previous slide"
               >
                 <Image src={assets.angleLeft} alt="Previous" />
-              </div>
+              </Button>
+
+              <Button ButtonElement="button"
+                className="nav-next absolute top-1/2 -translate-y-1/2 right-0 w-[50px] h-[50px] bg-black/40 backdrop-blur-[14px] text-white rounded-full flex items-center justify-center cursor-pointer z-10"
+                aria-label="Next slide"
+              >
+                <Image src={assets.angleRight} alt="Next" />
+              </Button>
             </div>
           )}
 
           {/* Show a message if no episodes are available */}
           {!isMovie && visibleEpisodes.length === 0 && (
             <div className="text-center p-8 text-white">
-              <p>No episodes available for this series.</p>
+              No episodes available
             </div>
           )}
         </div>

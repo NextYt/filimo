@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   disabled,
   target = "_self",
+  ...props
 }) => {
   if (ButtonElement === "a") {
     // Force TypeScript to accept the disabled prop on anchor element
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
         onClick,
         disabled,
         target,
+        ...props,
       },
       children
     );
@@ -32,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      {...props}
     >
       {children}
     </button>

@@ -9,4 +9,6 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   target?: string;
+  ariaLabel?: string;
+  [...props]: React.ComponentProps
 }

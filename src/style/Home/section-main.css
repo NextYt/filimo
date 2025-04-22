@@ -282,7 +282,7 @@
 .movie-section-name {
   font-size: 11px;
   line-height: 15px;
-  text-align: right;
+  text-align: auto;
   color: #f6f6f6;
   font-weight: 700;
   max-width: 100%;

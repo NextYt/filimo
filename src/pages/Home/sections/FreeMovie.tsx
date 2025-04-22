@@ -2,13 +2,15 @@ import { useSectionsSelector } from "../../../context";
 import "../../../style/Home/sectiono-free-movie.css";
 import FreeMovieItem from "../components/FreeMovie/FreeMovieItem";
 import { useRef, useState, useCallback } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import Image from "../../../components/ImageComponent/Image";
 import { assets } from "../../../assets/assets";
+import CustomSwiper from "../../../components/CustomSwiper/CustomSwiper";
+import type { FreeMovieItem as FreeMovieItemType } from "../../../types/mockdata";
 import "swiper/css";
 import "swiper/css/navigation";
+import Button from "../../../components/Button/Button";
 
 const FreeMovie = () => {
   // Using our optimized selector hook - only subscribes to freeMoviesSection
@@ -36,21 +38,6 @@ const FreeMovie = () => {
     }
   }, []);
 
-  // Handle manual navigation
-  const handlePrev = useCallback(() => {
-    if (swiperRef.current && !isBeginning) {
-      swiperRef.current.slidePrev();
-      updateNavigationState();
-    }
-  }, [isBeginning, updateNavigationState]);
-
-  const handleNext = useCallback(() => {
-    if (swiperRef.current && !isEnd) {
-      swiperRef.current.slideNext();
-      updateNavigationState();
-    }
-  }, [isEnd, updateNavigationState]);
-
   return (
     <section className="section-free-movie" ref={sectionRef}>
       <div className="free-movie">
@@ -58,50 +45,48 @@ const FreeMovie = () => {
           <h3>{title}</h3>
         </div>
         <div className="section-free-movie-wrapper relative px-10">
-          <Swiper
+          <CustomSwiper
+            slides={movies.map((movie: FreeMovieItemType) => ({
+              id: movie.id,
+              content: <FreeMovieItem movie={movie} />,
+            }))}
             modules={[Navigation]}
             spaceBetween={15}
-            slidesPerView={"auto"}
+            slidesPerView="auto"
             watchSlidesProgress={true}
-            onInit={(swiper) => {
+            onSwiper={(swiper) => {
               swiperRef.current = swiper;
               updateNavigationState();
             }}
-            onSlideChange={() => {
-              updateNavigationState();
-            }}
+            onSlideChange={updateNavigationState}
             onResize={() => {
               setTimeout(updateNavigationState, 100);
             }}
-            onAfterInit={() => {
-              setTimeout(updateNavigationState, 100);
-            }}
             className="section-free-movie-list"
-          >
-            {movies.map((movie, index) => (
-              <SwiperSlide key={`movie-${movie.id}-${index}`} className="!w-auto !h-auto">
-                <FreeMovieItem movie={movie} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            renderSlide={(slide) => (
+              <div className="!w-auto !h-auto">{slide.content}</div>
+            )}
+          />
 
-          <div
-            onClick={handlePrev}
-            className={`absolute top-1/2 left-2 transform -translate-y-1/2 w-10 h-10 bg-black text-white  rounded-full flex items-center justify-center z-10 cursor-pointer ${
+          <Button
+            ButtonElement="button"
+            onClick={() => swiperRef.current?.slidePrev()}
+            className={`absolute top-1/2 left-2 transform -translate-y-1/2 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center z-10 cursor-pointer ${
               isBeginning ? "opacity-30 cursor-not-allowed" : "opacity-100"
             }`}
           >
             <Image src={assets.angleLeft} alt="Previous" />
-          </div>
+          </Button>
 
-          <div
-            onClick={handleNext}
-            className={`absolute top-1/2 right-2 transform -translate-y-1/2 w-10 h-10 bg-black text-white  rounded-full flex items-center justify-center z-10 cursor-pointer ${
+          <Button
+            ButtonElement="button"
+            onClick={() => swiperRef.current?.slideNext()}
+            className={`absolute top-1/2 right-2 transform -translate-y-1/2 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center z-10 cursor-pointer ${
               isEnd ? "opacity-30 cursor-not-allowed" : "opacity-100"
             }`}
           >
             <Image src={assets.angleRight} alt="Next" />
-          </div>
+          </Button>
         </div>
       </div>
     </section>

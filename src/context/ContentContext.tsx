@@ -10,6 +10,7 @@ import React, {
 import * as data from "../data";
 
 import { FilterOptions } from "../types/context";
+export type { FilterOptions };  // Re-export FilterOptions
 
 // Define a more flexible type for categorized content that can hold both formats
 export type CategorizedContent = Record<string, any>;

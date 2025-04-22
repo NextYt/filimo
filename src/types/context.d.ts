@@ -1,5 +1,5 @@
-export // Define filter options
-type FilterOptions = {
+// Define filter options
+export type FilterOptions = {
   hd: boolean;
   age: string;
   language: string;
