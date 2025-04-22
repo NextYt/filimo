@@ -1,25 +1,13 @@
-import { MenuItem, SubMenuItem } from "../../../../types/mockdata";
+import { SubMenuItem } from "../../../../types/mockdata";
 import { assets } from "../../../../assets/assets";
 import Image from "../../../../components/ImageComponent/Image";
 import Button from "../../../../components/Button/Button";
 import { useUISelector } from "../../../../context";
-
-// Extended MenuItem interface to support onClick events
-interface ExtendedMenuItem extends MenuItem {
-  onClick?: (e: React.MouseEvent) => void;
-}
-
-// Extended SubMenuItem interface to support onClick events
-interface ExtendedSubMenuItem extends SubMenuItem {
-  onClick?: (e: React.MouseEvent) => void;
-}
-
-interface NavigationItemProps {
-  item?: ExtendedMenuItem;
-  itemId?: number | string;
-  className?: string;
-  isSmallScreen?: boolean;
-}
+import {
+  ExtendedMenuItem,
+  ExtendedSubMenuItem,
+  NavigationItemProps,
+} from "../../../../types/header.s";
 
 const NavigationItem = ({
   item,
@@ -28,10 +16,12 @@ const NavigationItem = ({
   isSmallScreen = false,
 }: NavigationItemProps) => {
   // If itemId is provided, get the navigation item from context
-  const navigationItem = useUISelector(context => {
+  const navigationItem = useUISelector((context) => {
     if (itemId !== undefined) {
       if (isSmallScreen) {
-        return context.state.smallScreenMenuItems[Number(itemId)] as ExtendedMenuItem;
+        return context.state.smallScreenMenuItems[
+          Number(itemId)
+        ] as ExtendedMenuItem;
       }
       return context.state.navigationItems[Number(itemId)] as ExtendedMenuItem;
     }
@@ -40,10 +30,10 @@ const NavigationItem = ({
 
   // Use the item from props or from context
   const resolvedItem = (navigationItem || item) as ExtendedMenuItem;
-  
+
   // Return null if no item could be resolved
   if (!resolvedItem) {
-    console.error('NavigationItem: No item provided via props or context');
+    console.error("NavigationItem: No item provided via props or context");
     return null;
   }
 
@@ -56,7 +46,8 @@ const NavigationItem = ({
     hasDropdown,
     dropdownClass,
     subMenuItems,
-    onClick
+    onClick,
+    target,
   } = resolvedItem;
 
   // Determine the appropriate CSS classes
@@ -91,7 +82,12 @@ const NavigationItem = ({
 
   return (
     <li className={itemClass}>
-      <Button ButtonElement="a" href={href} onClick={handleClick}>
+      <Button
+        ButtonElement="a"
+        target={target}
+        href={href}
+        onClick={handleClick}
+      >
         {label && <span>{label}</span>}
         {icon && icon !== assets.downArrow && (
           <Image
@@ -113,8 +109,8 @@ const NavigationItem = ({
               const extendedSubItem = subItem as ExtendedSubMenuItem;
               return (
                 <li key={idx} className="hidden-menu-item">
-                  <Button 
-                    ButtonElement="a" 
+                  <Button
+                    ButtonElement="a"
                     href={subItem.href}
                     onClick={extendedSubItem.onClick}
                   >

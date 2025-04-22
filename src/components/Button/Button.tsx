@@ -1,38 +1,35 @@
-import React, { ReactNode, MouseEvent } from 'react';
+import React from "react";
+import { ButtonProps } from "../../types/button";
 
-interface ButtonProps {
-  children?: ReactNode;
-  className?: string;
-  onClick?: (event: MouseEvent<HTMLElement>) => void;
-  ButtonElement?: "button" | "a";
-  href?: string;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-}
-
-const Button: React.FC<ButtonProps> = ({ 
-  children, 
-  className = '', 
-  onClick, 
-  ButtonElement = 'button',
-  href = '#',
-  type = 'button',
-  disabled
+const Button: React.FC<ButtonProps> = ({
+  children,
+  className = "",
+  onClick,
+  ButtonElement = "button",
+  href = "#",
+  type = "button",
+  disabled,
+  target = "_self",
 }) => {
-  if (ButtonElement === 'a') {
+  if (ButtonElement === "a") {
     // Force TypeScript to accept the disabled prop on anchor element
-    return React.createElement('a', {
-      href,
-      className,
-      onClick,
-      disabled
-    }, children);
+    return React.createElement(
+      "a",
+      {
+        href,
+        className,
+        onClick,
+        disabled,
+        target,
+      },
+      children
+    );
   }
 
   return (
-    <button 
-      className={className} 
-      onClick={onClick} 
+    <button
+      className={className}
+      onClick={onClick}
       type={type}
       disabled={disabled}
     >

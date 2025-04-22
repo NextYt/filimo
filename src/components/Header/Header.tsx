@@ -11,23 +11,11 @@ import NavigationItem from "../../pages/Home/components/Navigation/NavigationIte
 import { MenuItem, SubMenuItem } from "../../types/mockdata";
 import { useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-// Define the button interface based on usage in the file
-interface HeaderButton {
-  label: string;
-  className: string;
-  onClick?: () => void;
-}
-
-// Extended MenuItem with onClick handler
-interface ExtendedMenuItem extends MenuItem {
-  onClick?: (e: React.MouseEvent) => void;
-}
-
-// Extended SubMenuItem with onClick handler
-interface ExtendedSubMenuItem extends SubMenuItem {
-  onClick?: (e: React.MouseEvent) => void;
-}
+import {
+  ExtendedSubMenuItem,
+  ExtendedMenuItem,
+  HeaderButton,
+} from "../../types/header.s";
 
 const Header = () => {
   // Using our optimized selectors to only get what we need
@@ -287,7 +275,10 @@ const Header = () => {
         }
         return item;
       })
-      .filter((item): item is ExtendedMenuItem => item !== null);
+      .filter(
+        (item: ExtendedMenuItem | null): item is ExtendedMenuItem =>
+          item !== null
+      );
 
     // Add Iranian item and return
     return navItems;
@@ -307,7 +298,10 @@ const Header = () => {
         }
         return item;
       })
-      .filter((item): item is ExtendedMenuItem => item !== null);
+      .filter(
+        (item: ExtendedMenuItem | null): item is ExtendedMenuItem =>
+          item !== null
+      );
 
     // Add Iranian item and return
     return smallScreenItems;

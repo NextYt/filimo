@@ -8,20 +8,9 @@ import {
   USER_FEEDBACK_SECTION,
   FAQ_SECTION,
   TAB_SECTION
-} from '../data/mockData';
+} from '../data/homeData';
 
-// Define the Sections state type
-interface SectionsState {
-  deviceSection: typeof DEVICE_SECTION;
-  tvSection: typeof TV_SECTION;
-  freeMoviesSection: typeof FREE_MOVIES_SECTION;
-  childSection: typeof CHILD_SECTION;
-  onlineSection: typeof ONLINE_SECTION;
-  userFeedbackSection: typeof USER_FEEDBACK_SECTION;
-  faqSection: typeof FAQ_SECTION;
-  tabSection: typeof TAB_SECTION;
-  expandedFaqId: number | null;
-}
+import { SectionsState } from '../types/sectionsContext';
 
 // Define Sections actions
 type SectionsAction = 

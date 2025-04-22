@@ -1,56 +1,35 @@
-import React, { createContext, useContext, useReducer, ReactNode, useMemo } from "react";
-import {
-  HERO_DETAIL_LIST,
-  HERO_TEXTS,
-  MOVIE_POSTERS,
-  SERIES_POSTERS, 
-  FEATURED_MOVIE_DETAIL,
-  FEATURED_SERIES_DETAIL,
-  FREE_MOVIES_SECTION,
-  FOOTER_LINKS,
-  SOCIAL_MEDIA,
-  MOVIE_CATEGORIES,
-  SORTING_OPTIONS,
-  CATEGORIZED_MOVIES,
-  FILTER_AGE_OPTIONS,
-  FILTER_LANGUAGE_OPTIONS,
-  FILTER_COUNTRY_OPTIONS,
-  IRANIAN_SLIDER_DATA,
-  FOREIGN_DIRECTORS_DATA,
-  FOREIGN_MALE_ACTORS_DATA,
-  FOREIGN_ACTRESSES_DATA,
-  FOREIGN_SLIDERS_DATA,
-} from "../data/mockData";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  ReactNode,
+  useMemo,
+} from "react";
 
-// Define filter options
-export type FilterOptions = {
-  hd: boolean;
-  age: string;
-  language: string;
-  country: string;
-  genre: string;
-  contentType: "All" | "Movie" | "Series";
-};
+// import everything with simple line from index.ts
+import * as data from "../data";
+
+import { FilterOptions } from "../types/context";
 
 // Define a more flexible type for categorized content that can hold both formats
 export type CategorizedContent = Record<string, any>;
 
 // Define the Content state type
 interface ContentState {
-  heroDetailList: typeof HERO_DETAIL_LIST;
-  heroTexts: typeof HERO_TEXTS;
-  moviePosters: typeof MOVIE_POSTERS;
-  seriesPosters: typeof SERIES_POSTERS;
-  featuredMovieDetail: typeof FEATURED_MOVIE_DETAIL;
-  featuredSeriesDetail: typeof FEATURED_SERIES_DETAIL;
-  freeMoviesSection: typeof FREE_MOVIES_SECTION;
-  footerLinks: typeof FOOTER_LINKS;
-  socialMedia: typeof SOCIAL_MEDIA;
-  iranianSliderData: typeof IRANIAN_SLIDER_DATA;
-  foreignDirectorsData: typeof FOREIGN_DIRECTORS_DATA;
-  foreignMaleActorsData: typeof FOREIGN_MALE_ACTORS_DATA;
-  foreignActressesData: typeof FOREIGN_ACTRESSES_DATA;
-  foreignSlidersData: typeof FOREIGN_SLIDERS_DATA;
+  heroDetailList: typeof data.homeData.HERO_DETAIL_LIST;
+  heroTexts: typeof data.homeData.HERO_TEXTS;
+  moviePosters: typeof data.homeData.MOVIE_POSTERS;
+  seriesPosters: typeof data.homeData.SERIES_POSTERS;
+  featuredMovieDetail: typeof data.homeData.FEATURED_MOVIE_DETAIL;
+  featuredSeriesDetail: typeof data.homeData.FEATURED_SERIES_DETAIL;
+  freeMoviesSection: typeof data.homeData.FREE_MOVIES_SECTION;
+  footerLinks: typeof data.footer.FOOTER_LINKS;
+  socialMedia: typeof data.footer.SOCIAL_MEDIA;
+  iranianSliderData: typeof data.sliders.IRANIAN_SLIDER_DATA;
+  foreignDirectorsData: typeof data.sliders.FOREIGN_DIRECTORS_DATA;
+  foreignMaleActorsData: typeof data.sliders.FOREIGN_MALE_ACTORS_DATA;
+  foreignActressesData: typeof data.sliders.FOREIGN_ACTRESSES_DATA;
+  foreignSlidersData: typeof data.sliders.FOREIGN_SLIDERS_DATA;
   currentCategory: "Movie" | "Series";
   activePosterIndex: number;
   activeMovieCategories: string[];
@@ -66,53 +45,59 @@ interface ContentState {
 }
 
 // Define Content actions
-type ContentAction = 
-  | { type: "UPDATE_MOVIE_POSTERS"; payload: typeof MOVIE_POSTERS; }
-  | { type: "UPDATE_SERIES_POSTERS"; payload: typeof SERIES_POSTERS; }
-  | { type: "SET_CATEGORY"; payload: "Movie" | "Series"; }
-  | { type: "SET_ACTIVE_POSTER"; payload: number; }
-  | { type: "SET_ACTIVE_MOVIE_CATEGORIES"; payload: string[]; }
-  | { type: "SET_SORT"; payload: string; }
-  | { type: "SET_FILTERS"; payload: Partial<FilterOptions>; }
-  | { type: "TOGGLE_FILTERS"; payload?: boolean; };
+type ContentAction =
+  | {
+      type: "UPDATE_MOVIE_POSTERS";
+      payload: typeof data.homeData.MOVIE_POSTERS;
+    }
+  | {
+      type: "UPDATE_SERIES_POSTERS";
+      payload: typeof data.homeData.SERIES_POSTERS;
+    }
+  | { type: "SET_CATEGORY"; payload: "Movie" | "Series" }
+  | { type: "SET_ACTIVE_POSTER"; payload: number }
+  | { type: "SET_ACTIVE_MOVIE_CATEGORIES"; payload: string[] }
+  | { type: "SET_SORT"; payload: string }
+  | { type: "SET_FILTERS"; payload: Partial<FilterOptions> }
+  | { type: "TOGGLE_FILTERS"; payload?: boolean };
 
 // Create the initial state
 const initialContentState: ContentState = {
-  heroDetailList: HERO_DETAIL_LIST,
-  heroTexts: HERO_TEXTS,
-  moviePosters: MOVIE_POSTERS,
-  seriesPosters: SERIES_POSTERS,
-  featuredMovieDetail: FEATURED_MOVIE_DETAIL,
-  featuredSeriesDetail: FEATURED_SERIES_DETAIL,
-  freeMoviesSection: FREE_MOVIES_SECTION,
-  footerLinks: FOOTER_LINKS,
-  socialMedia: SOCIAL_MEDIA,
-  iranianSliderData: IRANIAN_SLIDER_DATA,
-  foreignDirectorsData: FOREIGN_DIRECTORS_DATA,
-  foreignMaleActorsData: FOREIGN_MALE_ACTORS_DATA,
-  foreignActressesData: FOREIGN_ACTRESSES_DATA,
+  heroDetailList: data.homeData.HERO_DETAIL_LIST,
+  heroTexts: data.homeData.HERO_TEXTS,
+  moviePosters: data.homeData.MOVIE_POSTERS,
+  seriesPosters: data.homeData.SERIES_POSTERS,
+  featuredMovieDetail: data.homeData.FEATURED_MOVIE_DETAIL,
+  featuredSeriesDetail: data.homeData.FEATURED_SERIES_DETAIL,
+  freeMoviesSection: data.homeData.FREE_MOVIES_SECTION,
+  footerLinks: data.footer.FOOTER_LINKS,
+  socialMedia: data.footer.SOCIAL_MEDIA,
+  iranianSliderData: data.sliders.IRANIAN_SLIDER_DATA,
+  foreignDirectorsData: data.sliders.FOREIGN_DIRECTORS_DATA,
+  foreignMaleActorsData: data.sliders.FOREIGN_MALE_ACTORS_DATA,
+  foreignActressesData: data.sliders.FOREIGN_ACTRESSES_DATA,
   currentCategory: "Movie",
   activePosterIndex: 0,
   activeMovieCategories: [],
-  availableCategories: MOVIE_CATEGORIES,
-  selectedSort: SORTING_OPTIONS[0],
-  availableSortOptions: SORTING_OPTIONS,
-  foreignSlidersData: FOREIGN_SLIDERS_DATA,
+  availableCategories: data.filter.MOVIE_CATEGORIES,
+  selectedSort: data.filter.SORTING_OPTIONS[0],
+  availableSortOptions: data.filter.SORTING_OPTIONS,
+  foreignSlidersData: data.sliders.FOREIGN_SLIDERS_DATA,
   filters: {
     hd: false,
     age: "All",
     language: "All",
     country: "All",
     genre: "All",
-    contentType: "All"
+    contentType: "All",
   },
   showFilters: false,
   // Using CATEGORIZED_MOVIES directly as it should contain the correct structure already
-  categorizedMovies: CATEGORIZED_MOVIES,
+  categorizedMovies: data.moviesCategories.CATEGORIZED_MOVIES,
   // Add the filter options arrays from mockData
-  filterAgeOptions: FILTER_AGE_OPTIONS,
-  filterLanguageOptions: FILTER_LANGUAGE_OPTIONS,
-  filterCountryOptions: FILTER_COUNTRY_OPTIONS
+  filterAgeOptions: data.filter.FILTER_AGE_OPTIONS,
+  filterLanguageOptions: data.filter.FILTER_LANGUAGE_OPTIONS,
+  filterCountryOptions: data.filter.FILTER_COUNTRY_OPTIONS,
 };
 
 // Create Content reducer
@@ -128,23 +113,23 @@ const contentReducer = (
     case "SET_CATEGORY":
       // Important: When setting a category, also update the contentType filter
       // to ensure they stay in sync
-      return { 
-        ...state, 
+      return {
+        ...state,
         currentCategory: action.payload,
         activePosterIndex: 0,
         moviePosters: state.moviePosters.map((poster, index) => ({
           ...poster,
-          isActive: action.payload === "Movie" && index === 0
+          isActive: action.payload === "Movie" && index === 0,
         })),
         seriesPosters: state.seriesPosters.map((poster, index) => ({
           ...poster,
-          isActive: action.payload === "Series" && index === 0
+          isActive: action.payload === "Series" && index === 0,
         })),
         // Update the content type filter to match the selected category
         filters: {
           ...state.filters,
-          contentType: action.payload
-        }
+          contentType: action.payload,
+        },
       };
     case "SET_ACTIVE_POSTER":
       if (state.currentCategory === "Movie") {
@@ -153,8 +138,8 @@ const contentReducer = (
           activePosterIndex: action.payload,
           moviePosters: state.moviePosters.map((poster, index) => ({
             ...poster,
-            isActive: index === action.payload
-          }))
+            isActive: index === action.payload,
+          })),
         };
       } else {
         return {
@@ -162,96 +147,112 @@ const contentReducer = (
           activePosterIndex: action.payload,
           seriesPosters: state.seriesPosters.map((poster, index) => ({
             ...poster,
-            isActive: index === action.payload
-          }))
+            isActive: index === action.payload,
+          })),
         };
       }
     case "SET_ACTIVE_MOVIE_CATEGORIES":
       return {
         ...state,
-        activeMovieCategories: action.payload
+        activeMovieCategories: action.payload,
       };
     case "SET_SORT":
       // Validate that the sort option exists
       return {
         ...state,
-        selectedSort: state.availableSortOptions.includes(action.payload) 
-          ? action.payload 
-          : state.selectedSort
+        selectedSort: state.availableSortOptions.includes(action.payload)
+          ? action.payload
+          : state.selectedSort,
       };
     case "SET_FILTERS":
       // Create a validated version of the payload
       const validatedPayload: Partial<FilterOptions> = {};
-      
+
       // Handle contentType filter specially to ensure one-click reset works
       if (action.payload.contentType !== undefined) {
-        if (action.payload.contentType === 'All') {
+        if (action.payload.contentType === "All") {
           // When explicitly setting contentType to "All", don't change currentCategory
           // but ensure the filter is properly reset
-          validatedPayload.contentType = 'All';
-        } else if (action.payload.contentType === 'Movie' || action.payload.contentType === 'Series') {
+          validatedPayload.contentType = "All";
+        } else if (
+          action.payload.contentType === "Movie" ||
+          action.payload.contentType === "Series"
+        ) {
           // When setting to Movie or Series, update currentCategory in sync
           validatedPayload.contentType = action.payload.contentType;
           return {
             ...state,
             filters: {
               ...state.filters,
-              ...validatedPayload
+              ...validatedPayload,
             },
-            currentCategory: action.payload.contentType
+            currentCategory: action.payload.contentType,
           };
         }
       }
-      
+
       // Validate age filter
       if (action.payload.age !== undefined) {
         // Ensure the age value exists in the available options
-        if (action.payload.age === 'All' || state.filterAgeOptions.includes(action.payload.age)) {
+        if (
+          action.payload.age === "All" ||
+          state.filterAgeOptions.includes(action.payload.age)
+        ) {
           validatedPayload.age = action.payload.age;
         }
       }
-      
+
       // Validate language filter
       if (action.payload.language !== undefined) {
         // Ensure the language value exists in the available options
-        if (action.payload.language === 'All' || state.filterLanguageOptions.includes(action.payload.language)) {
+        if (
+          action.payload.language === "All" ||
+          state.filterLanguageOptions.includes(action.payload.language)
+        ) {
           validatedPayload.language = action.payload.language;
         }
       }
-      
+
       // Validate country filter
       if (action.payload.country !== undefined) {
         // Ensure the country value exists in the available options
-        if (action.payload.country === 'All' || state.filterCountryOptions.includes(action.payload.country)) {
+        if (
+          action.payload.country === "All" ||
+          state.filterCountryOptions.includes(action.payload.country)
+        ) {
           validatedPayload.country = action.payload.country;
         }
       }
-      
+
       // Validate genre filter - using availableCategories as the source of truth
       if (action.payload.genre !== undefined) {
         // Ensure the genre value exists in the available categories or is 'All'
-        if (action.payload.genre === 'All' || state.availableCategories.includes(action.payload.genre)) {
+        if (
+          action.payload.genre === "All" ||
+          state.availableCategories.includes(action.payload.genre)
+        ) {
           validatedPayload.genre = action.payload.genre;
         }
       }
-      
+
       // Validate HD filter (boolean value)
       if (action.payload.hd !== undefined) {
         validatedPayload.hd = Boolean(action.payload.hd);
       }
-      
+
       // For all filter changes, apply the validated payload
       return {
         ...state,
         filters: {
           ...state.filters,
-          ...validatedPayload
-        }
+          ...validatedPayload,
+        },
       };
     case "TOGGLE_FILTERS":
       return {
         ...state,
-        showFilters: action.payload !== undefined ? action.payload : !state.showFilters
+        showFilters:
+          action.payload !== undefined ? action.payload : !state.showFilters,
       };
     default:
       return state;
@@ -273,7 +274,7 @@ export const ContentProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(contentReducer, initialContentState);
-  
+
   // Memoize the context value to prevent unnecessary re-renders
   const contextValue = useMemo(() => ({ state, dispatch }), [state]);
 

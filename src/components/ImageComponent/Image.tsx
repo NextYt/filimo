@@ -1,33 +1,5 @@
-import React, { ComponentType, ReactElement, useState } from "react";
-
-interface AssetProps {
-  // Source can be a string (for PNG/SVG) or a React component (for icons)
-  src: string | ComponentType<any> | ReactElement;
-  // Alt text (for accessibility)
-  alt?: string;
-  // Fallback image source if the main source fails
-  fallbackSrc?: string;
-  // Fallback icon component if the main source fails
-  fallbackIcon?: ComponentType<any>;
-  // Color to apply to SVGs and icons
-  color?: string;
-  // Size for the icon or image
-  size?: number | string;
-  // Standard HTML attributes
-  className?: string;
-  width?: number | string;
-  height?: number | string;
-  // Whether to use lazy loading
-  lazy?: boolean;
-  // Event handlers
-  onLoad?: () => void;
-  onError?: (error?: any) => void;
-  // Additional styling
-  style?: React.CSSProperties;
-  // Any other props
-  [key: string]: any;
-}
-
+import React, { ComponentType, useState } from "react";
+import { AssetProps } from "../../types/assets";
 
 const Asset = ({
   src,
@@ -195,14 +167,16 @@ const Asset = ({
       />
     );
   }
-  
+
   // Default case for any other type of image URL
-  if (typeof src === 'string') {
+  if (typeof src === "string") {
     return (
       <img
         src={src}
         alt={alt}
-        className={`asset-image ${isLoaded ? "loaded" : "loading"} ${className}`}
+        className={`asset-image ${
+          isLoaded ? "loaded" : "loading"
+        } ${className}`}
         width={width || size}
         height={height || size}
         loading={lazy ? "lazy" : "eager"}
@@ -213,7 +187,7 @@ const Asset = ({
       />
     );
   }
-  
+
   // Fallback if no valid source
   return null;
 };

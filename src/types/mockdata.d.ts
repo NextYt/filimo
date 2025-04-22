@@ -13,6 +13,7 @@ export interface MenuItem {
   dropdownClass?: string;
   subMenuItems?: SubMenuItem[];
   onClick?: (e: React.MouseEvent) => void;
+  target?: string;
 }
 
 export interface HeroDetailItem {

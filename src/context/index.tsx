@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
-import { UIProvider, useUI } from './UIContext';
-import { ContentProvider, useContent } from './ContentContext';
-import { SectionsProvider, useSections } from './SectionsContext';
-import { AuthProvider, useAuth } from './AuthContext';
-import { NotificationsProvider } from './NotificationsContext';
+import React, { ReactNode } from "react";
+import { UIProvider, useUI } from "./UIContext";
+import { ContentProvider, useContent } from "./ContentContext";
+import { SectionsProvider, useSections } from "./SectionsContext";
+import { AuthProvider, useAuth } from "./AuthContext";
+import { NotificationsProvider } from "./NotificationsContext";
 
 // Export the hooks directly
-export { useUI } from './UIContext';
-export { useContent } from './ContentContext';
-export { useSections } from './SectionsContext';
-export { useAuth } from './AuthContext';
+export { useUI } from "./UIContext";
+export { useContent } from "./ContentContext";
+export { useSections } from "./SectionsContext";
+export { useAuth } from "./AuthContext";
 export { 
   useNotifications,
   useSuccessNotification,
