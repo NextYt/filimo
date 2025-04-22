@@ -6,7 +6,7 @@ export interface SubMenuItem {
 export interface MenuItem {
   label: string;
   href: string;
-  icon?: string;
+  icon?: string | React.ComponentType;
   iconWidth?: string;
   iconHeight?: string;
   hasDropdown?: boolean;

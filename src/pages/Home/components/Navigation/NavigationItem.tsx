@@ -89,7 +89,7 @@ const NavigationItem = ({
         onClick={handleClick}
       >
         {label && <span>{label}</span>}
-        {icon && icon !== assets.downArrow && (
+        {icon && icon !== assets.angleDown && (
           <Image
             src={icon}
             alt={label || ""}
@@ -98,7 +98,7 @@ const NavigationItem = ({
           />
         )}
         {/* Only render dropdown arrow if hasDropdown is true */}
-        {hasDropdown && <Image src={assets.downArrow} alt="dropdown" />}
+        {hasDropdown && <Image src={assets.angleDown} alt="dropdown" />}
       </Button>
 
       {/* Render dropdown menu if applicable */}

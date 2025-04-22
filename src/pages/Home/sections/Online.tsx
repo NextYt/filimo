@@ -3,6 +3,7 @@ import { assets } from '../../../assets/assets';
 import Image from '../../../components/ImageComponent/Image';
 import OnlineMovieCard from '../components/OnlineMovie/OnlineMovieCard';
 import '../../../style/Home/section-online.css';
+import { OnlineFeature, OnlineMovie } from '../../../types/mockdata';
 
 const Online = () => {
   // Using our sections context instead of direct import
@@ -19,7 +20,7 @@ const Online = () => {
           </h3>
           <div className="section-online-list">
             <div className="section-online-list-dev">
-              {features.map((feature, index) => (
+              {features.map((feature: OnlineFeature, index: number) => (
                 <div key={index} className="section-online-list-item">
                   <Image src={assets.checkmark} className="text-green-500" alt="checkmark" />
                   <span className="text-base md:text-xl">{feature.text}</span>
@@ -30,7 +31,7 @@ const Online = () => {
         </div>
         <div className="section-online-collection">
           <div className="section-online-box">
-            {movies.map((movie) => (
+            {movies.map((movie: OnlineMovie) => (
               <OnlineMovieCard 
                 key={movie.id} 
                 movie={movie} 

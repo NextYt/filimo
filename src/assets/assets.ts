@@ -12,6 +12,8 @@ import { FaPlus } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
+import { IoMdSearch } from "react-icons/io";
 
 export const assets = {
   // Logo and brand images
@@ -20,20 +22,18 @@ export const assets = {
   filimo: new URL("./images/filimo.png", import.meta.url).href,
 
   // Icons
-  downArrow: new URL("./images/downArrow.svg", import.meta.url).href,
-  dropArrowFill: new URL("./images/dropArrowFill.svg", import.meta.url).href,
   iconPlay: new URL("./images/icon-play.svg", import.meta.url).href,
   iconLockFill: new URL("./images/icon-lock_fill.webp", import.meta.url).href,
   iconLikeFill: new URL("./images/icon-like_fill.webp", import.meta.url).href,
   fire: new URL("./images/fire.svg", import.meta.url).href,
   horse: new URL("./images/horse.svg", import.meta.url).href,
-  search: new URL("./images/search.svg", import.meta.url).href,
   device: new URL("./images/device.png", import.meta.url).href,
   tomJerry: new URL("./images/tom-jerry.png", import.meta.url).href,
   cardImg3: new URL("./images/card-img-3.webp", import.meta.url).href,
   arrowTop: FaArrowUp,
   caretDown: FaCaretDown,
   youtube: FaYoutube,
+  search: IoMdSearch,
   telegram: FaTelegram,
   twitter: FaTwitter,
   instagram: FaInstagram,
@@ -45,6 +45,7 @@ export const assets = {
   angleRight: FaAngleRight,
   angleLeft: FaAngleLeft,
   times: FaTimes,
+  angleDown: FaAngleDown,
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,
   mobile: new URL("./images/mobile.webp", import.meta.url).href,
@@ -101,15 +102,12 @@ export const assets = {
   // Other resources
   avatar: new URL("./images/avatar.png", import.meta.url).href,
   virgol: new URL("./images/virgol.png", import.meta.url).href,
-  vpn: new URL("./images/vpn.png", import.meta.url).href,
-  tour: new URL("./images/tour.png", import.meta.url).href,
   ticket: new URL("./images/ticket.webp", import.meta.url).href,
   cardImg1: new URL("./images/card-img-1.webp", import.meta.url).href,
   cardImg2: new URL("./images/card-img-2.webp", import.meta.url).href,
 
   // Device icons
   device2: new URL("./images/device2.webp", import.meta.url).href,
-  deviceYaghi: new URL("./images/deviceYaghi.png", import.meta.url).href,
 
   // Iranian slider images
   iranianSlider1: new URL("./images/free-poster-1.jpg", import.meta.url).href,

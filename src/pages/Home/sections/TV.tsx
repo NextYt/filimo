@@ -4,6 +4,7 @@ import "../../../style/Home/section-tv.css";
 import Image from "../../../components/ImageComponent/Image";
 import Button from "../../../components/Button/Button";
 import TvDeviceItem from "../components/TvDevice/TvDeviceItem";
+import { TvDevice } from "../../../types/mockdata";
 
 const TV = () => {
   // Using our sections context instead of direct import
@@ -32,7 +33,7 @@ const TV = () => {
             <Image src={responsiveImage} alt="TV Background Mobile" />
           </div>
           <div className="section-devices-name">
-            {tvDevices.map((device, index) => (
+            {tvDevices.map((device: TvDevice, index: number) => (
               <TvDeviceItem
                 key={index}
                 tvDevice={device}

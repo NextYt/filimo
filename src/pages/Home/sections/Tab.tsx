@@ -3,6 +3,7 @@ import { assets } from "../../../assets/assets";
 import Button from "../../../components/Button/Button";
 import Image from "../../../components/ImageComponent/Image";
 import { useSectionsSelector } from "../../../context";
+import type { TabFeature } from "../../../types/mockdata";
 
 const Tab = () => {
   // Using our sections context instead of direct import
@@ -19,8 +20,11 @@ const Tab = () => {
         </div>
         <div className="section-detail-list section-tab-list">
           <div className="section-tab-inner-dev">
-            {features.map((feature, index) => (
-              <div key={`feature-${feature.text}-${index}`} className="tab-text">
+            {features.map((feature: TabFeature, index: number) => (
+              <div
+                key={`feature-${feature.text}-${index}`}
+                className="tab-text"
+              >
                 <Image
                   src={assets.checkmark}
                   className="text-green-500 text-2xl"

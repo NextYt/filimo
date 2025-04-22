@@ -17,7 +17,7 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
   {
     label: "Movies",
     href: "/movies",
-    icon: assets.downArrow,
+    icon: assets.angleDown,
     hasDropdown: true,
     dropdownClass: "hidden-menu-film",
     subMenuItems: [
@@ -53,7 +53,7 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
   {
     label: "Series",
     href: "/series",
-    icon: assets.downArrow,
+    icon: assets.angleDown,
     hasDropdown: true,
     dropdownClass: "hidden-menu-series",
     subMenuItems: [
@@ -110,7 +110,7 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
   {
     label: "Collections",
     href: "/collections",
-    icon: assets.downArrow,
+    icon: assets.angleDown,
     hasDropdown: true,
     dropdownClass: "hidden-menu-Collection",
     subMenuItems: [

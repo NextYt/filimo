@@ -9,6 +9,7 @@ import CustomSwiper from "../../../components/CustomSwiper/CustomSwiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Button from "../../../components/Button/Button";
 
 interface IranianSliderProps {
   isVisible: boolean;
@@ -72,13 +73,21 @@ const IranianSlider: React.FC<IranianSliderProps> = ({ isVisible }) => {
           className="slides"
         />
 
-        <button className="slider-control prev" aria-label="Previous slide">
+        <Button
+          ButtonElement="button"
+          className="slider-control prev"
+          aria-label="Previous slide"
+        >
           <Image src={assets.angleLeft} alt="Previous" />
-        </button>
+        </Button>
 
-        <button className="slider-control next" aria-label="Next slide">
+        <Button
+          ButtonElement="button"
+          className="slider-control next"
+          aria-label="Next slide"
+        >
           <Image src={assets.angleRight} alt="Next" />
-        </button>
+        </Button>
 
         <div className="slider-dots"></div>
       </div>

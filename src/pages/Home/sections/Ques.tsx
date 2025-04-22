@@ -1,6 +1,7 @@
 import "../../../style/Home/section.ques.css";
 import { useSectionsSelector } from "../../../context";
 import FaqItem from "../components/Faq/FaqItem";
+import { FaqItem as FaqItemType } from "../../../types/mockdata";
 
 const Ques = () => {
   // Using our sections context instead of direct import
@@ -16,7 +17,7 @@ const Ques = () => {
           <span>{subtitle}</span>
         </div>
         <div className="section-ques-list">
-          {questions.map((question) => (
+          {questions.map((question: FaqItemType) => (
             <FaqItem key={question.id} faqItem={question} />
           ))}
         </div>

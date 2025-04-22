@@ -3,6 +3,7 @@ import Button from "../../../components/Button/Button";
 import "../../../style/Home/section-device.css";
 import Image from "../../../components/ImageComponent/Image";
 import DeviceItem from "../components/DeviceItem/DeviceItem";
+import { DeviceItem as DeviceItemType } from "../../../types/mockdata";
 
 const Device = () => {
   // Using our sections context instead of direct import
@@ -30,7 +31,7 @@ const Device = () => {
             <Image src={responsiveImage} alt="device2" />
           </div>
           <div className="section-devices-name">
-            {devices.map((device, index) => (
+            {devices.map((device: DeviceItemType, index: number) => (
               <DeviceItem key={index} device={device} />
             ))}
           </div>

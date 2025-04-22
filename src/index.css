@@ -126,17 +126,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-/* Font Style */
-@font-face {
-  src: url(../assets/Fonts/IranSans.ttf);
-  font-family: iranSans;
-}
-
-@font-face {
-  font-family: swiper-icon;
-  src: url(../assets/Fonts/swiper-icons.ttf);
-}
 /* Common Style*/
 
 html {
@@ -179,7 +168,7 @@ button {
 }
 
 body {
-  font-family: iranSans;
+  font-family: "IranSans", sans-serif;
   background-color: var(--body-background);
 }
 
