@@ -1,8 +1,9 @@
 .media-card {
   position: relative;
   transition: transform 0.3s ease;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .media-card:hover {
@@ -18,8 +19,48 @@
 .media-card-image-container {
   position: relative;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
   aspect-ratio: 2/3;
+}
+
+/* Series stacked effect */
+.media-card[data-type="series"] .media-card-image-container {
+  margin: 12px 6px 12px 6px;
+}
+
+.media-card[data-type="series"] .media-card-image-container::before,
+.media-card[data-type="series"] .media-card-image-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 8px;
+  background-image: var(--pseudo-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.media-card[data-type="series"] .media-card-image-container::before {
+  top: -12px;
+  left: 9%;
+
+  width: 85%;
+  height: 85%;
+
+  opacity: 0.3;
+}
+.media-card[data-type="series"] .media-card-image-container::after {
+  top: -6px;
+  left: 6%;
+
+  width: 90%;
+  height: 90%;
+
+  opacity: 0.6;
+}
+
+.media-card[data-type="series"] .media-card-image-container:hover::before,
+.media-card[data-type="series"] .media-card-image-container:hover::after
+{
+  top: 0;
 }
 
 .media-card-image {
@@ -27,6 +68,10 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .media-card:hover .media-card-image {
@@ -43,6 +88,7 @@
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: bold;
+  z-index: 2;
 }
 
 .exclusive-badge {
@@ -60,6 +106,7 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 .rating-value {
@@ -81,4 +128,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
