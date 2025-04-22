@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Foreign Slider Styles with Tailwind */
 .foreign-slider {
   @apply relative mb-4 w-full;
 }

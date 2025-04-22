@@ -4,5 +4,14 @@ import * as homeData from "./homeData";
 import * as moviesCategories from "./moviesCategories";
 import * as sliders from "./sliders";
 import * as headerData from "./headerData";
+import * as kidsData from "./kids";
 
-export { filter, footer, homeData, moviesCategories, sliders, headerData };
+export {
+  filter,
+  footer,
+  homeData,
+  moviesCategories,
+  sliders,
+  headerData,
+  kidsData,
+};

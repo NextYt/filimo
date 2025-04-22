@@ -31,6 +31,7 @@ interface ContentState {
   foreignMaleActorsData: typeof data.sliders.FOREIGN_MALE_ACTORS_DATA;
   foreignActressesData: typeof data.sliders.FOREIGN_ACTRESSES_DATA;
   foreignSlidersData: typeof data.sliders.FOREIGN_SLIDERS_DATA;
+  kidsData: typeof data.kidsData.KIDS_DATA;
   currentCategory: "Movie" | "Series";
   activePosterIndex: number;
   activeMovieCategories: string[];
@@ -77,6 +78,7 @@ const initialContentState: ContentState = {
   foreignDirectorsData: data.sliders.FOREIGN_DIRECTORS_DATA,
   foreignMaleActorsData: data.sliders.FOREIGN_MALE_ACTORS_DATA,
   foreignActressesData: data.sliders.FOREIGN_ACTRESSES_DATA,
+  kidsData: data.kidsData.KIDS_DATA,
   currentCategory: "Movie",
   activePosterIndex: 0,
   activeMovieCategories: [],

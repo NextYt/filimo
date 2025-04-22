@@ -7,7 +7,7 @@ import {
   ExtendedMenuItem,
   ExtendedSubMenuItem,
   NavigationItemProps,
-} from "../../../../types/header.s";
+} from "../../../../types/header";
 
 const NavigationItem = ({
   item,

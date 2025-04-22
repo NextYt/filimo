@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .kids-episode {
+        @apply relative w-full my-8;
+    }
+
+    
+}

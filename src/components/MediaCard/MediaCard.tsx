@@ -41,7 +41,6 @@ const MediaCard: React.FC<MediaCardProps> = ({
       className={`media-card ${className}`}
       onClick={onClick}
       data-type={type}
-      // add before and after
       style={{ "--pseudo-bg": `url(${posterSrc})` } as React.CSSProperties}
     >
       <Link to={mediaLink} className="media-card-link">

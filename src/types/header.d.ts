@@ -1,4 +1,4 @@
-import { MenuItem, SubMenuItem } from "../types/mockdata";
+import { MenuItem, SubMenuItem } from "./mockdata";
 import { MouseEvent } from "react";
 
 // Define the button interface based on usage in the file

@@ -4,6 +4,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import MainLayout from "./layouts/MainLayout";
 import { FilimoProvider } from "./context";
+import Kids from "./pages/Kids/Kids";
 
 // Lazy load pages
 const HomePage = lazy(() => import("./pages/Home/HomePage"));
@@ -36,6 +37,7 @@ function App() {
                 <Route path="series" element={<MoviesPage />} />
                 <Route path="movies-and-series" element={<MoviesPage />} />
                 <Route path="foreign" element={<MoviesPage />} />
+                <Route path="kids" element={<Kids />} />
               </Route>
             </Routes>
           </Suspense>

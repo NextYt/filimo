@@ -114,4 +114,19 @@ export const assets = {
   iranianSlider2: new URL("./images/free-poster-2.jpg", import.meta.url).href,
   iranianSlider3: new URL("./images/free-poster-3.jpg", import.meta.url).href,
   iranianSlider4: new URL("./images/free-poster-4.jpg", import.meta.url).href,
+
+  // Kids images
+  kindImage1: new URL("/assets/Images/m1.jpg", import.meta.url).href,
+  kindImage2: new URL("/assets/Images/m2.jpg", import.meta.url).href,
+  kindImage3: new URL("/assets/Images/m3.jpg", import.meta.url).href,
+  kindImage4: new URL("/assets/Images/m4.jpg", import.meta.url).href,
+  kindImage5: new URL("/assets/Images/m5.jpg", import.meta.url).href,
+  kindImage6: new URL("/assets/Images/m6.jpg", import.meta.url).href,
+  kindImage7: new URL("/assets/Images/m7.jpg", import.meta.url).href,
+  kindImage8: new URL("/assets/Images/m8.jpg", import.meta.url).href,
+  kindImage9: new URL("/assets/Images/m9.jpg", import.meta.url).href,
+  kindImage10: new URL("/assets/Images/m10.jpg", import.meta.url).href,
+  kindImage11: new URL("/assets/Images/m11.jpg", import.meta.url).href,
+  kindImage12: new URL("/assets/Images/m12.jpg", import.meta.url).href,
+  kindImage13: new URL("/assets/Images/m13.jpg", import.meta.url).href,
 };

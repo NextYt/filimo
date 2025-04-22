@@ -114,23 +114,6 @@ export function useMovieFilters() {
     );
   }, [location.pathname, searchParams]);
 
-  // Check if there are any active filters
-  // const checkActiveFiltersAndClosePanel = useCallback(
-  //   (updatedFilters: FilterOptions) => {
-  //     const hasActiveFilters =
-  //       updatedFilters.hd ||
-  //       updatedFilters.age !== "All" ||
-  //       updatedFilters.language !== "All" ||
-  //       updatedFilters.country !== "All" ||
-  //       updatedFilters.genre !== "All" ||
-  //       updatedFilters.contentType !== "All";
-
-  //     // Simply return the status without closing anything
-  //     return hasActiveFilters;
-  //   },
-  //   []
-  // );
-
   // Sync URL parameters with filter state
   const syncFiltersWithUrl = useCallback(() => {
     // Create a fresh object to collect changes

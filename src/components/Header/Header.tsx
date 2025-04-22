@@ -15,7 +15,7 @@ import {
   ExtendedSubMenuItem,
   ExtendedMenuItem,
   HeaderButton,
-} from "../../types/header.s";
+} from "../../types/header";
 
 const Header = () => {
   // Using our optimized selectors to only get what we need
