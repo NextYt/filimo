@@ -1,32 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .section-free-movie {
-  padding: 64px 0px;
+  @apply py-16 px-0;
 }
 
 .free-movie {
-  padding: 0px 10%;
+  @apply px-[10%] py-0 max-w-[1440px];
   margin: 0 auto;
-  max-width: 1440px;
 }
 
 .section-free-movie-title {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 32px;
-  color: #fff;
+  @apply text-[17px] font-bold mb-8 text-white;
 }
 
 .section-free-movie-wrapper {
   position: relative;
-  padding: 0px 40px;
   margin: 0px -15px;
   z-index: 1;
 }
 
 .section-free-movie-list {
-  overflow: visible;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  @apply overflow-hidden w-full m-0 p-0;
 }
 
 .section-free-movie-item-wrapper {
@@ -37,10 +33,7 @@
 }
 
 .section-free-movie-item {
-  text-decoration: none;
-  cursor: pointer;
-  display: block;
-  width: 100%;
+  @apply no-underline cursor-pointer block w-full;
 }
 
 .free-movie-item-poster {
@@ -60,7 +53,7 @@
 
 /* Add hover effect for poster */
 .free-movie-item-poster:hover img {
-  opacity: 1;
+  @apply opacity-100;
 }
 
 .free-movie-item-name {
@@ -85,8 +78,7 @@
 
 /* Swiper customization */
 .section-free-movie-wrapper .swiper-slide {
-  width: auto;
-  height: auto;
+  @apply w-auto h-auto;
 }
 
 /* Responsive part*/
