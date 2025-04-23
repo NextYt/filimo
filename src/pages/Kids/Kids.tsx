@@ -1,16 +1,10 @@
-// import React, { useState } from "react";
-// import { Navigation, Pagination } from "swiper/modules";
 import { useContent } from "../../context/ContentContext";
-// import { KidsContent, KidsEpisode } from "../../types/kids";
-// import CustomSwiper from "../../components/CustomSwiper/CustomSwiper";
 import "./Kids.css";
 import { KidsSection } from "./components";
 
 // Import required Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import KidsEpsode from "./components/KidsEpsode";
+import NightStories from "./components/nightStories";
 
 const Kids: React.FC = () => {
   const { state } = useContent();
@@ -19,12 +13,19 @@ const Kids: React.FC = () => {
     <div className="kids-page">
       <div className="kids-sections">
         {/* What's New Section */}
+        <KidsSection category="What's New" items={kidsData.whatisNew} />
+
+        <KidsEpsode items={kidsData.episodes} />
         <KidsSection
-          category="What's New"
-          items={kidsData.whatisNew}
+          category="Watch for Free"
+          key={kidsData.categories.watchForFree[0].id}
+          items={kidsData.categories.watchForFree}
         />
-        
-        <KidsEpsode/>
+        <NightStories
+          key={kidsData.categories.NightStories[0].id}
+          items={kidsData.categories.NightStories}
+          category="Night Stories"
+        />
       </div>
     </div>
   );

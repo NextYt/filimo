@@ -1,6 +1,5 @@
 import CustomSwiper from "../../../components/CustomSwiper/CustomSwiper";
 import "./KidsEpsode.css";
-import { useContent } from "../../../context/ContentContext";
 import Button from "../../../components/Button/Button";
 import { assets } from "../../../assets/assets";
 import Image from "../../../components/ImageComponent/Image";
@@ -11,15 +10,18 @@ import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { KidsEspode } from "../../../types/kids";
 
-const KidsEpsode = () => {
-  const { state } = useContent();
-
+const KidsEpsode = ({
+  items,
+}: {
+  items: KidsEspode[];
+}) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const slides = state.kidsData.episodes.map((item) => ({
+  const slides = items.map((item) => ({
     id: item.id,
-    content: state.kidsData.episodes.map((item) => (
+    content: (
       <div
         className="kids-episode-card"
         style={{
@@ -68,7 +70,7 @@ const KidsEpsode = () => {
           <Image src={assets.angleRight} alt="Next" />
         </Button>
       </div>
-    )),
+    ),
   }));
 
   return (
