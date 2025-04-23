@@ -1493,6 +1493,7 @@ export const KIDS_DATA: KidsData = {
   episodes: [
     {
       id: "ep001",
+      backgroundImage: assets.cardImg1,
       title: "The Great Adventure",
       category: ["Adventure", "Animation"],
       ageRestriction: 5,
@@ -1504,6 +1505,7 @@ export const KIDS_DATA: KidsData = {
     {
       id: "ep002",
       title: "The Lost Treasure",
+      backgroundImage: assets.cardImg2,
       category: ["Animation", "Fantasy"],
       ageRestriction: 6,
       posterUrl: assets.kindImage2,
@@ -1514,6 +1516,7 @@ export const KIDS_DATA: KidsData = {
     {
       id: "ep003",
       title: "The Secret Garden",
+      backgroundImage: assets.cardImg3,
       category: "Animation",
       ageRestriction: 7,
       posterUrl: assets.kindImage3,
@@ -1524,6 +1527,7 @@ export const KIDS_DATA: KidsData = {
     {
       id: "ep004",
       title: "The Magic Forest",
+      backgroundImage: assets.freePoster11,
       category: "Fantasy",
       ageRestriction: 5,
       posterUrl: assets.kindImage4,
@@ -1534,6 +1538,7 @@ export const KIDS_DATA: KidsData = {
     {
       id: "ep005",
       title: "The Brave Knight",
+      backgroundImage: assets.freePoster12,
       category: "Adventure",
       ageRestriction: 8,
       posterUrl: assets.kindImage5,

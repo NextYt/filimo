@@ -14,6 +14,7 @@ import { FaAngleLeft } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 
 export const assets = {
   // Logo and brand images
@@ -25,11 +26,11 @@ export const assets = {
   iconPlay: new URL("./images/icon-play.svg", import.meta.url).href,
   iconLockFill: new URL("./images/icon-lock_fill.webp", import.meta.url).href,
   iconLikeFill: new URL("./images/icon-like_fill.webp", import.meta.url).href,
-  fire: new URL("./images/fire.svg", import.meta.url).href,
-  horse: new URL("./images/horse.svg", import.meta.url).href,
-  device: new URL("./images/device.png", import.meta.url).href,
-  tomJerry: new URL("./images/tom-jerry.png", import.meta.url).href,
-  cardImg3: new URL("./images/card-img-3.webp", import.meta.url).href,
+  fire: new URL("./Images/fire.svg", import.meta.url).href,
+  horse: new URL("./Images/horse.svg", import.meta.url).href,
+  device: new URL("./Images/device.png", import.meta.url).href,
+  tomJerry: new URL("./Images/tom-jerry.png", import.meta.url).href,
+  cardImg3: new URL("./Images/card-img-3.webp", import.meta.url).href,
   arrowTop: FaArrowUp,
   caretDown: FaCaretDown,
   youtube: FaYoutube,
@@ -46,6 +47,7 @@ export const assets = {
   angleLeft: FaAngleLeft,
   times: FaTimes,
   angleDown: FaAngleDown,
+  info: IoIosInformationCircleOutline,
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,
   mobile: new URL("./images/mobile.webp", import.meta.url).href,

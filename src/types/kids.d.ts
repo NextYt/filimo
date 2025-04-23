@@ -28,6 +28,7 @@ interface KidsCategries {
 interface KidsEspode {
   id: string;
   title: string;
+  backgroundImage: string;
   category: string[] | string;
   posterUrl: string;
   ageRestriction: number;

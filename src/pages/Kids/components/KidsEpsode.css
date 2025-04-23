@@ -2,11 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
-    .kids-episode {
-        @apply relative w-full my-8;
-    }
+  .kids-episode {
+    @apply relative w-full my-8;
+  }
 
-    
+  .kids-episode-card {
+    @apply h-full w-full bg-no-repeat bg-cover bg-center relative block;
+  }
+
+  .kids-episode-swiper {
+    @apply h-[400px] w-full;
+  }
+
+  .slider-control {
+    @apply absolute top-1/2 -translate-y-1/2 w-[50px] h-[50px] bg-white/30 border-none rounded-full flex items-center justify-center text-white cursor-pointer z-[100] transition-colors duration-300 ease-in-out hover:bg-white/70;
+  }
+
+  .slider-control.prev {
+    @apply right-24 top-40 translate-y-40;
+  }
+
+  .slider-control.next {
+    @apply right-6 top-40 translate-y-40;
+  }
 }
