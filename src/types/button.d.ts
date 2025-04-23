@@ -10,5 +10,6 @@ interface ButtonProps {
   disabled?: boolean;
   target?: string;
   ariaLabel?: string;
+  style?: React.CSSProperties;
   [...props]: React.ComponentProps
 }

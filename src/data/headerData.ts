@@ -138,6 +138,8 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
     label: "Search",
     href: "/search",
     icon: assets.search,
+    iconWidth: "20px",
+    iconHeight: "20px",
   },
 ];
 

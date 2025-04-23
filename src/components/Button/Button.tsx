@@ -10,6 +10,7 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   disabled,
   target = "_self",
+  style,
   ...props
 }) => {
   if (ButtonElement === "a") {
@@ -22,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
         onClick,
         disabled,
         target,
+        style,
         ...props,
       },
       children
@@ -34,6 +36,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      style={style}
       {...props}
     >
       {children}

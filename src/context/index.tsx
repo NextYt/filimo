@@ -4,12 +4,14 @@ import { ContentProvider, useContent } from "./ContentContext";
 import { SectionsProvider, useSections } from "./SectionsContext";
 import { AuthProvider, useAuth } from "./AuthContext";
 import { NotificationsProvider } from "./NotificationsContext";
+import { SearchProvider, useSearch } from "./SearchContext";
 
 // Export the hooks directly
 export { useUI } from "./UIContext";
 export { useContent } from "./ContentContext";
 export { useSections } from "./SectionsContext";
 export { useAuth } from "./AuthContext";
+export { useSearch } from "./SearchContext";
 export { 
   useNotifications,
   useSuccessNotification,
@@ -42,7 +44,9 @@ export const FilimoProvider: React.FC<FilimoProviderProps> = ({ children }) => {
         <UIProvider>
           <ContentProvider>
             <SectionsProvider>
-              {children}
+              <SearchProvider>
+                {children}
+              </SearchProvider>
             </SectionsProvider>
           </ContentProvider>
         </UIProvider>
@@ -61,6 +65,7 @@ export const useFilimoContext = () => {
     ui: useUI(),
     content: useContent(),
     sections: useSections(),
-    auth: useAuth()
+    auth: useAuth(),
+    search: useSearch()
   };
 };

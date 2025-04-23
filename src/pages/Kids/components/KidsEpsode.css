@@ -26,4 +26,14 @@
   .slider-control.next {
     @apply right-6 top-40 translate-y-40;
   }
+
+  @media (max-width: 768px) {
+    .slider-control.prev {
+      @apply left-1 top-3/4 translate-y-1/2;
+    }
+
+    .slider-control.next {
+      @apply right-1 top-3/4 translate-y-1/2;
+    }
+  }
 }

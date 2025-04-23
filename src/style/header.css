@@ -183,14 +183,20 @@ header {
 /*Responsive Part*/
 
 @media screen and (max-width: 1469px) {
+  .header-link-item a {
+    font-size: 11px;
+  }
   .inner-wraper {
     padding: 0 100px;
   }
 }
 
 @media screen and (max-width: 1320px) {
+  .header-link-item a {
+    font-size: 10px;
+  }
   .inner-wraper {
-    padding: 0 50px;
+    padding: 0 40px;
   }
 }
 

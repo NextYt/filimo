@@ -31,12 +31,6 @@ const NavigationItem = ({
   // Use the item from props or from context
   const resolvedItem = (navigationItem || item) as ExtendedMenuItem;
 
-  // Return null if no item could be resolved
-  if (!resolvedItem) {
-    console.error("NavigationItem: No item provided via props or context");
-    return null;
-  }
-
   const {
     label,
     href,

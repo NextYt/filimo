@@ -4,6 +4,7 @@ import {
   useSuccessNotification,
   useErrorNotification,
   useContent,
+  useSearch,
 } from "../../context";
 import "../../style/header.css";
 import Button from "../Button/Button";
@@ -16,6 +17,7 @@ import {
   ExtendedMenuItem,
   HeaderButton,
 } from "../../types/header";
+import SearchModal from "../SearchModal";
 
 const Header = () => {
   // Using our optimized selectors to only get what we need
@@ -33,6 +35,9 @@ const Header = () => {
   const contentContext = useContent();
   const contentState = contentContext.state;
   const contentDispatch = contentContext.dispatch;
+
+  // Using Search context
+  const { dispatch: searchDispatch } = useSearch();
 
   // Using router hooks for navigation
   const location = useLocation();
@@ -53,6 +58,12 @@ const Header = () => {
   // Toggle menu open/closed
   const toggleMenu = () => {
     uiDispatch({ type: "TOGGLE_MENU" });
+  };
+
+  // Handle search button click
+  const handleSearchClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    searchDispatch({ type: "TOGGLE_SEARCH" });
   };
 
   // Handle navigation for combined Movies/Series link
@@ -242,83 +253,62 @@ const Header = () => {
     }));
   };
 
-  // Create an Extended MenuItem for Movies & Series
-  const createMoviesSeriesItem = (item: MenuItem): ExtendedMenuItem => {
+  // Create an Extended MenuItem for Search
+  const createSearchItem = (item: MenuItem): ExtendedMenuItem => {
     return {
       ...item,
-      label: "Movies & Series",
-      href:
-        contentState.filters.contentType === "Series"
-          ? "/series"
-          : contentState.filters.contentType === "Movie"
-          ? "/movies"
-          : "/movies-and-series",
-      onClick: handleContentNavigation,
-      // Enhanced subMenuItems with click handlers
-      subMenuItems: item.subMenuItems
-        ? createSubMenuItems(item.subMenuItems)
-        : undefined,
+      onClick: handleSearchClick,
     };
   };
 
-  // Modified navigation items with combined Movies/Series link
-  const getModifiedNavItems = () => {
-    // Start with our navigation items from context
-    const navItems = navigationItems
-      .map((item: MenuItem) => {
-        if (item.label === "Movies" || item.label === "Series") {
-          if (item.label === "Movies") {
-            return createMoviesSeriesItem(item);
-          }
-          // Skip the Series item since we combined it
-          return null;
-        }
-        return item;
-      })
-      .filter(
-        (item: ExtendedMenuItem | null): item is ExtendedMenuItem =>
-          item !== null
-      );
-
-    // Add Iranian item and return
-    return navItems;
+  // Create Menu Items with proper handlers
+  const getModifiedMenuItems = () => {
+    return navigationItems.map((item: MenuItem) => {
+      if (item.label === "Search") {
+        return createSearchItem(item);
+      } else if (item.hasDropdown && item.subMenuItems) {
+        return {
+          ...item,
+          subMenuItems: createSubMenuItems(item.subMenuItems),
+        };
+      }
+      return item;
+    });
   };
 
-  // Modified small screen menu items
+  // Get modified small screen menu items
   const getModifiedSmallScreenItems = () => {
-    // Start with our small screen menu items from context
-    const smallScreenItems = smallScreenMenuItems
-      .map((item: MenuItem) => {
-        if (item.label === "Movies" || item.label === "Series") {
-          if (item.label === "Movies") {
-            return createMoviesSeriesItem(item);
-          }
-          // Skip the Series item
-          return null;
-        }
-        return item;
-      })
-      .filter(
-        (item: ExtendedMenuItem | null): item is ExtendedMenuItem =>
-          item !== null
-      );
-
-    // Add Iranian item and return
-    return smallScreenItems;
+    return smallScreenMenuItems.map((item: MenuItem) => {
+      if (item.label === "Search") {
+        return createSearchItem(item);
+      }
+      return item;
+    });
   };
 
-  const modifiedNavItems = getModifiedNavItems();
-  const modifiedSmallScreenItems = getModifiedSmallScreenItems();
+  // Map header buttons to add onClick handlers
+  const mappedHeaderButtons: HeaderButton[] = headerButtons.map((btn: HeaderButton) => {
+    if (btn.label === "Login") {
+      return {
+        ...btn,
+        label: isLoggedIn ? "Logout" : "Login",
+        onClick: handleLoginClick,
+      };
+    }
+    return btn;
+  });
 
   return (
     <header>
       <div className="header-link">
         <div className="inner-wraper">
-          <div className="bigScreenMenu">
+          <div>
             <ul>
-              {/* Render each navigation item dynamically */}
-              {modifiedNavItems.map((item: ExtendedMenuItem, index: number) => (
-                <NavigationItem key={index} item={item} />
+              {getModifiedMenuItems().map((item: MenuItem | ExtendedMenuItem, index: number) => (
+                <NavigationItem 
+                  key={index} 
+                  item={item}
+                />
               ))}
             </ul>
           </div>
@@ -340,70 +330,59 @@ const Header = () => {
             <div className={`sml ${isMenuOpen ? "" : "remove-disply"}`}>
               <div className="small-inner">
                 <div className="header-button smallScreenMenu-menu">
-                  {/* Login/Register button logic */}
-                  {isLoggedIn ? (
+                  {mappedHeaderButtons.map((btn: HeaderButton, index: number) => (
                     <Button
-                      className="btn login-btn"
-                      onClick={handleLoginClick}
+                      key={index}
+                      className={btn.className}
+                      onClick={btn.onClick}
                     >
-                      Logout
+                      {btn.label}
                     </Button>
-                  ) : (
-                    headerButtons.map((button: HeaderButton, index: number) => (
-                      <Button
-                        key={index}
-                        className={button.className}
-                        onClick={
-                          index === 1 ? handleLoginClick : button.onClick
-                        }
-                      >
-                        {loading && index === 1 ? "Loading..." : button.label}
-                      </Button>
-                    ))
-                  )}
+                  ))}
                 </div>
 
-                {/* Render small screen menu items dynamically */}
                 <ul className="smallScreenMenu-items">
-                  {modifiedSmallScreenItems.map(
-                    (item: ExtendedMenuItem, index: number) => (
-                      <NavigationItem
-                        key={index}
-                        item={item}
-                        isSmallScreen={true}
-                      />
-                    )
-                  )}
+                  {getModifiedSmallScreenItems().map((item: MenuItem | ExtendedMenuItem, index: number) => (
+                    <NavigationItem
+                      key={index}
+                      item={item}
+                    />
+                  ))}
                 </ul>
               </div>
             </div>
           </div>
 
           <div className="small-icon-bu flex flex-row gap-2">
-            {/* Login/Register button logic */}
             {isLoggedIn ? (
               <>
                 <div className="user-info flex items-center mr-2">
                   <span className="text-white text-sm mr-2">{user?.name}</span>
                 </div>
-                <Button className="btn login-btn" onClick={handleLoginClick}>
+                <Button
+                  className="btn login-btn"
+                  onClick={handleLoginClick}
+                >
                   Logout
                 </Button>
               </>
             ) : (
-              headerButtons.map((button: HeaderButton, index: number) => (
+              mappedHeaderButtons.map((btn: HeaderButton, index: number) => (
                 <Button
                   key={index}
-                  className={button.className}
-                  onClick={index === 1 ? handleLoginClick : button.onClick}
+                  className={btn.className}
+                  onClick={btn.onClick}
                 >
-                  {loading && index === 1 ? "Loading..." : button.label}
+                  {btn.label}
                 </Button>
               ))
             )}
           </div>
         </div>
       </div>
+
+      {/* Search Modal - stays at the root level */}
+      <SearchModal />
     </header>
   );
 };
