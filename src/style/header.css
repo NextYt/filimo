@@ -422,3 +422,45 @@ select:hover {
 .small-icon-bu {
   transition: all 0.3s ease;
 }
+
+/* Add responsive media query at the end of the file */
+
+@media screen and (max-width: 965px) {
+  /* Hide the regular navigation items */
+  .header-link .inner-wraper > div > ul {
+    display: none;
+  }
+  
+  /* Show hamburger menu */
+  .smallScreenMenu .burgur-icon {
+    display: block !important;
+  }
+  
+  /* Ensure the hamburger menu is visible */
+  .burger {
+    display: flex !important;
+  }
+  
+  /* Adjust spacing */
+  .header-link .inner-wraper {
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Make the small screen menu full width when open */
+  .smallScreenMenu .sml {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* Ensure the navigation is visible above 965px */
+@media screen and (min-width: 966px) {
+  .header-link .inner-wraper > div > ul {
+    display: flex;
+  }
+  
+  /* Hide hamburger on larger screens if it's not already hidden */
+  .smallScreenMenu .burgur-icon {
+    display: none;
+  }
+}

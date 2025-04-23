@@ -120,9 +120,9 @@ const SearchModal: React.FC = () => {
                 >
                   <div className="search-result-poster">
                     <img src={item.poster} alt={item.title} />
-                    {item.isHD && <div className="hd-badge">HD</div>}
+                    {item.isHD && <div className="hd-badgee">HD</div>}
                     {item.isExclusive && (
-                      <div className="exclusive-badge">Exclusive</div>
+                      <div className="exclusive-badgee">Exclusive</div>
                     )}
                   </div>
                   <div className="search-result-info">
