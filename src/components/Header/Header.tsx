@@ -342,10 +342,10 @@ const Header = () => {
         {/* here if screen size is smaller than 1140 only show the first item but greater than 1140 show all items */}
         {screenSize < 1140 && (
           <div
-            className="list-none flex flex-row text-nowrap items-center  overflow-x-auto overflow-y-visible h-12 relative w-full"
+            className="list-none flex flex-row text-nowrap items-center overflow-x-auto overflow-y-visible h-12 relative w-full"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
-            <div className="inline-flex items-center gap-4 px-4">
+            <div className="inline-flex overflow-visible items-center gap-4 px-4">
               {getModifiedMenuItems()
                 .slice(1, -1)
                 .map((item: MenuItem | ExtendedMenuItem) => (
