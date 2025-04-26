@@ -1,20 +1,4 @@
-export interface SubMenuItem {
-  label: string;
-  href: string;
-}
 
-export interface MenuItem {
-  label: string;
-  href: string;
-  icon?: string | React.ComponentType;
-  iconWidth?: string;
-  iconHeight?: string;
-  hasDropdown?: boolean;
-  dropdownClass?: string;
-  subMenuItems?: SubMenuItem[];
-  onClick?: (e: React.MouseEvent) => void;
-  target?: string;
-}
 
 export interface HeroDetailItem {
   text: string;

@@ -2,7 +2,6 @@
 
 export interface UIState {
   navigationItems: typeof NAVIGATION_ITEMS;
-  smallScreenMenuItems: typeof SMALL_SCREEN_MENU_ITEMS;
   headerButtons: typeof HEADER_BUTTONS;
   isMenuOpen: boolean;
   likedFeedbacks: string[]; // Keep this for the feedback feature

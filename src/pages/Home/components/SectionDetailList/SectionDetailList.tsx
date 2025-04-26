@@ -5,7 +5,7 @@ const SectionDetailList = ({ text }: { text: string }) => {
     <div className="section-detail-list-item">
       <Image
         src={assets.checkmark}
-        className="text-green-500"
+        className="text-green-500 text-2xl md:text-xl"
         alt="checkmark"
       />
       <span className="text-sm md:text-base">{text}</span>

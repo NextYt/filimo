@@ -1,4 +1,4 @@
-import { MenuItem } from "../types/mockdata";
+import { MenuItem } from "../types/header";
 import { assets } from "../assets/assets";
 
 export const NAVIGATION_ITEMS: MenuItem[] = [
@@ -109,7 +109,6 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
   },
   {
     label: "Collections",
-    href: "/collections",
     icon: assets.angleDown,
     hasDropdown: true,
     dropdownClass: "hidden-menu-Collection",
@@ -142,31 +141,6 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
     iconHeight: "20px",
   },
 ];
-
-export const SMALL_SCREEN_MENU_ITEMS: MenuItem[] = [
-  {
-    label: "Foreign",
-    href: "/foreign",
-  },
-  {
-    label: "Kids",
-    href: "/kids",
-    icon: assets.horse,
-  },
-  {
-    label: "Filimo School",
-    href: "/school",
-    icon: assets.filimo,
-    iconWidth: "16px",
-    iconHeight: "16px",
-  },
-  {
-    label: "Search",
-    href: "/search",
-    icon: assets.search,
-  },
-];
-
 export const HEADER_BUTTONS = [
   {
     label: "Subscribe to Filimo",

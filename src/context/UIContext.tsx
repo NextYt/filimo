@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import {
   NAVIGATION_ITEMS,
-  SMALL_SCREEN_MENU_ITEMS,
   HEADER_BUTTONS,
 } from "../data/headerData";
 import { UIState } from "../types/uiContext";
@@ -19,7 +18,6 @@ type UIAction =
 // Create the initial state
 const initialUIState: UIState = {
   navigationItems: NAVIGATION_ITEMS,
-  smallScreenMenuItems: SMALL_SCREEN_MENU_ITEMS,
   headerButtons: HEADER_BUTTONS,
   isMenuOpen: false,
   likedFeedbacks: [],

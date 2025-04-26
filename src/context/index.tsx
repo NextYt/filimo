@@ -45,7 +45,7 @@ export const FilimoProvider: React.FC<FilimoProviderProps> = ({ children }) => {
           <ContentProvider>
             <SectionsProvider>
               <SearchProvider>
-                {children}
+              {children}
               </SearchProvider>
             </SectionsProvider>
           </ContentProvider>

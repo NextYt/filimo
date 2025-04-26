@@ -1,24 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 header {
-  width: 100%;
+  @apply w-full fixed transition-all duration-[400ms] ease-out z-[100];
   background-color: var(--header-backgroung);
-  position: fixed;
   backdrop-filter: blur(14px);
-  transition: all 0.4s ease-out;
-  z-index: 100;
 }
 
 .inner-wraper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 175px;
+  @apply flex items-center justify-between px-[175px];
   margin: 0 auto;
 }
 
 .header-link ul {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
+  @apply flex flex-row flex-wrap items-center list-none;
 }
 
 .header-logo {
@@ -39,10 +35,11 @@ header {
 .header-link-item a {
   color: var(--header-text-color);
   display: flex;
-  align-items: center;
+  align-items: center;  
   font-size: 13px;
   font-weight: 400;
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .header-link-item a:hover {
@@ -80,7 +77,7 @@ header {
 }
 
 .dropDown-header {
-  position: relative;
+  @apply relative;
 }
 
 .hidden-menu {
@@ -94,14 +91,11 @@ header {
   box-shadow: rgba(0, 0, 0, 0.2) 0 8px 16px 0;
   transition: all 0.3s ease-out;
   transform: translateY(-8px);
-  z-index: 11;
+  z-index: 9999999999999 !important;
 }
 
 .hidden-menu .hidden-menu-nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+  @apply flex flex-row flex-wrap w-full;
 }
 
 .hidden-menu-item {
@@ -109,6 +103,7 @@ header {
   padding: 18px 7px;
   font-weight: 100;
   font-size: 11px;
+  z-index: 9999999999999 !important;
 }
 
 .hidden-menu-item a:hover {
@@ -116,68 +111,14 @@ header {
 }
 
 .dropDown-header-film:hover .hidden-menu-film {
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3s ease-in;
+  @apply opacity-100 visible transition-all duration-300 ease-in;
 }
 
 .dropDown-header-series:hover .hidden-menu-series {
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3s ease-in;
+  @apply opacity-100 visible transition-all duration-300 ease-in;
 }
 .dropDown-header-Collection:hover .hidden-menu-Collection {
-  opacity: 1;
-  visibility: visible;
-  transition: all 0.3s ease-in;
-}
-
-.burgur-icon {
-  position: relative;
-}
-
-.sml {
-  display: none;
-  transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-  transform: translateY(-8px);
-  z-index: 11;
-}
-
-.small-inner {
-  position: absolute;
-  top: 10px;
-  left: -60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5em;
-  background-color: var(--header-background-hidden-item);
-}
-
-.smallScreenMenu-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.smallScreenMenu-menu .licence-btn {
-  margin-left: 0;
-  margin-bottom: 15px;
-}
-
-.smallScreenMenu-menu .login-btn {
-  width: 152px;
-}
-
-.header-link-item.smallScreenMenu-item {
-  margin-top: 15px;
-  list-style-type: none;
-}
-
-.smallScreenMenu {
-  display: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  @apply opacity-100 visible transition-all duration-300 ease-in;
 }
 
 /*Responsive Part*/
@@ -207,25 +148,15 @@ header {
 }
 
 @media screen and (max-width: 1140px) {
-  .header-link-item:not(.header-logo) {
-    margin-left: 16px;
-  }
 
   .header-logo {
     margin-left: 16px;
     padding-left: 16px;
+    border-right: none;
   }
 }
 
 @media screen and (max-width: 964px) {
-  .smallScreenMenu {
-    display: block;
-  }
-
-  .small-icon-bu {
-    display: none;
-  }
-
   .inner-wraper {
     padding: 0 100px;
   }
@@ -238,9 +169,6 @@ header {
 
   .hidden-menu {
     transform: translateX(60px);
-  }
-
-  .hidden-menu {
     width: 150px;
   }
 
@@ -266,75 +194,6 @@ header {
 }
 /*End of Responsive Part*/
 
-/* burgur Icon css*/
-
-.burger {
-  position: relative;
-  width: 25px;
-  height: 18px;
-  background: transparent;
-  cursor: pointer;
-  display: block;
-}
-
-.burger input {
-  display: none;
-}
-
-.burger span {
-  display: block;
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  background: var(--header-burgur-icon-background);
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
-  margin: auto;
-}
-
-.burger span:nth-of-type(1) {
-  top: 0px;
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(2) {
-  top: 50%;
-  transform: translateY(-50%);
-  transform-origin: left center;
-}
-
-.burger span:nth-of-type(3) {
-  top: 100%;
-  transform-origin: left center;
-  transform: translateY(-100%);
-}
-
-.burger input:checked ~ span:nth-of-type(1) {
-  transform: rotate(45deg);
-  top: 0px;
-  left: 5px;
-}
-
-.burger input:checked ~ .sml {
-  display: block;
-}
-
-.burger input:checked ~ span:nth-of-type(2) {
-  width: 0%;
-  opacity: 0;
-}
-
-.burger input:checked ~ span:nth-of-type(3) {
-  transform: rotate(-45deg);
-  top: 17px;
-  left: 5px;
-}
-
-/* End of Burgur icon css*/
-
 /* Add transitions for search inputs */
 input[type="text"],
 input[type="search"],
@@ -355,8 +214,7 @@ input[type="password"]:focus {
 
 /* Transitions for select elements */
 select {
-  transition: all 0.3s ease;
-  cursor: pointer;
+  @apply transition-all duration-300 ease-out cursor-pointer;
 }
 
 select:hover {
@@ -364,40 +222,15 @@ select:hover {
   transform: translateY(-1px);
 }
 
-.sml {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
 .remove-disply {
   opacity: 0;
   transform: translateX(-100%);
   pointer-events: none;
 }
-
-/* Burger menu transitions */
-.burger span {
-  transition: all 0.3s ease;
-}
-
-.burger input:checked ~ span:nth-child(2) {
-  transform: rotate(45deg) translate(4px, 4px);
-}
-
-.burger input:checked ~ span:nth-child(3) {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.burger input:checked ~ span:nth-child(4) {
-  transform: rotate(-45deg) translate(4px, -4px);
-}
-
 /* Header buttons transitions */
 .header-button button,
 .header-button a {
-  transition: all 0.3s ease;
+  @apply transition-all duration-300 ease-out;
 }
 
 .header-button button:hover,
@@ -407,7 +240,7 @@ select:hover {
 
 /* Navigation items transitions */
 .header-link-item {
-  transition: all 0.3s ease;
+  @apply transition-all duration-300 ease-out;
 }
 
 .header-link-item:hover {
@@ -416,51 +249,48 @@ select:hover {
 
 /* User info transitions */
 .user-info {
-  transition: all 0.3s ease;
+  @apply transition-all duration-300 ease-out;
 }
 
 .small-icon-bu {
-  transition: all 0.3s ease;
+  @apply transition-all duration-300 ease-out;
 }
 
 /* Add responsive media query at the end of the file */
 
 @media screen and (max-width: 965px) {
-  /* Hide the regular navigation items */
-  .header-link .inner-wraper > div > ul {
-    display: none;
-  }
-  
-  /* Show hamburger menu */
-  .smallScreenMenu .burgur-icon {
-    display: block !important;
-  }
-  
-  /* Ensure the hamburger menu is visible */
-  .burger {
-    display: flex !important;
-  }
-  
   /* Adjust spacing */
   .header-link .inner-wraper {
     padding: 0.75rem 1rem;
   }
-  
-  /* Make the small screen menu full width when open */
-  .smallScreenMenu .sml {
-    width: 100%;
-    left: 0;
-  }
 }
 
-/* Ensure the navigation is visible above 965px */
-@media screen and (min-width: 966px) {
-  .header-link .inner-wraper > div > ul {
-    display: flex;
+/* Dropdown active state for mobile */
+.dropdown-active > a {
+  color: var(--header-item-color-hover) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.dropdown-active .hidden-menu {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Mobile-specific dropdown positioning */
+@media screen and (max-width: 1140px) {
+  .hidden-menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 200px;
+    z-index: 1000; /* Same high z-index as desktop */
   }
   
-  /* Hide hamburger on larger screens if it's not already hidden */
-  .smallScreenMenu .burgur-icon {
-    display: none;
+  /* Ensure the parent dropdown header doesn't limit z-index */
+  .dropDown-header {
+    position: relative;
+    z-index: 200; /* High but lower than the dropdown itself */
   }
 }

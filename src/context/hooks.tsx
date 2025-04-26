@@ -1,4 +1,4 @@
-import { useContext, useMemo, useCallback } from "react";
+import { useContext, useMemo, useCallback, useEffect, useState } from "react";
 import { UIContext, UIContextType } from "./UIContext";
 import {
   ContentContext,
@@ -474,4 +474,16 @@ export function useMovieFilters() {
       [dispatch]
     ),
   };
+}
+
+export function useScreenSize() {
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return screenSize;
 }

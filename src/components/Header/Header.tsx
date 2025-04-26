@@ -9,7 +9,7 @@ import {
 import "../../style/header.css";
 import Button from "../Button/Button";
 import NavigationItem from "../../pages/Home/components/Navigation/NavigationItem";
-import { MenuItem, SubMenuItem } from "../../types/mockdata";
+import { MenuItem, SubMenuItem } from "../../types/header";
 import { useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -18,23 +18,22 @@ import {
   HeaderButton,
 } from "../../types/header";
 import SearchModal from "../SearchModal";
-
+import Asset from "../ImageComponent/Image";
+import { assets } from "../../assets/assets";
+import { useScreenSize } from "../../context/hooks";
 const Header = () => {
   // Using our optimized selectors to only get what we need
   const navigationItems = useUISelector(
     (context) => context.state.navigationItems
   );
-  const smallScreenMenuItems = useUISelector(
-    (context) => context.state.smallScreenMenuItems
-  );
   const headerButtons = useUISelector((context) => context.state.headerButtons);
-  const isMenuOpen = useUISelector((context) => context.state.isMenuOpen);
-  const uiDispatch = useUISelector((context) => context.dispatch);
 
   // Using Content context to access filters
   const contentContext = useContent();
   const contentState = contentContext.state;
   const contentDispatch = contentContext.dispatch;
+
+  const screenSize = useScreenSize();
 
   // Using Search context
   const { dispatch: searchDispatch } = useSearch();
@@ -46,7 +45,7 @@ const Header = () => {
   // Using Auth selectors
   const isLoggedIn = useAuthSelector((context) => context.state.isLoggedIn);
   const user = useAuthSelector((context) => context.state.user);
-  const loading = useAuthSelector((context) => context.state.loading);
+  // const loading = useAuthSelector((context) => context.state.loading);
   const error = useAuthSelector((context) => context.state.error);
   const login = useAuthSelector((context) => context.login);
   const logout = useAuthSelector((context) => context.logout);
@@ -55,11 +54,6 @@ const Header = () => {
   const showSuccess = useSuccessNotification();
   const showError = useErrorNotification();
 
-  // Toggle menu open/closed
-  const toggleMenu = () => {
-    uiDispatch({ type: "TOGGLE_MENU" });
-  };
-
   // Handle search button click
   const handleSearchClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -67,18 +61,18 @@ const Header = () => {
   };
 
   // Handle navigation for combined Movies/Series link
-  const handleContentNavigation = (e: React.MouseEvent) => {
-    e.preventDefault();
-    let targetPath = "/movies-and-series"; // Default to movies-and-series
+  // const handleContentNavigation = (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   let targetPath = "/movies-and-series"; // Default to movies-and-series
 
-    if (contentState.filters.contentType === "Series") {
-      targetPath = "/series";
-    } else if (contentState.filters.contentType === "Movie") {
-      targetPath = "/movies";
-    }
+  //   if (contentState.filters.contentType === "Series") {
+  //     targetPath = "/series";
+  //   } else if (contentState.filters.contentType === "Movie") {
+  //     targetPath = "/movies";
+  //   }
 
-    navigate(targetPath);
-  };
+  //   navigate(targetPath);
+  // };
 
   // Handle genre filter click
   const handleGenreClick = useCallback(
@@ -276,93 +270,59 @@ const Header = () => {
     });
   };
 
-  // Get modified small screen menu items
-  const getModifiedSmallScreenItems = () => {
-    return smallScreenMenuItems.map((item: MenuItem) => {
-      if (item.label === "Search") {
-        return createSearchItem(item);
-      }
-      return item;
-    });
-  };
-
   // Map header buttons to add onClick handlers
-  const mappedHeaderButtons: HeaderButton[] = headerButtons.map((btn: HeaderButton) => {
-    if (btn.label === "Login") {
-      return {
-        ...btn,
-        label: isLoggedIn ? "Logout" : "Login",
-        onClick: handleLoginClick,
-      };
+  const mappedHeaderButtons: HeaderButton[] = headerButtons.map(
+    (btn: HeaderButton) => {
+      if (btn.label === "Login") {
+        return {
+          ...btn,
+          label: isLoggedIn ? "Logout" : "Login",
+          onClick: handleLoginClick,
+        };
+      }
+      return btn;
     }
-    return btn;
-  });
+  );
 
   return (
     <header>
       <div className="header-link">
-        <div className="inner-wraper">
+        <div className="inner-wraper border-b border-gray-700">
           <div>
+            {/* here if screen size is smaller than 1140 only show the first item but greater than 1140 show all items */}
             <ul>
-              {getModifiedMenuItems().map((item: MenuItem | ExtendedMenuItem, index: number) => (
-                <NavigationItem 
-                  key={index} 
-                  item={item}
+              {screenSize < 1140 ? (
+                <NavigationItem
+                  key={navigationItems[0].label}
+                  item={navigationItems[0]}
                 />
-              ))}
+              ) : (
+                getModifiedMenuItems().map(
+                  (item: MenuItem | ExtendedMenuItem) => (
+                    <NavigationItem key={item.label} item={item} />
+                  )
+                )
+              )}
             </ul>
           </div>
 
-          <div className="smallScreenMenu">
-            <div className="burgur-icon">
-              <label className="burger" htmlFor="burger">
-                <input
-                  type="checkbox"
-                  id="burger"
-                  checked={isMenuOpen}
-                  onChange={toggleMenu}
-                />
-                <span></span>
-                <span></span>
-                <span></span>
-              </label>
-            </div>
-            <div className={`sml ${isMenuOpen ? "" : "remove-disply"}`}>
-              <div className="small-inner">
-                <div className="header-button smallScreenMenu-menu">
-                  {mappedHeaderButtons.map((btn: HeaderButton, index: number) => (
-                    <Button
-                      key={index}
-                      className={btn.className}
-                      onClick={btn.onClick}
-                    >
-                      {btn.label}
-                    </Button>
-                  ))}
-                </div>
-
-                <ul className="smallScreenMenu-items">
-                  {getModifiedSmallScreenItems().map((item: MenuItem | ExtendedMenuItem, index: number) => (
-                    <NavigationItem
-                      key={index}
-                      item={item}
-                    />
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
           <div className="small-icon-bu flex flex-row gap-2">
+            {screenSize < 1140 && (
+              <Button onClick={handleSearchClick}>
+                <Asset
+                  src={assets.search}
+                  width={20}
+                  height={20}
+                  className="text-white"
+                />
+              </Button>
+            )}
             {isLoggedIn ? (
               <>
                 <div className="user-info flex items-center mr-2">
                   <span className="text-white text-sm mr-2">{user?.name}</span>
                 </div>
-                <Button
-                  className="btn login-btn"
-                  onClick={handleLoginClick}
-                >
+                <Button className="btn login-btn" onClick={handleLoginClick}>
                   Logout
                 </Button>
               </>
@@ -379,6 +339,21 @@ const Header = () => {
             )}
           </div>
         </div>
+        {/* here if screen size is smaller than 1140 only show the first item but greater than 1140 show all items */}
+        {screenSize < 1140 && (
+          <div
+            className="list-none flex flex-row text-nowrap items-center overflow-x-auto overflow-y-hidden h-12 relative w-full"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            <div className="inline-flex items-center gap-4 px-4">
+              {getModifiedMenuItems()
+                .slice(1, -1)
+                .map((item: MenuItem | ExtendedMenuItem) => (
+                  <NavigationItem key={item.label} item={item} />
+                ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Search Modal - stays at the root level */}
