@@ -16,6 +16,8 @@ import { FaAngleDown } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { FaShareAlt } from "react-icons/fa";
+import { CgLogIn } from "react-icons/cg";
+import { FaAngleUp } from "react-icons/fa";
 
 
 export const assets = {
@@ -51,6 +53,9 @@ export const assets = {
   angleDown: FaAngleDown,
   info: IoIosInformationCircleOutline,
   share: FaShareAlt,
+  login: CgLogIn,
+  angleUp: FaAngleUp,
+
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,
   mobile: new URL("./images/mobile.webp", import.meta.url).href,

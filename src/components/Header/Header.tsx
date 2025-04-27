@@ -9,7 +9,7 @@ import "../../style/header.css";
 import Button from "../Button/Button";
 import NavigationItem from "../../pages/Home/components/Navigation/NavigationItem";
 import { MenuItem, SubMenuItem } from "../../types/header";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   ExtendedSubMenuItem,
@@ -21,12 +21,21 @@ import FilimoMotorModal from "../FilimoMotorModal";
 import Asset from "../ImageComponent/Image";
 import { assets } from "../../assets/assets";
 import { useScreenSize } from "../../context/hooks";
+
 const Header = () => {
   // Using our optimized selectors to only get what we need
   const navigationItems = useUISelector(
     (context) => context.state.navigationItems
   );
   const headerButtons = useUISelector((context) => context.state.headerButtons);
+
+  // Add state for expanding/collapsing middle navigation on small screens
+  const [isMiddleNavExpanded, setIsMiddleNavExpanded] = useState(false);
+
+  // Toggle middle navigation expansion state
+  const toggleMiddleNav = () => {
+    setIsMiddleNavExpanded(!isMiddleNavExpanded);
+  };
 
   // Using Content context to access filters
   const contentContext = useContent();
@@ -302,7 +311,6 @@ const Header = () => {
       return btn;
     }
   );
-
   return (
     <header>
       <div className="header-link">
@@ -327,14 +335,24 @@ const Header = () => {
 
           <div className="small-icon-bu flex flex-row gap-2">
             {screenSize < 1140 && (
-              <Button onClick={handleSearchClick}>
-                <Asset
-                  src={assets.search}
-                  width={20}
-                  height={20}
-                  className="text-white"
-                />
-              </Button>
+              <>
+                <Button onClick={toggleMiddleNav} style={{ marginRight: '6px' }}>
+                  <Asset
+                    src={isMiddleNavExpanded ? assets.angleUp : assets.angleDown}
+                    width={16}
+                    height={16}
+                    className="text-white"
+                  />
+                </Button>
+                <Button onClick={handleSearchClick}>
+                  <Asset
+                    src={assets.search}
+                    width={20}
+                    height={20}
+                    className="text-white"
+                  />
+                </Button>
+              </>
             )}
             {isLoggedIn ? (
               <>
@@ -345,26 +363,27 @@ const Header = () => {
                   Logout
                 </Button>
               </>
-            ) : (
+            ) : screenSize > 425 ? (
               mappedHeaderButtons.map((btn: HeaderButton, index: number) => (
                 <Button
                   key={index}
                   className={btn.className}
                   onClick={btn.onClick}
-                  style={{
-                    
-                  }}
                 >
                   {btn.label}
                 </Button>
               ))
+            ) : (
+              <Button>
+                <Asset src={assets.login} className="text-white" />
+              </Button>
             )}
           </div>
         </div>
         {/* here if screen size is smaller than 1140 only show the first item but greater than 1140 show all items */}
-        {screenSize < 1140 && (
+        {screenSize < 1140 && isMiddleNavExpanded && (
           <div
-            className="list-none flex flex-row text-nowrap items-center overflow-x-auto overflow-y-visible h-12 relative w-full"
+            className="list-none flex flex-row text-nowrap items-center overflow-x-auto overflow-y-hidden h-12 relative w-full"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             <div className="inline-flex overflow-visible items-center gap-4 px-4">
