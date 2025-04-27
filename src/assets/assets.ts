@@ -15,6 +15,8 @@ import { FaTimes } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { FaShareAlt } from "react-icons/fa";
+
 
 export const assets = {
   // Logo and brand images
@@ -48,6 +50,7 @@ export const assets = {
   times: FaTimes,
   angleDown: FaAngleDown,
   info: IoIosInformationCircleOutline,
+  share: FaShareAlt,
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,
   mobile: new URL("./images/mobile.webp", import.meta.url).href,

@@ -1,10 +1,9 @@
 import {
   useUISelector,
   useAuthSelector,
-  useSuccessNotification,
-  useErrorNotification,
   useContent,
   useSearch,
+  useFilimoMotor,
 } from "../../context";
 import "../../style/header.css";
 import Button from "../Button/Button";
@@ -18,6 +17,7 @@ import {
   HeaderButton,
 } from "../../types/header";
 import SearchModal from "../SearchModal";
+import FilimoMotorModal from "../FilimoMotorModal";
 import Asset from "../ImageComponent/Image";
 import { assets } from "../../assets/assets";
 import { useScreenSize } from "../../context/hooks";
@@ -38,6 +38,9 @@ const Header = () => {
   // Using Search context
   const { dispatch: searchDispatch } = useSearch();
 
+  // Using FilimoMotor context
+  const { state: motorState, dispatch: motorDispatch } = useFilimoMotor();
+
   // Using router hooks for navigation
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,18 +49,24 @@ const Header = () => {
   const isLoggedIn = useAuthSelector((context) => context.state.isLoggedIn);
   const user = useAuthSelector((context) => context.state.user);
   // const loading = useAuthSelector((context) => context.state.loading);
-  const error = useAuthSelector((context) => context.state.error);
+  // const error = useAuthSelector((context) => context.state.error);
   const login = useAuthSelector((context) => context.login);
   const logout = useAuthSelector((context) => context.logout);
 
   // Use notification hooks
-  const showSuccess = useSuccessNotification();
-  const showError = useErrorNotification();
+  // const showSuccess = useSuccessNotification();
+  // const showError = useErrorNotification();
 
   // Handle search button click
   const handleSearchClick = (e: React.MouseEvent) => {
     e.preventDefault();
     searchDispatch({ type: "TOGGLE_SEARCH" });
+  };
+
+  // Handle FilimoMotor button click
+  const handleFilimoMotorClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    motorDispatch({ type: "TOGGLE_MOTOR" });
   };
 
   // Handle navigation for combined Movies/Series link
@@ -220,22 +229,22 @@ const Header = () => {
         // For demo, use hardcoded credentials
         // In a real app, you'd show a login form
         await login("test", "password");
-        showSuccess("Successfully logged in!");
+        // showSuccess("Successfully logged in!");
       } catch (err) {
-        showError("Login failed. Please try again.");
+        // showError("Login failed. Please try again.");
       }
     } else {
       logout();
-      showSuccess("You have been logged out.");
+      // showSuccess("You have been logged out.");
     }
   };
 
   // Show error notification if there's an auth error
-  useEffect(() => {
-    if (error) {
-      showError(error);
-    }
-  }, [error, showError]);
+  // useEffect(() => {
+  //   if (error) {
+  //     showError(error);
+  //   }
+  // }, [error, showError]);
 
   // Create SubMenuItems with click handlers
   const createSubMenuItems = (
@@ -255,11 +264,21 @@ const Header = () => {
     };
   };
 
+  // Create an Extended MenuItem for FilimoMotor
+  const createFilimoMotorItem = (item: MenuItem): ExtendedMenuItem => {
+    return {
+      ...item,
+      onClick: handleFilimoMotorClick,
+    };
+  };
+
   // Create Menu Items with proper handlers
   const getModifiedMenuItems = () => {
     return navigationItems.map((item: MenuItem) => {
       if (item.label === "Search") {
         return createSearchItem(item);
+      } else if (item.label === "Filimotor") {
+        return createFilimoMotorItem(item);
       } else if (item.hasDropdown && item.subMenuItems) {
         return {
           ...item,
@@ -332,6 +351,9 @@ const Header = () => {
                   key={index}
                   className={btn.className}
                   onClick={btn.onClick}
+                  style={{
+                    
+                  }}
                 >
                   {btn.label}
                 </Button>
@@ -345,7 +367,7 @@ const Header = () => {
             className="list-none flex flex-row text-nowrap items-center overflow-x-auto overflow-y-hidden h-12 relative w-full"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
-            <div className="inline-flex items-center gap-4 px-4">
+            <div className="inline-flex overflow-visible items-center gap-4 px-4">
               {getModifiedMenuItems()
                 .slice(1, -1)
                 .map((item: MenuItem | ExtendedMenuItem) => (
@@ -358,6 +380,9 @@ const Header = () => {
 
       {/* Search Modal - stays at the root level */}
       <SearchModal />
+
+      {/* FilimoMotor Modal - stays at the root level */}
+      <FilimoMotorModal />
     </header>
   );
 };

@@ -2,14 +2,14 @@ import { SubMenuItem } from "../../../../types/header";
 import { assets } from "../../../../assets/assets";
 import Image from "../../../../components/ImageComponent/Image";
 import Button from "../../../../components/Button/Button";
-import { useUISelector } from "../../../../context";
+import { useUISelector, useSearch, useFilimoMotor } from "../../../../context";
 import {
   ExtendedMenuItem,
   ExtendedSubMenuItem,
   NavigationItemProps,
 } from "../../../../types/header";
-import React, { useState } from "react";
 import { useScreenSize } from "../../../../context/hooks";
+import React, { useState } from "react";
 
 const NavigationItem = ({
   item,
@@ -21,6 +21,12 @@ const NavigationItem = ({
   const screenSize = useScreenSize();
   const isMobile = screenSize < 1140;
   const isSmallScreen = screenSize < 768;
+
+  // Add search context
+  const { dispatch: searchDispatch } = useSearch();
+
+  // Add filimoMotor context
+  const { dispatch: motorDispatch } = useFilimoMotor();
 
   // If itemId is provided, get the navigation item from context
   const navigationItem = useUISelector((context) => {
@@ -50,18 +56,30 @@ const NavigationItem = ({
     hasDropdown && dropdownClass
       ? `dropDown-header-${dropdownClass.split("-").pop()}`
       : ""
-  } ${icon && label ? "small-icon-bu" : ""} ${isDropdownOpen ? "dropdown-active" : ""}`;
-
+  } ${icon && label ? "small-icon-bu" : ""}`;
+  // ${
+  //   isDropdownOpen ? "dropdown-active" : ""
+  // }
   // Handle the click event - use custom onClick if provided, otherwise default link behavior
   const handleNavigationClick = (e: React.MouseEvent) => {
-    // For small screens or mobile with dropdown, just toggle dropdown
-    if (hasDropdown && (isMobile || isSmallScreen)) {
+    // Check if this is the Search navigation item
+    if (label === "Search") {
+      e.preventDefault();
+      searchDispatch({ type: "OPEN_SEARCH" });
+      return;
+    }
+
+    // Check if this is the Filimo Motor navigation item
+    if (label === "Filimotor") {
+      e.preventDefault();
+      motorDispatch({ type: "TOGGLE_MOTOR" });
+      return;
+    }
+
+    // Only toggle dropdown for large mobile screens with hasDropdown items
+    if (hasDropdown && isMobile && !isSmallScreen) {
       e.preventDefault();
       setIsDropdownOpen(!isDropdownOpen);
-    } 
-    // For parent links on very small screens, prevent navigation
-    else if (isSmallScreen && hasDropdown) {
-      e.preventDefault();
     }
     // Otherwise use the provided onClick handler
     else if (onClick) {
@@ -69,6 +87,7 @@ const NavigationItem = ({
     }
   };
 
+ 
   // For the logo (when label is empty)
   if (icon && !label) {
     return (
@@ -90,7 +109,7 @@ const NavigationItem = ({
       <Button
         ButtonElement="a"
         target={target}
-        href={href || ""}
+        href={label === "Filimotor" ? "#" : href} // Use # for Filimo Motor to prevent navigation
         onClick={handleNavigationClick}
       >
         {label && <span>{label}</span>}
@@ -102,46 +121,51 @@ const NavigationItem = ({
             height={iconHeight}
           />
         )}
-        {/* Only render dropdown arrow if hasDropdown is true */}
-        {hasDropdown && <Image src={assets.angleDown} alt="dropdown" />}
+        {/* Only render dropdown arrow if hasDropdown is true and not on small screens */}
+        {hasDropdown && !isSmallScreen && screenSize > 1140 && (
+          <Image src={assets.angleDown} alt="dropdown" />
+        )}
       </Button>
 
-      {/* Render dropdown menu if applicable - show on hover for desktop or on click for mobile */}
-      {hasDropdown && subMenuItems && (isMobile ? isDropdownOpen : true) && (
-        <div className={`hidden-menu ${dropdownClass || "" }`}>
-          <ul className="hidden-menu-nav">
-            {subMenuItems.map((subItem: SubMenuItem, idx) => {
-              const extendedSubItem = subItem as ExtendedSubMenuItem;
-              return (
-                <li key={idx} className="hidden-menu-item">
-                  <Button
-                    ButtonElement="a"
-                    href={subItem.href || ""}
-                    onClick={(e) => {
-                      // On small screens, don't navigate, just close dropdown
-                      if (isSmallScreen) {
-                        e.preventDefault();
-                        setIsDropdownOpen(false);
-                      } 
-                      // Otherwise use the provided onClick handler
-                      else if (extendedSubItem.onClick) {
-                        extendedSubItem.onClick(e);
-                      }
-                      
-                      // Close dropdown after item click on mobile (not small)
-                      if (isMobile && !isSmallScreen) {
-                        setIsDropdownOpen(false);
-                      }
-                    }}
-                  >
-                    {subItem.label}
-                  </Button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
+      {/* Render dropdown menu if applicable - only on larger screens */}
+      {hasDropdown &&
+        subMenuItems &&
+        !isSmallScreen &&
+        (!isMobile || isDropdownOpen) && (
+          <div
+            className={`hidden-menu ${dropdownClass || ""}`}
+            style={{
+              display: isMobile ? (isDropdownOpen ? "block" : "none") : "",
+            }}
+          >
+            <ul className="hidden-menu-nav">
+              {subMenuItems.map((subItem: SubMenuItem, idx) => {
+                const extendedSubItem = subItem as ExtendedSubMenuItem;
+                return (
+                  <li key={idx} className="hidden-menu-item">
+                    <Button
+                      ButtonElement="a"
+                      href={subItem.href || ""}
+                      onClick={(e) => {
+                        // Use the provided onClick handler for filtering
+                        if (extendedSubItem.onClick) {
+                          extendedSubItem.onClick(e);
+                        }
+
+                        // Close dropdown after item click on mobile
+                        if (isMobile) {
+                          setIsDropdownOpen(false);
+                        }
+                      }}
+                    >
+                      {subItem.label}
+                    </Button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
     </li>
   );
 };
