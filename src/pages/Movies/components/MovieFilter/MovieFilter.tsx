@@ -7,9 +7,11 @@ import FilterDropdowns from "../FilterDropdowns/FilterDropdowns";
 import Button from "../../../../components/Button/Button";
 import { assets } from "../../../../assets/assets";
 import Image from "../../../../components/ImageComponent/Image";
+import { useLocation } from "react-router-dom";
 
 // Add CSS styles that were previously added directly through JS
 const MovieFilter: React.FC = () => {
+  const location = useLocation();
   const {
     filters,
     showFilters,
@@ -18,15 +20,22 @@ const MovieFilter: React.FC = () => {
     getActiveFiltersCount,
     syncFiltersWithUrl,
     setSort,
+    resetFilters,
   } = useMovieFilters();
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [filterVisible, setFilterVisible] = useState(false);
 
+  // Determine content type based on current path
+  const isSeriesPage = location.pathname === "/series";
+  const contentTypeLabel = isSeriesPage ? "Series" : "Movies";
+
   // Sync filters with URL parameters when component mounts or URL changes
+  /* 
   useEffect(() => {
     syncFiltersWithUrl();
   }, [syncFiltersWithUrl]);
+  */
 
   // Handle filter animations
   useEffect(() => {
@@ -107,16 +116,21 @@ const MovieFilter: React.FC = () => {
         {/* Sorting Dropdown */}
         <SortingDropdown />
 
-        <div
-          className={`content-type ${
-            filters.contentType !== "All" ? "active" : ""
-          }`}
-        >
-          {window.location.pathname !== "/foreign" && (
-            <span>{filters.contentType}</span>
-          )}
-          {window.location.pathname === "/foreign" && <span>Foreign</span>}
+        {/* Content Type Label */}
+        <div className="content-type">
+          <span>{contentTypeLabel}</span>
         </div>
+        
+        {/* Reset All Filters Button (only show when active filters exist) */}
+        {hasActiveFilters && (
+          <Button 
+            className="reset-filters-btn" 
+            onClick={resetFilters}
+            disabled={isAnimating}
+          >
+            Reset All Filters
+          </Button>
+        )}
       </div>
 
       {(showFilters || filterVisible) && (

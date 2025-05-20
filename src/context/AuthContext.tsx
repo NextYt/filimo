@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, ReactNode, useEffect, useCallback } from 'react';
+import { authService } from '../services/authService';
 
 // Define the Auth state type
 interface AuthState {
@@ -114,80 +115,117 @@ const TOKEN_EXPIRATION_TIME = 30 * 60 * 1000;
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialAuthState);
 
-  // Implement login logic
+  // Implement login logic with real API
   const login = async (username: string, password: string) => {
     dispatch({ type: 'LOGIN_REQUEST' });
     
     try {
-      // In a real app, you would make an API call here
-      // This is a mock implementation
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call the actual API using authService
+      const response = await authService.login(username, password);
       
-      if (username === 'test' && password === 'password') {
-        const mockUser = {
-          id: 1,
-          username: 'test',
-          name: 'Test User',
-          email: 'test@example.com',
-          avatar: '/assets/Images/avatar.png'
+      if (response.success) {
+        const userData = response.data.user;
+        const token = response.data.token;
+        
+        // Convert backend user data to our format
+        const user: User = {
+          id: userData.id,
+          username: userData.email, // Using email as username
+          name: userData.name,
+          email: userData.email,
+          avatar: userData.avatar || '/assets/Images/avatar.png'
         };
         
-        const mockToken = 'mock-jwt-token-' + Math.random().toString(36).substring(2);
-        
         // Store token in localStorage for persistence
-        localStorage.setItem('filimo_token', mockToken);
+        localStorage.setItem('auth_token', token);
         
         dispatch({ 
           type: 'LOGIN_SUCCESS', 
-          payload: { user: mockUser, token: mockToken }
+          payload: { user, token }
         });
       } else {
         dispatch({ 
           type: 'LOGIN_FAILURE', 
-          payload: 'Invalid username or password' 
+          payload: response.message || 'Login failed' 
         });
       }
     } catch (error) {
+      let errorMessage = 'Login failed. Please try again.';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       dispatch({ 
         type: 'LOGIN_FAILURE', 
-        payload: 'Login failed. Please try again.' 
+        payload: errorMessage
       });
     }
   };
 
-  // Implement logout
-  const logout = () => {
-    localStorage.removeItem('filimo_token');
-    dispatch({ type: 'LOGOUT' });
+  // Implement logout with real API
+  const logout = async () => {
+    try {
+      await authService.logout();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      localStorage.removeItem('auth_token');
+      dispatch({ type: 'LOGOUT' });
+    }
   };
 
-  // Implement profile update
-  const updateProfile = (userData: Partial<User>) => {
-    dispatch({ type: 'UPDATE_USER', payload: userData });
+  // Implement profile update with real API
+  const updateProfile = async (userData: Partial<User>) => {
+    try {
+      // Format the data for the API
+      const profileData = {
+        name: userData.name,
+        email: userData.email,
+        // Add other profile fields as needed
+      };
+      
+      const response = await authService.updateProfile(profileData);
+      
+      if (response.success) {
+        dispatch({ type: 'UPDATE_USER', payload: userData });
+      }
+    } catch (error) {
+      console.error('Profile update error:', error);
+    }
   };
 
-  // Implement token refresh
+  // Implement token refresh with real API
   const refreshToken = useCallback(async (): Promise<boolean> => {
     dispatch({ type: 'TOKEN_REFRESH_START' });
     
     try {
-      // In a real app, you would make an API call to refresh the token
-      // This is a mock implementation
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // In a real application, you would implement token refresh
+      // Currently, the API doesn't have a dedicated token refresh endpoint
+      // So we'll reuse the user details endpoint to validate the token
+      const response = await authService.getUserDetails();
       
-      const mockToken = 'refreshed-token-' + Math.random().toString(36).substring(2);
-      localStorage.setItem('filimo_token', mockToken);
-      
-      dispatch({ 
-        type: 'TOKEN_REFRESH_SUCCESS', 
-        payload: mockToken
-      });
-      
-      return true;
+      if (response.success) {
+        // If the request succeeds, the token is still valid
+        const currentToken = localStorage.getItem('auth_token') || '';
+        
+        dispatch({ 
+          type: 'TOKEN_REFRESH_SUCCESS', 
+          payload: currentToken
+        });
+        
+        return true;
+      } else {
+        throw new Error('Token validation failed');
+      }
     } catch (error) {
+      let errorMessage = 'Failed to refresh token. Please login again.';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       dispatch({ 
         type: 'TOKEN_REFRESH_FAILURE', 
-        payload: 'Failed to refresh token. Please login again.' 
+        payload: errorMessage
       });
       return false;
     }
@@ -216,25 +254,39 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
   }, [state.isLoggedIn, state.token, refreshToken]);
 
-  // Check for existing token on mount
+  // Check for existing token on mount and load user data
   useEffect(() => {
-    const token = localStorage.getItem('filimo_token');
-    if (token) {
-      // In a real app, you would validate the token with an API
-      // For now, we'll just simulate a valid user session
-      const mockUser = {
-        id: 1,
-        username: 'test',
-        name: 'Test User',
-        email: 'test@example.com',
-        avatar: '/assets/Images/avatar.png'
-      };
-      
-      dispatch({ 
-        type: 'LOGIN_SUCCESS', 
-        payload: { user: mockUser, token }
-      });
-    }
+    const loadUserData = async () => {
+      const token = localStorage.getItem('auth_token');
+      if (token) {
+        try {
+          const response = await authService.getUserDetails();
+          
+          if (response.success) {
+            const userData = response.data;
+            
+            // Convert backend user data to our format
+            const user: User = {
+              id: userData.id,
+              username: userData.email, // Using email as username
+              name: userData.name,
+              email: userData.email,
+              avatar: userData.avatar || '/assets/Images/avatar.png'
+            };
+            
+            dispatch({ 
+              type: 'LOGIN_SUCCESS', 
+              payload: { user, token }
+            });
+          }
+        } catch (error) {
+          // If there's an error, token is likely invalid
+          localStorage.removeItem('auth_token');
+        }
+      }
+    };
+    
+    loadUserData();
   }, []);
 
   return (

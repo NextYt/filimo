@@ -13,7 +13,7 @@ const FilterTags: React.FC = () => {
     setCountry, 
     setGenre, 
     setHD,
-    setContentType 
+    // setContentType 
   } = useMovieFilters();
   
   // Generate tags from current filter state
@@ -60,13 +60,13 @@ const FilterTags: React.FC = () => {
   }
   
   // Add ContentType filter tag
-  if (filters.contentType !== 'All') {
-    activeTags.push({
-      key: 'contentType',
-      label: `Type: ${filters.contentType}`,
-      onRemove: () => setContentType('All')
-    });
-  }
+  // if (filters.contentType !== 'All') {
+  //   activeTags.push({
+  //     key: 'contentType',
+  //     label: `Type: ${filters.contentType}`,
+  //     onRemove: () => setContentType('All')
+  //   });
+  // }
   
   // Don't render if no active tags
   if (activeTags.length === 0) {

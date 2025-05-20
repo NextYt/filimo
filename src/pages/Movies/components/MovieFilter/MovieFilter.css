@@ -373,3 +373,22 @@ body {
 .filter-tag.clear-all-tag .filter-tag-close {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
+.reset-filters-btn {
+  background-color: #e50914;
+  color: white;
+  font-size: 0.875rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-left: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.reset-filters-btn:hover {
+  background-color: #f50f1a;
+}
+
+.reset-filters-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5);
+}

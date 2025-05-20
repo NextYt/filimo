@@ -1,26 +1,35 @@
-import { FaArrowUp } from "react-icons/fa";
-import { FaCaretDown } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { IoIosCheckmarkCircle } from "react-icons/io";
+import {
+  FaArrowUp,
+  FaCaretDown,
+  FaYoutube,
+  FaTelegram,
+  FaTwitter,
+  FaInstagram,
+  FaArrowLeft,
+  FaArrowRight,
+  FaPlus,
+  FaAngleRight,
+  FaAngleLeft,
+  FaTimes,
+  FaAngleDown,
+  FaAngleUp,
+  FaRegCommentDots,
+  FaShareAlt,
+  FaPlay,
+} from "react-icons/fa";
+import {
+  IoIosCheckmarkCircle,
+  IoMdSearch,
+  IoIosInformationCircleOutline,
+} from "react-icons/io";
 import { MdCardGiftcard } from "react-icons/md";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa";
-import { IoMdSearch } from "react-icons/io";
-import { IoIosInformationCircleOutline } from "react-icons/io";
-import { FaShareAlt } from "react-icons/fa";
 import { CgLogIn } from "react-icons/cg";
-import { FaAngleUp } from "react-icons/fa";
-
+import { RiDownloadCloudLine } from "react-icons/ri";
+import { CiSaveDown2 } from "react-icons/ci";
 
 export const assets = {
+  plus15: new URL("./images/plus15.png", import.meta.url).href,
+
   // Logo and brand images
   logo: new URL("./images/logo.png", import.meta.url).href,
   logoText: new URL("./images/logo_text.webp", import.meta.url).href,
@@ -55,7 +64,10 @@ export const assets = {
   share: FaShareAlt,
   login: CgLogIn,
   angleUp: FaAngleUp,
-
+  comment: FaRegCommentDots,
+  download: RiDownloadCloudLine,
+  saveLater: CiSaveDown2,
+  play: FaPlay,
   // Device images
   laptop: new URL("./images/laptop.webp", import.meta.url).href,
   mobile: new URL("./images/mobile.webp", import.meta.url).href,

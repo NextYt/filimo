@@ -29,7 +29,7 @@ const FilterDropdowns: React.FC<FilterDropdownsProps> = ({
 }) => {
   const { 
     filters, 
-    setContentType, 
+    // setContentType, 
     setAge,
     setLanguage,
     setCountry,
@@ -40,11 +40,11 @@ const FilterDropdowns: React.FC<FilterDropdownsProps> = ({
   const { state } = useContent();
   
   // Create content type options
-  const contentTypeOptions = [
-    { value: 'All', label: 'All' },
-    { value: 'Movie', label: 'Movie' },
-    { value: 'Series', label: 'Series' }
-  ];
+  // const contentTypeOptions = [
+  //   { value: 'All', label: 'All' },
+  //   { value: 'Movie', label: 'Movie' },
+  //   { value: 'Series', label: 'Series' }
+  // ];
   
   // Create age options using the filter age options from context
   const ageOptions = state.filterAgeOptions.map(age => ({
@@ -73,19 +73,19 @@ const FilterDropdowns: React.FC<FilterDropdownsProps> = ({
     }))
   ];
   
-  // Improved handler for content type changes
-  const handleContentTypeChange = (value: string) => {
-    // Only allow specific valid values
-    if (value === "All" || value === "Movie" || value === "Series") {
-      console.log('FilterDropdowns: Setting content type to', value);
-      if (value === "All") {
-        // Force UI immediate update for better UX
-        setContentType(value);
-      } else {
-        setContentType(value);
-      }
-    }
-  };
+  // // Improved handler for content type changes
+  // const handleContentTypeChange = (value: string) => {
+  //   // Only allow specific valid values
+  //   if (value === "All" || value === "Movie" || value === "Series") {
+  //     console.log('FilterDropdowns: Setting content type to', value);
+  //     if (value === "All") {
+  //       // Force UI immediate update for better UX
+  //       // setContentType(value);
+  //     } else {
+  //       // setContentType(value);
+  //     }
+  //   }
+  // };
   
   // Define all dropdown configurations
   const dropdownConfigs: DropdownConfig[] = [
@@ -121,14 +121,14 @@ const FilterDropdowns: React.FC<FilterDropdownsProps> = ({
       onChange: setGenre,
       className: "filter-dropdown"
     },
-    {
-      id: "content-type-dropdown",
-      label: "Content Type",
-      options: contentTypeOptions,
-      value: filters.contentType,
-      onChange: handleContentTypeChange,
-      className: "filter-dropdown content-type-dropdown"
-    }
+    // {
+    //   id: "content-type-dropdown",
+    //   label: "Content Type",
+    //   options: contentTypeOptions,
+    //   value: filters.genre,
+    //   onChange: handleContentTypeChange,
+    //   className: "filter-dropdown content-type-dropdown"
+    // }
   ];
   
   return (

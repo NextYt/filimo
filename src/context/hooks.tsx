@@ -121,42 +121,42 @@ export function useMovieFilters() {
     let hasChanges = false;
 
     // Check each filter type
-    type FilterDef = {
-      urlParam: string;
-      stateKey: keyof FilterOptions;
-      isBool?: boolean;
-    };
+    // type FilterDef = {
+    //   urlParam: string;
+    //   stateKey: keyof FilterOptions;
+    //   isBool?: boolean;
+    // };
 
-    const paramFilters: FilterDef[] = [
-      { urlParam: "genre", stateKey: "genre" },
-      { urlParam: "age", stateKey: "age" },
-      { urlParam: "language", stateKey: "language" },
-      { urlParam: "country", stateKey: "country" },
-      { urlParam: "contentType", stateKey: "contentType" }, // ContentType included here
-      { urlParam: "hd", stateKey: "hd", isBool: true },
-    ];
+    // const paramFilters: FilterDef[] = [
+    //   { urlParam: "genre", stateKey: "genre" },
+    //   { urlParam: "age", stateKey: "age" },
+    //   { urlParam: "language", stateKey: "language" },
+    //   { urlParam: "country", stateKey: "country" },
+    //   // { urlParam: "contentType", stateKey: "contentType" }, // ContentType included here
+    //   { urlParam: "hd", stateKey: "hd", isBool: true },
+    // ];
 
     // Check each filter against URL
-    paramFilters.forEach(({ urlParam, stateKey, isBool }) => {
-      if (searchParams.has(urlParam)) {
-        const paramValue = searchParams.get(urlParam);
-        const currentValue = state.filters[stateKey];
+    // paramFilters.forEach(({ urlParam, stateKey, isBool }) => {
+    //   if (searchParams.has(urlParam)) {
+    //     const paramValue = searchParams.get(urlParam);
+    //     const currentValue = state.filters[stateKey];
 
-        // Compare values accounting for type
-        if (isBool) {
-          const boolValue = paramValue === "true";
-          if (boolValue !== currentValue) {
-            urlFilters[stateKey] = boolValue as any;
-            hasChanges = true;
-          }
-        } else if (typeof currentValue === "string") {
-          if (paramValue !== currentValue) {
-            urlFilters[stateKey] = paramValue as any;
-            hasChanges = true;
-          }
-        }
-      }
-    });
+    //     // Compare values accounting for type
+    //     if (isBool) {
+    //       const boolValue = paramValue === "true";
+    //       if (boolValue !== currentValue) {
+    //         urlFilters[stateKey] = boolValue as any;
+    //         hasChanges = true;
+    //       }
+    //     } else if (typeof currentValue === "string") {
+    //       if (paramValue !== currentValue) {
+    //         urlFilters[stateKey] = paramValue as any;
+    //         hasChanges = true;
+    //       }
+    //     }
+    //   }
+    // });
 
     // Update filters if needed
     if (hasChanges) {
@@ -174,20 +174,20 @@ export function useMovieFilters() {
       });
       
       // Update URL parameters based on the value
-      const newParams = new URLSearchParams(searchParams.toString());
+      // const newParams = new URLSearchParams(searchParams.toString());
       
-      if (value === "All") {
-        // When explicitly set to "All", remove the parameter from URL
-        newParams.delete("age");
-      } else {
-        // For any specific age value, set the parameter in URL
-        newParams.set("age", value);
-      }
+      // if (value === "All") {
+      //   // When explicitly set to "All", remove the parameter from URL
+      //   newParams.delete("age");
+      // } else {
+      //   // For any specific age value, set the parameter in URL
+      //   newParams.set("age", value);
+      // }
       
-      // Apply URL changes
-      setSearchParams(newParams);
+      // // Apply URL changes
+      // setSearchParams(newParams);
     },
-    [dispatch, searchParams, setSearchParams]
+    [dispatch]
   );
 
   const setLanguage = useCallback(
@@ -197,15 +197,15 @@ export function useMovieFilters() {
         payload: { language: value },
       });
 
-      const newParams = new URLSearchParams(searchParams.toString());
-      if (value === "All" && !state.filters.language) {
-        newParams.delete("language");
-      } else {
-        newParams.set("language", value);
-      }
-      setSearchParams(newParams);
+      // const newParams = new URLSearchParams(searchParams.toString());
+      // if (value === "All" && !state.filters.language) {
+      //   newParams.delete("language");
+      // } else {
+      //   newParams.set("language", value);
+      // }
+      // setSearchParams(newParams);
     },
-    [dispatch, searchParams, setSearchParams, state.filters]
+    [dispatch]
   );
 
   const setCountry = useCallback(
@@ -215,15 +215,15 @@ export function useMovieFilters() {
         payload: { country: value },
       });
 
-      const newParams = new URLSearchParams(searchParams.toString());
-      if (value === "All" && !state.filters.country) {
-        newParams.delete("country");
-      } else {
-        newParams.set("country", value);
-      }
-      setSearchParams(newParams);
+      // const newParams = new URLSearchParams(searchParams.toString());
+      // if (value === "All" && !state.filters.country) {
+      //   newParams.delete("country");
+      // } else {
+      //   newParams.set("country", value);
+      // }
+      // setSearchParams(newParams);
     },
-    [dispatch, searchParams, setSearchParams, state.filters]
+    [dispatch]
   );
 
   const setGenre = useCallback(
@@ -233,48 +233,48 @@ export function useMovieFilters() {
         payload: { genre: value },
       });
 
-      const newParams = new URLSearchParams(searchParams.toString());
-      if (value === "All" && !state.filters.genre) {
-        newParams.delete("genre");
-      } else {
-        newParams.set("genre", value);
-      }
-      setSearchParams(newParams);
+      // const newParams = new URLSearchParams(searchParams.toString());
+      // if (value === "All" && !state.filters.genre) {
+      //   newParams.delete("genre");
+      // } else {
+      //   newParams.set("genre", value);
+      // }
+      // setSearchParams(newParams);
     },
-    [dispatch, searchParams, setSearchParams, state.filters]
+    [dispatch]
   );
 
   // Fixed ContentType setter that guarantees "All" works on first click
-  const setContentType = useCallback(
-    (type: "All" | "Movie" | "Series") => {
-      // console.log("Setting contentType to:", type);
+  // const setContentType = useCallback(
+  //   (type: "All" | "Movie" | "Series") => {
+  //     // console.log("Setting contentType to:", type);
 
-      // IMPORTANT: For "All" type, we need to update both state and URL together
-      if (type === "All") {
-        // First directly dispatch the state change
-        dispatch({
-          type: "SET_FILTERS",
-          payload: { contentType: "All" },
-        });
+  //     // IMPORTANT: For "All" type, we need to update both state and URL together
+  //     if (type === "All") {
+  //       // First directly dispatch the state change
+  //       dispatch({
+  //         type: "SET_FILTERS",
+  //         payload: { contentType: "All" },
+  //       });
 
-        // Then update URL
-        const newParams = new URLSearchParams(searchParams.toString());
-        newParams.delete("contentType");
-        setSearchParams(newParams);
-      } else {
-        // For Movie or Series - update state first, then URL
-        dispatch({
-          type: "SET_FILTERS",
-          payload: { contentType: type },
-        });
+  //       // Then update URL
+  //       const newParams = new URLSearchParams(searchParams.toString());
+  //       newParams.delete("contentType");
+  //       setSearchParams(newParams);
+  //     } else {
+  //       // For Movie or Series - update state first, then URL
+  //       dispatch({
+  //         type: "SET_FILTERS",
+  //         payload: { contentType: type },
+  //       });
 
-        const newParams = new URLSearchParams(searchParams.toString());
-        newParams.set("contentType", type);
-        setSearchParams(newParams);
-      }
-    },
-    [dispatch, searchParams, setSearchParams, state.filters]
-  );
+  //       const newParams = new URLSearchParams(searchParams.toString());
+  //       newParams.set("contentType", type);
+  //       setSearchParams(newParams);
+  //     }
+  //   },
+  //   [dispatch, searchParams, setSearchParams, state.filters]
+  // );
 
   const setHD = useCallback(
     (value: boolean) => {
@@ -285,15 +285,15 @@ export function useMovieFilters() {
       });
 
       // URL update follows state update
-      const newParams = new URLSearchParams(searchParams.toString());
-      if (!value && value) {
-        newParams.delete("hd");
-      } else {
-        newParams.set("hd", String(value));
-      }
-      setSearchParams(newParams);
+      // const newParams = new URLSearchParams(searchParams.toString());
+      // if (!value && value) {
+      //   newParams.delete("hd");
+      // } else {
+      //   newParams.set("hd", String(value));
+      // }
+      // setSearchParams(newParams);
     },
-    [dispatch, searchParams, setSearchParams, state.filters]
+    [dispatch]
   );
 
   // Reset all filters - improved to ensure instant reset in one click and also hide filter panel
@@ -301,7 +301,7 @@ export function useMovieFilters() {
     // console.log('Resetting all filters');
 
     // First update the URL to remove all filter parameters
-    setSearchParams(new URLSearchParams());
+    // setSearchParams(new URLSearchParams());
 
     // Then explicitly update the state with all default values
     dispatch({
@@ -312,7 +312,7 @@ export function useMovieFilters() {
         language: "All",
         country: "All",
         genre: "All",
-        contentType: "All",
+        // contentType: "All",
       },
     });
 
@@ -333,30 +333,23 @@ export function useMovieFilters() {
   const filterMovies = useCallback(
     (movieData: CategorizedMovies): CategorizedMovies => {
       const filteredCategories: CategorizedMovies = {};
+      
+      // Determine content type based on current path
+      const isSeriesPage = location.pathname === "/series";
+      const isMoviesPage = location.pathname === "/movies";
 
       // Apply current filters
       Object.keys(movieData).forEach((category) => {
         const categoryMovies = movieData[category as keyof typeof movieData];
 
-        // Log for debugging
-        // console.log('Applying contentType filter:', state.filters.contentType);
-
         filteredCategories[category] = categoryMovies.filter(
           (movie: CategorizedMovieItem) => {
-            // Filter by content type (Movie/Series)
-            // Handle "All" case explicitly first to avoid any issues
-            if (state.filters.contentType === "All") {
-              // Show all content types when "All" is selected
-              // Continue to other filter checks
-            } else if (state.filters.contentType === "Series") {
-              // Only show movies that have the "series" tag/type
-              if (!movie.type || movie.type !== "series") {
-                return false;
-              }
-            } else if (
-              state.filters.contentType === "Movie" &&
-              movie.type === "series"
-            ) {
+            // Filter by content type (Movie/Series) based on current page
+            if (isSeriesPage && movie.type !== "series") {
+              return false;
+            }
+            
+            if (isMoviesPage && movie.type === "series") {
               return false;
             }
 
@@ -434,7 +427,7 @@ export function useMovieFilters() {
 
       return filteredCategories;
     },
-    [state.filters, state.selectedSort]
+    [state.filters, state.selectedSort, location.pathname]
   );
 
   // Memoized filters object to prevent re-renders
@@ -461,7 +454,7 @@ export function useMovieFilters() {
     setLanguage,
     setCountry,
     setGenre,
-    setContentType,
+    // setContentType,
     setHD,
     resetFilters,
     getActiveFiltersCount,

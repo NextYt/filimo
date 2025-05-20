@@ -78,20 +78,6 @@ const Header = () => {
     motorDispatch({ type: "TOGGLE_MOTOR" });
   };
 
-  // Handle navigation for combined Movies/Series link
-  // const handleContentNavigation = (e: React.MouseEvent) => {
-  //   e.preventDefault();
-  //   let targetPath = "/movies-and-series"; // Default to movies-and-series
-
-  //   if (contentState.filters.contentType === "Series") {
-  //     targetPath = "/series";
-  //   } else if (contentState.filters.contentType === "Movie") {
-  //     targetPath = "/movies";
-  //   }
-
-  //   navigate(targetPath);
-  // };
-
   // Handle genre filter click
   const handleGenreClick = useCallback(
     (genre: string, e: React.MouseEvent) => {
@@ -103,21 +89,30 @@ const Header = () => {
         payload: { genre },
       });
 
-      // Create URL with the genre as query parameter
-      let basePath = "/movies-and-series";
-      if (contentState.filters.contentType === "Series") {
-        basePath = "/series";
-      } else if (contentState.filters.contentType === "Movie") {
-        basePath = "/movies";
-      }
+      // Get the current path to determine whether to navigate to movies or series
+      const currentPath = location.pathname;
+      const basePath = currentPath.includes('series') ? '/series' : '/movies';
 
-      // Navigate to the appropriate path with genre query parameter
-      navigate(`${basePath}?genre=${encodeURIComponent(genre)}`);
+      // Navigate to the appropriate path without query parameter
+      navigate(basePath);
     },
-    [contentDispatch, contentState.filters.contentType, navigate]
+    [contentDispatch, navigate, location.pathname]
   );
 
+  // Create a handler for Movies main navigation item
+  const handleMoviesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/movies');
+  };
+
+  // Create a handler for Series main navigation item
+  const handleSeriesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/series');
+  };
+
   // Parse URL query parameters on mount and when URL changes
+  /* 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
 
@@ -144,92 +139,7 @@ const Header = () => {
     contentState.filters.genre,
     contentState.filters.country,
   ]);
-
-  // Update URL when filter changes on the Movies/Series page
-  useEffect(() => {
-    const isMoveOrSeries =
-      location.pathname === "/movies" ||
-      location.pathname === "/series" ||
-      location.pathname === "/movies-and-series";
-
-    if (isMoveOrSeries) {
-      if (
-        contentState.filters.contentType === "Series" &&
-        location.pathname !== "/series"
-      ) {
-        // Build query params
-        const params = new URLSearchParams();
-
-        // Preserve genre in URL when switching content types
-        if (contentState.filters.genre !== "All") {
-          params.set("genre", contentState.filters.genre);
-        }
-
-        // Preserve country in URL when switching content types
-        if (contentState.filters.country !== "All") {
-          params.set("country", contentState.filters.country);
-        }
-
-        // Construct the full URL
-        const queryString = params.toString();
-        const newUrl = queryString ? `/series?${queryString}` : "/series";
-
-        navigate(newUrl, { replace: true });
-      } else if (
-        contentState.filters.contentType === "Movie" &&
-        location.pathname !== "/movies"
-      ) {
-        // Build query params
-        const params = new URLSearchParams();
-
-        // Preserve genre in URL when switching content types
-        if (contentState.filters.genre !== "All") {
-          params.set("genre", contentState.filters.genre);
-        }
-
-        // Preserve country in URL when switching content types
-        if (contentState.filters.country !== "All") {
-          params.set("country", contentState.filters.country);
-        }
-
-        // Construct the full URL
-        const queryString = params.toString();
-        const newUrl = queryString ? `/movies?${queryString}` : "/movies";
-
-        navigate(newUrl, { replace: true });
-      } else if (
-        contentState.filters.contentType === "All" &&
-        location.pathname !== "/movies-and-series"
-      ) {
-        // Build query params
-        const params = new URLSearchParams();
-
-        // Preserve genre in URL when switching content types
-        if (contentState.filters.genre !== "All") {
-          params.set("genre", contentState.filters.genre);
-        }
-
-        // Preserve country in URL when switching content types
-        if (contentState.filters.country !== "All") {
-          params.set("country", contentState.filters.country);
-        }
-
-        // Construct the full URL
-        const queryString = params.toString();
-        const newUrl = queryString
-          ? `/movies-and-series?${queryString}`
-          : "/movies-and-series";
-
-        navigate(newUrl, { replace: true });
-      }
-    }
-  }, [
-    contentState.filters.contentType,
-    contentState.filters.genre,
-    contentState.filters.country,
-    location.pathname,
-    navigate,
-  ]);
+  */
 
   // Handle login button click
   const handleLoginClick = async () => {
@@ -257,11 +167,24 @@ const Header = () => {
 
   // Create SubMenuItems with click handlers
   const createSubMenuItems = (
-    categories: SubMenuItem[]
+    categories: SubMenuItem[],
+    parentType: 'Movies' | 'Series'
   ): ExtendedSubMenuItem[] => {
     return categories.map((subItem) => ({
       ...subItem,
-      onClick: (e) => handleGenreClick(subItem.label, e),
+      onClick: (e) => {
+        e.preventDefault();
+        
+        // Set the genre filter
+        contentDispatch({
+          type: "SET_FILTERS",
+          payload: { genre: subItem.label },
+        });
+        
+        // Navigate to the appropriate path without genre query parameter
+        const basePath = parentType === 'Series' ? '/series' : '/movies';
+        navigate(basePath);
+      },
     }));
   };
 
@@ -288,10 +211,22 @@ const Header = () => {
         return createSearchItem(item);
       } else if (item.label === "Filimotor") {
         return createFilimoMotorItem(item);
+      } else if (item.label === "Movies") {
+        return {
+          ...item,
+          onClick: handleMoviesClick,
+          subMenuItems: createSubMenuItems(item.subMenuItems || [], 'Movies'),
+        };
+      } else if (item.label === "Series") {
+        return {
+          ...item,
+          onClick: handleSeriesClick,
+          subMenuItems: createSubMenuItems(item.subMenuItems || [], 'Series'),
+        };
       } else if (item.hasDropdown && item.subMenuItems) {
         return {
           ...item,
-          subMenuItems: createSubMenuItems(item.subMenuItems),
+          subMenuItems: createSubMenuItems(item.subMenuItems, 'Movies'),
         };
       }
       return item;

@@ -23,9 +23,9 @@ const MovieSection: React.FC<MovieSectionProps> = ({ category, movies }) => {
     }
     
     // If content type is set to Series, show "Series" as the title
-    if (state.filters.contentType === "Series") {
-      return "Series";
-    }
+    // if (state.filters.contentType === "Series") {
+    //   return "Series";
+    // }
     
     // Otherwise, show the original category
     return category;

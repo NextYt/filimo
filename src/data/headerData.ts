@@ -1,8 +1,7 @@
 import { MenuItem } from "../types/header";
 import { assets } from "../assets/assets";
 
-export const NAVIGATION_ITEMS: MenuItem[] = [
-  {
+export const NAVIGATION_ITEMS: MenuItem[] = [  {
     label: "",
     href: "/",
     icon: assets.logo,
@@ -87,7 +86,7 @@ export const NAVIGATION_ITEMS: MenuItem[] = [
   },
   {
     label: "Iranian",
-    href: "/movies-and-series?country=Iran",
+    href: "/iranian",
   },
   {
     label: "Foreign",

@@ -81,7 +81,11 @@ const NavigationItem = ({
       e.preventDefault();
       setIsDropdownOpen(!isDropdownOpen);
     }
-    // Otherwise use the provided onClick handler
+    // For Movies or Series main navigation items, always use the provided onClick handler
+    else if ((label === "Movies" || label === "Series") && onClick) {
+      onClick(e);
+    }
+    // Otherwise use the provided onClick handler if available
     else if (onClick) {
       onClick(e);
     }

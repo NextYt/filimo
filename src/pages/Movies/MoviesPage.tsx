@@ -13,9 +13,11 @@ import { useLocation } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import "swiper/css";
 import "swiper/css/navigation";
+import { CategorizedMovies } from "../../types/mockdata";
 
 /**
- * Component for displaying movie list with filtering options
+ * Component for displaying movie or series list with filtering options
+ * Used for both Movies and Series pages
  */
 const MoviesPage: React.FC = () => {
   const location = useLocation();
@@ -25,6 +27,10 @@ const MoviesPage: React.FC = () => {
   const [stickyFilter, setStickyFilter] = useState(false);
   const [showMoreContent, setShowMoreContent] = useState(false);
   const { foreignSlidersData } = state;
+
+  // Determine if we're on the series page
+  const isSeriesPage = location.pathname === "/series";
+  const pageTitle = isSeriesPage ? "Series" : "Movies";
 
   // Handle scroll for sticky filter
   const handleScroll = () => {
@@ -54,7 +60,7 @@ const MoviesPage: React.FC = () => {
   }, [isForeignContent, location.pathname, dispatch]);
 
   // Get movie data from ContentContext and filter it
-  const filteredMovies = filterMovies(state.categorizedMovies);
+  const filteredMovies = filterMovies(state.categorizedMovies as CategorizedMovies);
   const hasResults = Object.keys(filteredMovies).length > 0;
 
   // Handle show more button click for foreign page
@@ -62,18 +68,23 @@ const MoviesPage: React.FC = () => {
     setShowMoreContent(true);
   };
 
+  // We only show Iranian/Foreign sliders on the Movies page, not on Series page
+  const showSpecialSliders = !isSeriesPage;
+
   return (
     <div className="movies-page">
+      <h1 className="sr-only">{pageTitle}</h1>
+      
       {/* Filter should always be visible for proper navigation */}
       <div className={`movie-filter-container ${stickyFilter ? "sticky" : ""}`}>
         <MovieFilter key="movie-filter" />
       </div>
 
       {/* Iranian slider that shows when country is Iran or path includes 'iranian' */}
-      {!isForeignContent && <IranianSlider isVisible={isIranianContent} />}
+      {showSpecialSliders && !isForeignContent && <IranianSlider isVisible={isIranianContent} />}
 
       {/* Foreign sliders that show when on the foreign page path */}
-      {isForeignContent && (
+      {showSpecialSliders && isForeignContent && (
         <div className="foreign-sliders-container">
           {foreignSlidersData.map((slider) => (
             <ForeignSlider
@@ -82,7 +93,7 @@ const MoviesPage: React.FC = () => {
               sliderType={
                 slider.sliderType as "directors" | "maleActors" | "actresses"
               }
-              title={slider.title}
+              title={slider.title as string}
             />
           ))}
           {!showMoreContent && (

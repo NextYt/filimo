@@ -5,5 +5,5 @@ export type FilterOptions = {
   language: string;
   country: string;
   genre: string;
-  contentType: "All" | "Movie" | "Series";
+  // contentType: "All" | "Movie" | "Series";
 };
